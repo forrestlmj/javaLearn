@@ -10,6 +10,7 @@ public class MinimumTimeVisitingAllPoints {
         int timmer = 0;
         for (int i = 1;i<points.length;i++){
             timmer += maxTimeBetweenTwoPoints(points[i],points[i-1]);
+
         }
         return timmer;
     }

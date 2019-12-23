@@ -19,14 +19,22 @@ public class GoatLatin {
         ch.add('U');
     }
     public String toGoatLatin(String S) {
-        String[] sList = S.split("S");
+        String[] sList = S.split(" ");
 
 //        String[] s =
         ArrayList<String> re = new ArrayList<String>();
         StringBuilder st = new StringBuilder();
         for(int i = 0;i<sList.length;i++){
-            char[] append = new char[i+1];
-            String newWord = change(sList[i])+append+" ";
+//            char[] append = new char[i+1];
+            StringBuilder block = new StringBuilder();
+            for(int j = 0;j<i+1;j++){
+                block.append("a");
+            }
+            String newWord = change(sList[i])+block.toString();
+            if(i<sList.length-1){
+                newWord = newWord + " ";
+            }
+//            System.out.println(newWord);
             st.append(newWord);
         }
         return st.toString();

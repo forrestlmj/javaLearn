@@ -17,16 +17,17 @@ public class ReverseOnlyLetters {
         for(int i = s.length - 1;i>=0;i--){
             if(a.containsKey(j)){
                 st.append(a.get(j));
-            }
-            j++;
-            if(!(Character.isUpperCase(s[i]) ||Character.isLowerCase(s[i]))){
-
+                j++;
+                i++;
             }else {
-                st.append(s[i]);
+                if((Character.isUpperCase(s[i]) ||Character.isLowerCase(s[i]))) {
+                    st.append(s[i]);
+//                i--;
+                    j++;
+                }
             }
-            if(a.containsKey(s.length - i)){
-//                st.append(a.get(s.length - i));
-            }
+
+
         }
         return st.toString();
     }

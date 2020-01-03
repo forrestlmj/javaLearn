@@ -4,6 +4,11 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class SortCharactersByFrequency {
+    /**
+     * TODO 用到了TreeMap
+     * @param s
+     * @return
+     */
     public String frequencySort(String s) {
         Map<Character,Integer> map = new HashMap<Character, Integer>();
         for(char c:s.toCharArray()){

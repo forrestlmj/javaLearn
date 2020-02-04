@@ -2,8 +2,6 @@ package HashTableTopic;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
 public class SortCharactersByFrequencyTest {
 
 
@@ -14,7 +12,7 @@ public class SortCharactersByFrequencyTest {
 //        assertEquals("cccaaa",s.frequencySort("cccaaa"));
 //        assertEquals("bbAa",s.frequencySort("Aabb"));
 
-        s.frequencySort("tree");
+        s.frequencySort("BinaryTree");
         s.frequencySort("cccaaa");
         s.frequencySort("Aabb");
 

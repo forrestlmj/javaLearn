@@ -5,6 +5,9 @@ public class array27 {
     /*
     数组移动
      */
+    public static void main(String[] args) {
+        System.out.println("xxsdfsd");
+    }
     public int[] plusOne(int[] digits) {
         int idx = digits.length-1;
         int carry = 1;

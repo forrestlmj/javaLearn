@@ -1,4 +1,4 @@
-package StringTopic.TopInterviewQuestionsEasy.String33;
+package TopInterviewQuestionsEasy.TopInterviewQuestionsEasy.String33;
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.Math;

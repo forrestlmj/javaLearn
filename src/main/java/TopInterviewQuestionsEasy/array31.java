@@ -1,4 +1,4 @@
-package ArrayTopic;
+package TopInterviewQuestionsEasy;
 
 public class array31 {
     public void rotate(int[][] matrix) {

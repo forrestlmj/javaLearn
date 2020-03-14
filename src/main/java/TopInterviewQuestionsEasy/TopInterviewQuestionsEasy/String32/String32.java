@@ -1,4 +1,4 @@
-package StringTopic.TopInterviewQuestionsEasy.String32;
+package TopInterviewQuestionsEasy.TopInterviewQuestionsEasy.String32;
 public class String32{
     public static void main(String[] args) {
         char[] t = new char[] {'h','e','l','l','o'};  

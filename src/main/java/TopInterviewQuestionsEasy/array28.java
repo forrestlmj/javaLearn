@@ -1,4 +1,4 @@
-package ArrayTopic;
+package TopInterviewQuestionsEasy;
 //https://leetcode-cn.com/explore/interview/card/top-interview-questions-easy/1/array/28/
 public class array28 {
     /*

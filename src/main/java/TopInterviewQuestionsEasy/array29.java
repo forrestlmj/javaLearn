@@ -1,4 +1,4 @@
-package ArrayTopic;
+package TopInterviewQuestionsEasy;
 
 import java.util.HashMap;
 import java.util.Map;

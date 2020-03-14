@@ -1,8 +1,7 @@
 package StringTopic;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+
 
 public class RansomNote {
     public boolean canConstruct(String ransomNote, String magazine) {

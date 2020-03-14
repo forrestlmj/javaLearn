@@ -1,7 +1,6 @@
 package TopInterviewQuestionsEasy.TopInterviewQuestionsEasy.String35;
 
-import java.util.HashMap;
-import java.util.Map;
+
 public class String35{
     public static void main(String[] args) {
         /**

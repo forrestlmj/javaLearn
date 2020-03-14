@@ -1,7 +1,6 @@
 package StringTopic;
 
 
-import java.util.ArrayList;
 import java.util.HashSet;
 
 public class GoatLatin {
@@ -22,7 +21,6 @@ public class GoatLatin {
         String[] sList = S.split(" ");
 
 //        String[] s =
-        ArrayList<String> re = new ArrayList<String>();
         StringBuilder st = new StringBuilder();
         for(int i = 0;i<sList.length;i++){
 //            char[] append = new char[i+1];

@@ -1,6 +1,4 @@
 package TopInterviewQuestionsEasy.TopInterviewQuestionsEasy.String33;
-import java.util.ArrayList;
-import java.util.List;
 import java.lang.Math;
 import java.lang.String;
 public class String33{
@@ -28,7 +26,6 @@ class Solution {
         return sb.toString().toCharArray();
     }
     public int reverse(int x) {
-        boolean nev = false;
         if(x == 0){
             return 0;
         }

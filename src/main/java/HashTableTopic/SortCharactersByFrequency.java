@@ -1,6 +1,5 @@
 package HashTableTopic;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class SortCharactersByFrequency {

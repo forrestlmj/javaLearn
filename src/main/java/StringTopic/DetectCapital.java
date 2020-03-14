@@ -1,6 +1,5 @@
 package StringTopic;
 
-import java.util.concurrent.ConcurrentHashMap;
 
 public class DetectCapital {
     public boolean detectCapitalUse(String word) {

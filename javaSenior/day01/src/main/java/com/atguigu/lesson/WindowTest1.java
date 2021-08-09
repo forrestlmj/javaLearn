@@ -1,5 +1,7 @@
 package com.atguigu.lesson;
 
+import java.util.concurrent.Callable;
+
 import static java.lang.Thread.sleep;
 
 class ThreadWindow2 implements Runnable{
@@ -18,6 +20,12 @@ class ThreadWindow2 implements Runnable{
                         +tickets+"%");
             }else break;
         }
+    }
+}
+class AB implements Callable{
+    @Override
+    public Object call() throws Exception {
+        return null;
     }
 }
 public class WindowTest1 {

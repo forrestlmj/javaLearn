@@ -33,7 +33,7 @@ package com.atguigu;
  * @author shkstart
  * @create 2019-02-13 下午 4:47
  */
-class Test1 extends Thread{
+class Test2 extends Thread{
     private static int ticket = 100;
     private static Object o = new Object();
     @Override
@@ -57,9 +57,9 @@ class Test1 extends Thread{
 }
 public class WindowTest2 {
     public static void main(String[] args) {
-        Test1 test1 = new Test1();
-        Test1 test2 = new Test1();
-        Test1 test3 = new Test1();
+        Test2 test1 = new Test2();
+        Test2 test2 = new Test2();
+        Test2 test3 = new Test2();
 
         test1.setName("窗口1");
         test2.setName("窗口2");

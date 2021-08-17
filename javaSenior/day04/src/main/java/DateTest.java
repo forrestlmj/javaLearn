@@ -33,6 +33,16 @@ public class DateTest {
         System.out.println(calendar.getTime().toString());
         System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
         System.out.println(calendar.get(Calendar.DAY_OF_YEAR));
+
+        calendar.add(Calendar.DAY_OF_MONTH,3);
+        System.out.println(calendar.getTime());
+
+        //日历-》day
+
+        // day->日历 实现加3
+        calendar.setTime(new Date());
+        calendar.add(Calendar.DAY_OF_MONTH,3);
+        System.out.println(calendar.getTime().toString());
     }
 
 }

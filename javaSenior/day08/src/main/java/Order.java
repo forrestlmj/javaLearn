@@ -4,6 +4,10 @@ import java.util.List;
 public class Order<T> {
     private String orderName;
     private Integer orderId;
+
+    public Order() {
+    }
+
     private T orderT;
 
     public String getOrderName() {

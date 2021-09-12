@@ -38,4 +38,13 @@ public class GenericTest1 {
         String[] duArray = {"c","c","s"};
         System.out.println(MyUtil.fromListToSet(MyUtil.fromArrayToList(duArray)));
     }
+    @Test
+    public void test3(){
+        Order<String> order1 = new Order<>("sdf1", 1, "cont1");
+        Order<String> order2 = new Order<>("sdf2", 1, "cont2");
+        SubOrder<String> orderList = new SubOrder<>();
+        orderList.makeSubList(order1.getOrderName());
+        List<String> strings = orderList.makeSubList(order2.getOrderName());
+        strings.forEach((t) -> System.out.println(t));
+    }
 }

@@ -1,3 +1,7 @@
+import org.junit.Test;
+
+import java.util.*;
+
 /**
  * 一、Map的实现类的结构：
  *  |----Map:双列数据，存储key-value对的数据   ---类似于高中的函数：y = f(x)
@@ -52,9 +56,9 @@
  *         4.1 形成链表时，七上八下（jdk7:新的元素指向旧的元素。jdk8：旧的元素指向新的元素）
  4.2 当数组的某一个索引位置上的元素以链表形式存在的数据个数 > 8 且当前数组的长度 > 64时，此时此索引位置上的所数据改为使用红黑树存储。
  *
- *      DEFAULT_INITIAL_CAPACITY : HashMap的默认容量，16
+ *      DEFAULT_INITIAL_CAPACITY : HashMap的默认容量，15
  *      DEFAULT_LOAD_FACTOR：HashMap的默认加载因子：0.75
- *      threshold：扩容的临界值，=容量*填充因子：16 * 0.75 => 12
+ *      threshold：扩容的临界值，=容量*填充因子：15 * 0.75 => 12
  *      TREEIFY_THRESHOLD：Bucket中链表长度大于该默认值，转化为红黑树:8
  *      MIN_TREEIFY_CAPACITY：桶中的Node被树化时最小的hash表容量:64
  *
@@ -100,4 +104,108 @@
  */
 
 public class MapTest {
+    /**
+     *  元视图操作的方法：
+     *  Set keySet()：返回所有key构成的Set集合
+     *  Collection values()：返回所有value构成的Collection集合
+     *  Set entrySet()：返回所有key-value对构成的Set集合
+     */
+    @Test
+    public void test5(){
+        HashMap<String,String> map2 = new HashMap<>();
+        map2.put("sdf","sdsfdf");
+        map2.put("sdfsdf","ljlj");
+        Set<String> strings = map2.keySet();
+        for (String string : strings) {
+            System.out.println(map2.get(string));
+        }
+
+        for (String value : map2.values()) {
+            System.out.println(value);
+        }
+
+        System.out.println(map2.entrySet());
+    }
+    /**
+     *  元素查询的操作：
+     *  Object get(Object key)：获取指定key对应的value
+     *  boolean containsKey(Object key)：是否包含指定的key
+     *  boolean containsValue(Object value)：是否包含指定的value
+     *  int size()：返回map中key-value对的个数
+     *  boolean isEmpty()：判断当前map是否为空
+     *  boolean equals(Object obj)：判断当前map和参数对象obj是否相等
+     */
+    @Test
+    public void test4(){
+        HashMap<String,String> map2 = new HashMap<>();
+        map2.put("sdf","sdsfdf");
+        map2.put("sdfsdf","ljlj");
+        System.out.println(map2.containsKey("sdf"));
+        System.out.println(map2.containsValue("ljlj"));
+        System.out.println(map2.size());
+        System.out.println(map2.isEmpty());
+    }
+    /**
+     *
+     *      添加、删除、修改操作：
+     *  Object put(Object key,Object value)：将指定key-value添加到(或修改)当前map对象中
+     *  void putAll(Map m):将m中的所有key-value对存放到当前map中
+     *  Object remove(Object key)：移除指定key的key-value对，并返回value
+     *  void clear()：清空当前map中的所有数据
+     *
+     */
+    @Test
+    public void test3(){
+        HashMap<String, String> map = new HashMap<>();
+        map.put("sdf","sdf");
+        Map<String,String> map2 = new HashMap<>();
+        map2.put("sdf","sdsfdf");
+        map2.put("sdfsdf","ljlj");
+        map.putAll(map2);
+        System.out.println(map);
+        map.remove("sdf");
+        System.out.println(map);
+        map.clear();
+        System.out.println(map);
+
+    }
+
+    @Test
+    public void test2(){
+        Map<Integer, String> map = new LinkedHashMap<>();
+        map.put(0,"sdf");
+
+        map.put(11111,"sdf");
+        map.put(12,"sdfsdf");
+        map.put(0,"sdfsdfsdf");
+
+        for (Map.Entry<Integer, String> integerStringEntry : map.entrySet()) {
+            System.out.println(integerStringEntry);
+        }
+    }
+    @Test
+    public void test1(){
+        Map map = new HashMap();
+        map.put(null,124);
+        // hashcode & table.length - 1 indexOf
+        // hashmap的底层操作用到了一些位运算符，https://www.jianshu.com/p/8cf5af30f245
+        System.out.println("            &            ");
+
+        System.out.println(1000 & 15);
+        System.out.println(999 & 15);
+        System.out.println(11112 & 15);
+        System.out.println(12 & 15);
+        System.out.println(312121 & 15);
+        System.out.println(4 & 15);
+        System.out.println(512 & 15);
+        System.out.println(61 & 15);
+        System.out.println(1237 & 15);
+        System.out.println(81 & 15);
+        System.out.println("            >>>            ");
+        // >>>
+        System.out.println("sdfsdf".hashCode() >>> 16);
+    }
+
+
+
 }

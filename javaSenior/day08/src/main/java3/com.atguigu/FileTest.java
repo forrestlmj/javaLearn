@@ -108,4 +108,32 @@ public class FileTest {
         }
 
     }
+
+    /**
+     * @throws InterruptedException
+     *     public boolean renameTo(File dest):把文件重命名为指定的文件路径
+     *      比如：file1.renameTo(file2)为例：
+     *         要想保证返回true,需要file1在硬盘中是存在的，且file2不能在硬盘中存在。
+     */
+    @Test
+    public void test4() throws InterruptedException {
+        File file = new File("D:\\IdeaProject\\javaLearn\\javaSenior\\day08\\src\\main\\resources\\mydir\\1.txt");
+        file.renameTo(new File("D:\\IdeaProject\\javaLearn\\javaSenior\\day08\\src\\main\\resources\\mydir\\1.to"));
+//        Thread.sleep(1000*10);
+    }
+
+    /**
+     * public boolean isDirectory()：判断是否是文件目录
+     * public boolean isFile() ：判断是否是文件
+     * public boolean exists() ：判断是否存在
+     * public boolean canRead() ：判断是否可读
+     * public boolean canWrite() ：判断是否可写
+     * public boolean isHidden() ：判断是否隐藏
+     */
+    @Test
+    public void test5(){
+
+
+
+    }
 }

@@ -10,6 +10,6 @@ public class DAOTest {
         customerDAO.remove(new Customer());
 
         StudentDAO studentDAO = new StudentDAO();
-        studentDAO.remove(new Student());
+        studentDAO.remove(new Student2());
     }
 }

@@ -1,4 +1,4 @@
 package com.atguigu;
 
-public class StudentDAO extends DAO<Student>{
+public class StudentDAO extends DAO<Student2>{
 }

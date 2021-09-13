@@ -1,3 +1,5 @@
+package com.atguigu;
+
 import java.util.*;
 
 public class MyUtil {

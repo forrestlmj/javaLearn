@@ -1,9 +1,9 @@
-import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
+package com.atguigu;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubOrder<T> extends Order<T>{
+public class SubOrder<T> extends Order<T> {
     private List<T> sublist = new ArrayList<>();
     public List<T> makeSubList(T order){
         sublist.add(order);

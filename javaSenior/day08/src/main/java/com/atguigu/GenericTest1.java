@@ -1,9 +1,9 @@
+package com.atguigu;
+
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.function.BiConsumer;
 
 /** 如何自定义泛型结构：泛型类、泛型接口；泛型方法。
  *

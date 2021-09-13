@@ -1,0 +1,5 @@
+public String getAbsolutePath()：获取绝对路径
+public String getPath() ：获取路径
+public String getName() ：获取名称
+
+public File[] listFiles() ：获取指定目录下的所有文件或者文件目录的File数组

@@ -142,7 +142,7 @@ public class FileTest {
      *     创建硬盘中对应的文件或文件目录
      * public boolean createNewFile() ：创建文件。若文件存在，则不创建，返回false
      * public boolean mkdir() ：创建文件目录。如果此文件目录存在，就不创建了。如果此文件目录的上层目录不存在，也不创建。
-     * public boolean mkdirs() ：创建文件目录。如果此文件目录存在，就不创建了。如果上层文件目录不存在，一并创建
+     * publtic boolean mkdirs() ：创建文件目录。如果此文件目录存在，就不创建了。如果上层文件目录不存在，一并创建
      *
      *     删除磁盘中的文件或文件目录
      * public boolean delete()：删除文件或者文件夹
@@ -169,5 +169,9 @@ public class FileTest {
         }else{
             System.out.println(file.mkdirs());
         }
+    }
+    @Test
+    public void test8(){
+        System.out.println(1024*1024*2 >> 20);
     }
 }

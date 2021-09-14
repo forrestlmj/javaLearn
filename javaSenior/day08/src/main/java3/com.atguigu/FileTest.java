@@ -3,6 +3,7 @@ package com.atguigu;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 
 /**
@@ -135,5 +136,38 @@ public class FileTest {
 
 
 
+    }
+
+    /**
+     *     创建硬盘中对应的文件或文件目录
+     * public boolean createNewFile() ：创建文件。若文件存在，则不创建，返回false
+     * public boolean mkdir() ：创建文件目录。如果此文件目录存在，就不创建了。如果此文件目录的上层目录不存在，也不创建。
+     * public boolean mkdirs() ：创建文件目录。如果此文件目录存在，就不创建了。如果上层文件目录不存在，一并创建
+     *
+     *     删除磁盘中的文件或文件目录
+     * public boolean delete()：删除文件或者文件夹
+     *     删除注意事项：Java中的删除不走回收站。
+     */
+    @Test
+    public void test6() throws IOException {
+        File file = new File("src/main/resources/hi.txt");
+        if(!file.exists()){
+            file.createNewFile();
+            System.out.println("创建成功");
+        }else {
+            file.deleteOnExit();
+            System.out.println("删除成功");
+        }
+
+    }
+    @Test
+    public void test7(){
+        File file = new File("src/main/resources/dir1/dir2/dir3/a.txt");
+//        boolean mkdirs = file.mkdirs();
+        if(file.exists()){
+            System.out.println("");
+        }else{
+            System.out.println(file.mkdirs());
+        }
     }
 }

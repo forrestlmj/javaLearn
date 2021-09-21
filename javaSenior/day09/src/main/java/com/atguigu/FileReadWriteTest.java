@@ -2,10 +2,9 @@ package com.atguigu;
 
 import org.junit.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -43,11 +42,12 @@ public class FileReadWriteTest {
     @Test
     public void testFileReader(){
         File file = new File("src\\main\\resources\\hello.txt");
+        FileReader fileReader = null;
 //        System.out.println(file.exists());
         if(file.exists()){
             System.out.println(file.length());
             try {
-                FileReader fileReader = new FileReader(file);
+                fileReader = new FileReader(file);
                 //
                 int c;
                 while((c = fileReader.read()) != -1){
@@ -57,8 +57,114 @@ public class FileReadWriteTest {
                 e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
+            }finally {
+                try {
+                    fileReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
+    @Test
+    public void testFileReader1(){
+        // 新建file
+        File file = new File("D:\\IdeaProject\\javaLearn\\javaSenior\\day09\\src\\main\\resources\\hello.txt");
+        // 新建FileReader
+        FileReader fileReader = null ;
+        // 读写
+        try {
+            fileReader = new FileReader(file);
+            char[] cbuf = new char[5];
+            int end ;
+            while(( end = fileReader.read(cbuf)) != -1){
+//                System.out.println(c);
+                for (char c : cbuf) {
+                    System.out.print(c);
+                }
 
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            if(fileReader != null){
+                try {
+                    fileReader.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        // 关闭读写流
+    }
+
+    /**
+     *     从内存中写出数据到硬盘的文件里。
+     *
+     *     说明：
+     *     1. 输出操作，对应的File可以不存在的。并不会报异常
+     *     2.
+     *          File对应的硬盘中的文件如果不存在，在输出的过程中，会自动创建此文件。
+     *          File对应的硬盘中的文件如果存在：
+     *                 如果流使用的构造器是：FileWriter(file,false) / FileWriter(file):对原有文件的覆盖
+     *                 如果流使用的构造器是：FileWriter(file,true):不会对原有文件覆盖，而是在原有文件基础上追加内容
+     */
+    @Test
+    public void testFileWriter(){
+        File file = new File("D:\\IdeaProject\\javaLearn\\javaSenior\\day09\\src\\main\\resources\\write.txt");
+        String context = "This should be write to file.";
+        FileWriter fr = null;
+        try {
+            fr = new FileWriter(file,true);
+            fr.write(context);
+            fr.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    @Test
+    public void testFileReaderAndWrite(){
+        File srcFile = new File("D:\\IdeaProject\\javaLearn\\javaSenior\\day09\\src\\main\\resources\\src.txt");
+        File targetFile = new File("D:\\IdeaProject\\javaLearn\\javaSenior\\day09\\src\\main\\resources\\target.txt");
+        FileReader fr = null;
+        FileWriter fw = null;
+        try {
+            fr = new FileReader(srcFile);
+            fw = new FileWriter(targetFile,true);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        char[] cbuf = new char[5];
+        int length;
+        try {
+            while ((length = fr.read(cbuf)) != -1){
+//                System.out.print(cbuf );
+//                fw.write(cbuf);
+                for(int i = 0;i<length;i++){
+                    fw.write(cbuf[i]);
+                }
+            }
+            fw.write("\nEOF date:"
+                    +new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())
+            +"\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                fw.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

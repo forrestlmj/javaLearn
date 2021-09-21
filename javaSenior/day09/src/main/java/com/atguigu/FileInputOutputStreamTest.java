@@ -3,6 +3,8 @@ package com.atguigu;
 import org.junit.Test;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * 测试FileInputStream和FileOutputStream的使用
@@ -74,4 +76,54 @@ public class FileInputOutputStreamTest {
             }
         }
     }
+
+    /**
+     * 拷贝文件
+     * @param srcFile
+     * @param targetFile
+     */
+    public void copyFile(String srcFile, String targetFile,int buffSizeK)  {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
+        Date start = new Date();
+        System.out.println(sdf.format(start)+": 开始拷贝文件");
+
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        try {
+            fis = new FileInputStream(srcFile);
+            fos = new FileOutputStream(targetFile);
+            byte[] buff = new byte[buffSizeK * 1024];
+            int length = 0;
+            while((length = fis.read(buff)) != -1){
+                for(int i = 0; i< length ;i ++){
+                    fos.write(buff[i]);
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                fis.close();
+                fos.close();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        Date end = new Date();
+        long gap = end.getTime() - start.getTime();
+        System.out.println(sdf.format(end) +": 结束拷贝文件，耗时"+gap+"毫秒");
+    }
+    @Test
+    public void testCopyFile(){
+        String srcPicFile = "D:\\BaiduNetdiskDownload\\笔记.zip";
+        String targetPicFile = "D:\\BaiduNetdiskDownload\\笔记2.zip";
+        copyFile(srcPicFile,targetPicFile,10*1024);
+    }
+
 }

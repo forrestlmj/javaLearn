@@ -121,8 +121,8 @@ public class FileInputOutputStreamTest {
     }
     @Test
     public void testCopyFile(){
-        String srcPicFile = "D:\\BaiduNetdiskDownload\\笔记.zip";
-        String targetPicFile = "D:\\BaiduNetdiskDownload\\笔记2.zip";
+        String srcPicFile = "D:\\BaiduNetdiskDownload\\资料.zip";
+        String targetPicFile = "D:\\BaiduNetdiskDownload\\资料2.zip";
         copyFile(srcPicFile,targetPicFile,10*1024);
     }
 

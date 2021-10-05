@@ -1,4 +1,4 @@
-package com.atguigu;
+package com.atguigu.java;
 
 import org.junit.Test;
 
@@ -32,7 +32,7 @@ public class NewInstanceTest {
             int i = random.nextInt(3);
             switch (i){
                 case 0:
-                    Class<?> aClass = Class.forName("com.atguigu.Person");
+                    Class<?> aClass = Class.forName("com.atguigu.java.Person");
                     System.out.println(aClass.newInstance());
                     break;
                 case 1:

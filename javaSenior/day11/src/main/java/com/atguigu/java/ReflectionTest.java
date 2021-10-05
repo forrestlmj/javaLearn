@@ -1,4 +1,4 @@
-package com.atguigu;
+package com.atguigu.java;
 
 import org.junit.Test;
 
@@ -63,7 +63,7 @@ public class ReflectionTest {
         Person person = new Person();
         System.out.println(person.getClass());
         //3
-        Class<?> aClass = Class.forName("com.atguigu.Person");
+        Class<?> aClass = Class.forName("com.atguigu.java.Person");
         System.out.println(aClass);
         //4
         ClassLoader classLoader = ReflectionTest.class.getClassLoader();

@@ -9,7 +9,7 @@ public class Person extends Creature<String> implements MyInterface,Comparable<S
     public Person() {
     }
     @MyAnnotation(value = "abc")
-    public Person(String name, int age, int id) {
+    private Person(String name, int age, int id) {
         this.name = name;
         this.age = age;
         this.id = id;

@@ -16,7 +16,7 @@ public class Person extends Creature<String> implements MyInterface,Comparable<S
     }
     @MyAnnotation(value = "this is private")
     private String show(String nation){
-        System.out.println(nation);
+        System.out.println("我的国籍是"+nation);
         return nation;
     }
     public String display(String interests,int age) throws NullPointerException,ClassCastException{

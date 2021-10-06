@@ -1,6 +1,7 @@
 package com.atguigu.java1;
 @MyAnnotation(value = "hi")
 public class Person extends Creature<String> implements MyInterface,Comparable<String>{
+    @MyAnnotation(value = "this is A name")
     private String name;
     int age;
     public int id;

@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.atguigu.java2;
 
 public interface MyInterface {
     void info();

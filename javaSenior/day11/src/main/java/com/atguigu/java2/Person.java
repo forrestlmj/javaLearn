@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.atguigu.java2;
 @MyAnnotation(value = "hi")
 public class Person extends Creature<String> implements MyInterface,Comparable<String>{
     @MyAnnotation(value = "this is A name")

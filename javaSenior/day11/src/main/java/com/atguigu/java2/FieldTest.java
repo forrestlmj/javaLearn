@@ -1,7 +1,7 @@
 package com.atguigu.java2;
 
-import com.atguigu.java1.MyAnnotation;
-import com.atguigu.java1.Person;
+import com.atguigu.java2.MyAnnotation;
+import com.atguigu.java2.Person;
 import org.junit.Test;
 
 import java.lang.annotation.Annotation;

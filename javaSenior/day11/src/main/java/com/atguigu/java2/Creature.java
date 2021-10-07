@@ -1,4 +1,4 @@
-package com.atguigu.java1;
+package com.atguigu.java2;
 
 import java.io.Serializable;
 

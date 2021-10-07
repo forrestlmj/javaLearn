@@ -1,6 +1,6 @@
 package com.atguigu.java2;
 
-import com.atguigu.java1.Person;
+import com.atguigu.java2.Person;
 import org.junit.Test;
 
 import java.lang.reflect.Constructor;
@@ -46,7 +46,8 @@ public class ReflectionTest {
     @Test
     public void testConstructor() throws InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
         Class aClass = Person.class;
-        Constructor constructor = aClass.getConstructor(String.class, int.class, int.class);
+        Constructor constructor = aClass.getDeclaredConstructor(String.class, int.class, int.class);
+        constructor.setAccessible(true);
         Object yck = constructor.newInstance("yck", 102, 28);
         System.out.println(yck);
     }

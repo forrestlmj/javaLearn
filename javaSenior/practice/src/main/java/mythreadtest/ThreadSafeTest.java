@@ -1,6 +1,6 @@
 package mythreadtest;
 class ThreadSafe implements Runnable{
-    private static Integer count = 30;
+    private static Integer count = 30000;
     private static Object o = new Object();
     @Override
     public void run() {
@@ -9,11 +9,6 @@ class ThreadSafe implements Runnable{
                 if(count>0){
                     System.out.println(Thread.currentThread().getName()+":"+count);
                     count --;
-                    try {
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 }else break;
             }
 

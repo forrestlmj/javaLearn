@@ -18,23 +18,22 @@ import java.util.concurrent.locks.ReentrantLock;
  * 原文链接：https://blog.csdn.net/y277an/article/details/98697454
  */
 class ThreadCommunication implements Runnable{
-    private static int count = 100;
+    private static int count = 30000;
     private static Object o = new Object();
     @Override
     public void run() {
-        //132 312 312 312 312 312 31
         while(true){
             synchronized (o){
                 o.notify();
 
-                System.out.println(Thread.currentThread().getName()+"抢到了碗，并通知如果这个线程wait了，那么其他人就可以开始抢了");
+//                System.out.println(Thread.currentThread().getName()+"抢到了碗，并通知如果这个线程wait了，那么其他人就可以开始抢了");
 
                 if(count > 0){
                     System.out.println(Thread.currentThread().getName()
                     +":"+count);
                     count --;
                     if(count % 5 == 0){
-                        System.out.println(Thread.currentThread().getName()+"休息会，让出了碗");
+//                        System.out.println(Thread.currentThread().getName()+"休息会，让出了碗");
 
                         try {
 
@@ -43,7 +42,7 @@ class ThreadCommunication implements Runnable{
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        System.out.println(Thread.currentThread().getName()+"被notify醒来了，开始抢碗");
+//                        System.out.println(Thread.currentThread().getName()+"被notify醒来了，开始抢碗");
 
                     }
                 }else break;

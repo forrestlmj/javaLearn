@@ -5,10 +5,10 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * 使用wait和notify，当到10的倍数时候开始换线程处理
  * 几个要诀：
- * 1、wait，notify都是Object里面的方法。
- * 2、调用者使用synchronized先抢到锁。
- * 3、抢到锁后先notify其他一个人，让一个别人准备好，然后执行。
- * 4、执行吃干抹净后，原地wait休息一下
+ * 1、wait，notify都是Object里面的方法。必须由synchronized的监视器调用
+ * 2、A在synchronized的竞争中先抢到锁。
+ * 3、A抢到锁后先notify唤醒wait中的一个别人B，等到以后A wait了，B和CDEF一起抢了（现在A还在sync中，B还没抢占进来）。
+ * 4、执行吃干抹净后，原地wait休息一下，之前被notify的B和其他就绪的CDEF可以开始抢了
  * sleep()不释放同步锁,wait()释放同步锁.
  * notify()：随机唤醒等待队列中等待同一共享资源的一个线程，并使该线程退出等待队列，进入可运行状态，也就是notify()方法仅通知一个线程。
  *
@@ -27,15 +27,16 @@ class ThreadCommunication implements Runnable{
             synchronized (o){
                 o.notify();
 
-                System.out.println(Thread.currentThread().getName()+"抢到了碗，并通知其他人待命");
+                System.out.println(Thread.currentThread().getName()+"抢到了碗，并通知如果这个线程wait了，那么其他人就可以开始抢了");
 
                 if(count > 0){
                     System.out.println(Thread.currentThread().getName()
                     +":"+count);
                     count --;
                     if(count % 5 == 0){
+                        System.out.println(Thread.currentThread().getName()+"休息会，让出了碗");
+
                         try {
-                            System.out.println(Thread.currentThread().getName()+"休息会，让出了碗");
 
                             o.wait();
 

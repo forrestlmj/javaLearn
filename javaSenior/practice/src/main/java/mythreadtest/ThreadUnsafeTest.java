@@ -15,14 +15,14 @@ class ThreadUnSafe implements Runnable{
             //https://zhuanlan.zhihu.com/p/29668105
             //因此一定是操作系统先有资格选择多线程里要运行的线程,然后多线程的线程安全(sync)/lock,
             //线程之间的通信 wait notify才能起作用.所以在多线程中,一定是一个线程在cpu时间片里面
-            //连续几十毫秒内连续抢占到cpu,单独运行,而后再考虑用户定义的线程安全与线程通信
+            //连续几百微妙,小于1毫秒内连续抢占到cpu,单独运行,而后再考虑用户定义的线程安全与线程通信
             //https://www.zhihu.com/question/64723752
                 if(count>0){
-//                    try {
-//                        Thread.sleep(300);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     System.out.println(Thread.currentThread().getName()+":"+count);
                     count --;
                 }else break;

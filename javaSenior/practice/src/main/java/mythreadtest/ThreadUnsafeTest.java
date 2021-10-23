@@ -2,7 +2,7 @@ package mythreadtest;
 
 import org.junit.Test;
 class ThreadUnSafe implements Runnable{
-    private static Integer count = 30000;
+    private static Integer count = 30000000;
     private static Object o = new Object();
     @Override
     public void run() {
@@ -32,7 +32,10 @@ class ThreadUnSafe implements Runnable{
 }
 
 public class ThreadUnsafeTest {
-
+    @Test
+    public void test(){
+        System.out.println(Runtime.getRuntime().availableProcessors());
+    }
     public static void main(String[] args){
         ThreadUnSafe t = new ThreadUnSafe();
         Thread t1 = new Thread(t);

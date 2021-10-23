@@ -32,9 +32,25 @@ class ThreadUnSafe implements Runnable{
 }
 
 public class ThreadUnsafeTest {
+    /**
+     * 获取计算机的逻辑processor数量
+     */
     @Test
     public void test(){
         System.out.println(Runtime.getRuntime().availableProcessors());
+    }
+
+    /**
+     * 线程的五种状态
+     */
+    @Test
+    public void test2(){
+        System.out.println(Thread.State.NEW);
+        System.out.println(Thread.State.WAITING);
+        System.out.println(Thread.State.TIMED_WAITING);
+        System.out.println(Thread.State.RUNNABLE);
+        System.out.println(Thread.State.BLOCKED);
+        System.out.println(Thread.State.TERMINATED);
     }
     public static void main(String[] args){
         ThreadUnSafe t = new ThreadUnSafe();

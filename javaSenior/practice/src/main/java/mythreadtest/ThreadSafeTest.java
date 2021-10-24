@@ -1,6 +1,6 @@
 package mythreadtest;
 class ThreadSafe implements Runnable{
-    private static Integer count = 30000;
+    private static Integer count = 300000000;
     private static Object o = new Object();
     @Override
     public void run() {
@@ -35,6 +35,16 @@ public class ThreadSafeTest {
         thread2.start();
         thread2.setName("Thread2");
         thread2.setPriority(9);
+        Thread t3 = new Thread(threadSafe);
+        t3.setName("线程3");
+        t3.start();
 
+        Thread t4 = new Thread(threadSafe);
+        t4.setName("线程4");
+        t4.start();
+
+        Thread t5 = new Thread(threadSafe);
+        t5.setName("线程5");
+        t5.start();
     }
 }

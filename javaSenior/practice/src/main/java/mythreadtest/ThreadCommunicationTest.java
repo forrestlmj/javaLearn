@@ -18,7 +18,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * 原文链接：https://blog.csdn.net/y277an/article/details/98697454
  */
 class ThreadCommunication implements Runnable{
-    private static int count = 30000;
+    private static int count = 300000000;
     private static Object o = new Object();
     @Override
     public void run() {

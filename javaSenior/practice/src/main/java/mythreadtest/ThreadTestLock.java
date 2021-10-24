@@ -2,8 +2,12 @@ package mythreadtest;
 
 import java.util.concurrent.locks.ReentrantLock;
 
+/**
+ * 在使用idea 做debug的时候，不妨仔细观察下栈帧的 Frame中各个线程的表现。
+ * 同时可以打印下快照，可以看出各个线程的Thread.State.*的状态
+ */
 class ThreadLock implements Runnable{
-    private static Integer count = 100;
+    private static Integer count = 300000000;
     private ReentrantLock lock = new ReentrantLock();
     @Override
     public void run() {
@@ -14,11 +18,11 @@ class ThreadLock implements Runnable{
                     System.out.println(Thread.currentThread().getName()+":"+
                             count);
                     count--;
-                    try {
-                        Thread.sleep(10);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+//                    try {
+//                        Thread.sleep(10);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
 
                 }else break;
             }finally {

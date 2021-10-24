@@ -2,7 +2,7 @@ package mythreadtest;
 
 import org.junit.Test;
 class ThreadUnSafe implements Runnable{
-    private static Integer count = 30000000;
+    private static Integer count = 300000000;
     private static Object o = new Object();
     @Override
     public void run() {
@@ -18,11 +18,11 @@ class ThreadUnSafe implements Runnable{
             //连续几百微妙,小于1毫秒内连续抢占到cpu,单独运行,而后再考虑用户定义的线程安全与线程通信
             //https://www.zhihu.com/question/64723752
                 if(count>0){
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+//                    try {
+//                        Thread.sleep(100);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
                     System.out.println(Thread.currentThread().getName()+":"+count);
                     count --;
                 }else break;
@@ -61,5 +61,17 @@ public class ThreadUnsafeTest {
         Thread t2 = new Thread(t);
         t2.setName("线程2");
         t2.start();
+
+        Thread t3 = new Thread(t);
+        t3.setName("线程3");
+        t3.start();
+
+        Thread t4 = new Thread(t);
+        t4.setName("线程4");
+        t4.start();
+
+        Thread t5 = new Thread(t);
+        t5.setName("线程5");
+        t5.start();
     }
 }

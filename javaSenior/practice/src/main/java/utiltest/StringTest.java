@@ -1,4 +1,4 @@
-package mythreadtest.utiltest;
+package utiltest;
 
 import org.junit.Test;
 

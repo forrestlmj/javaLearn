@@ -7,13 +7,24 @@ import java.lang.reflect.Field;
 
 public class AnnotationTest {
     @Test
-    public void test(){
+    public void test() throws IllegalAccessException {
         JDBC jdbc = new JDBC();
-        for (Field declaredField : jdbc.getClass().getDeclaredFields()) {
-            for (Annotation annotation : declaredField.getAnnotations()) {
-                System.out.println(annotation);
+        Class<JDBC> jdbcClass = JDBC.class;
 
+        for (Field declaredField : jdbcClass.getDeclaredFields()) {
+            for (Annotation annotation : declaredField.getAnnotations()) {
+                declaredField.setAccessible(true);
+                if(annotation.annotationType().equals(InjectValue.class)){
+                    String value = ((InjectValue) annotation).value();
+                    if (declaredField.getType().equals(String.class)) {
+                        declaredField.set(jdbc,value);
+                    }
+                    if(declaredField.getType().equals(int.class)){
+                        declaredField.set(jdbc,Integer.valueOf(value));
+                    }
+                }
             }
         }
+        System.out.println(jdbc);
     }
 }

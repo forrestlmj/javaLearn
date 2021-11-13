@@ -2,6 +2,7 @@ package annotationtest;
 
 public class JDBC {
     @InjectValue("172.0.0.1")
+    @ApiInfo(name = "url地址",note = "url信息")
     private String url;
     @InjectValue("3306")
     private int port;

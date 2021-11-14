@@ -79,4 +79,12 @@ public class CollectionTest {
 //        strings.add("sdf");
         System.out.println(strings);
     }
+    @Test
+    public void test7(){
+        ListIterator<String> slt = a.listIterator();
+        while (slt.hasNext()){
+            System.out.println(slt.next());
+            System.out.println(slt.nextIndex());
+        }
+    }
 }

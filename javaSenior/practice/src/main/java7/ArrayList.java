@@ -529,12 +529,14 @@ public class ArrayList<E> extends AbstractList<E>
      */
     public boolean remove(Object o) {
         if (o == null) {
+            // null的删除方法
             for (int index = 0; index < size; index++)
                 if (elementData[index] == null) {
                     fastRemove(index);
                     return true;
                 }
         } else {
+            // 非null的删除方法。
             for (int index = 0; index < size; index++)
                 if (o.equals(elementData[index])) {
                     fastRemove(index);
@@ -558,6 +560,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 全量删除 值为null
      * Removes all of the elements from this list.  The list will
      * be empty after this call returns.
      */
@@ -572,6 +575,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 批量增加
      * Appends all of the elements in the specified collection to the end of
      * this list, in the order that they are returned by the
      * specified collection's Iterator.  The behavior of this operation is
@@ -594,6 +598,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 批量插入
      * Inserts all of the elements in the specified collection into this
      * list, starting at the specified position.  Shifts the element
      * currently at that position (if any) and any subsequent elements to
@@ -626,6 +631,7 @@ public class ArrayList<E> extends AbstractList<E>
     }
 
     /**
+     * 批量移除
      * Removes from this list all of the elements whose index is between
      * {@code fromIndex}, inclusive, and {@code toIndex}, exclusive.
      * Shifts any succeeding elements to the left (reduces their index).
@@ -721,6 +727,11 @@ public class ArrayList<E> extends AbstractList<E>
         return batchRemove(c, true);
     }
 
+    /**
+     * @param 批量
+     * @param complement
+     * @return
+     */
     private boolean batchRemove(Collection<?> c, boolean complement) {
         final Object[] elementData = this.elementData;
         int r = 0, w = 0;
@@ -803,7 +814,7 @@ public class ArrayList<E> extends AbstractList<E>
         }
     }
 
-    /**
+    /** listIterator用法上比iter要好很多
      * Returns a list iterator over the elements in this list (in proper
      * sequence), starting at the specified position in the list.
      * The specified index indicates the first element that would be
@@ -844,7 +855,7 @@ public class ArrayList<E> extends AbstractList<E>
         return new Itr();
     }
 
-    /**
+    /** 最简单的迭代器
      * An optimized version of AbstractList.Itr
      */
     private class Itr implements Iterator<E> {
@@ -890,7 +901,8 @@ public class ArrayList<E> extends AbstractList<E>
         }
     }
 
-    /**
+    /** 功能强大一点的list迭代器
+     * 可以双向迭代，返回索引位置
      * An optimized version of AbstractList.ListItr
      */
     private class ListItr extends Itr implements ListIterator<E> {

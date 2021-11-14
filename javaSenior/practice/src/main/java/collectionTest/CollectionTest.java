@@ -3,10 +3,7 @@ package collectionTest;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class CollectionTest {
     Collection<String> c = new MyCollection<>();
@@ -74,5 +71,12 @@ public class CollectionTest {
             if(next.length()>1) it.remove();
         }
         System.out.println(a);
+    }
+
+    @Test
+    public void test6(){
+        List<String> strings = Arrays.asList("ABC", "DEF");
+//        strings.add("sdf");
+        System.out.println(strings);
     }
 }

@@ -10,9 +10,19 @@ import java.util.List;
 
 public class CollectionTest {
     Collection<String> c = new MyCollection<>();
+    List<String> a = new ArrayList<>();
 
     @Before
     public void prepare(){
+        a.clear();
+        a.add("1");
+        a.add("2");
+        a.add("12");
+        a.add("3");
+        a.add("1");
+        a.add("12");
+
+
         c.clear();
         c.add("12");
         c.add("1");
@@ -55,5 +65,14 @@ public class CollectionTest {
             }
         }
         System.out.println(c);
+    }
+    @Test
+    public void test5(){
+        Iterator<String> it = a.iterator();
+        while (it.hasNext()) {
+            String next = it.next();
+            if(next.length()>1) it.remove();
+        }
+        System.out.println(a);
     }
 }

@@ -452,7 +452,7 @@ public class HashMap<K,V>
         return null;
     }
 
-    /**是否存在
+    /**是否存在 外部常用方法
      * Returns <tt>true</tt> if this map contains a mapping for the
      * specified key.
      *
@@ -465,6 +465,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 实际取数
      * Returns the entry associated with the specified key in the
      * HashMap.  Returns null if the HashMap contains no mapping
      * for the key.
@@ -486,6 +487,12 @@ public class HashMap<K,V>
 
 
     /**
+     * 向map中添加值
+     *  包括更新，key如果有
+     *  包括添加，key没有
+     *
+     *      可能会造成扩容
+     *
      * Associates the specified value with the specified key in this map.
      * If the map previously contained a mapping for the key, the old
      * value is replaced.
@@ -501,18 +508,23 @@ public class HashMap<K,V>
         if (key == null)
             return putForNullKey(value);
         int hash = hash(key);
+        // 获取 所在table位置
         int i = indexFor(hash, table.length);
+        // 在这个位置上遍历 链表
         for (Entry<K,V> e = table[i]; e != null; e = e.next) {
             Object k;
+            // 如果 hash相等，而且，key相等，那么替换掉链表中的value。返回
             if (e.hash == hash && ((k = e.key) == key || key.equals(k))) {
                 V oldValue = e.value;
                 e.value = value;
                 e.recordAccess(this);
+                // 替换操作
                 return oldValue;
             }
         }
 
         modCount++;
+        // 确实没找到，返回hash值，kv，以及table中的位置
         addEntry(hash, key, value, i);
         return null;
     }
@@ -571,8 +583,11 @@ public class HashMap<K,V>
     }
 
     /**
+     * 扩容 table
      * Rehashes the contents of this map into a new array with a
-     * larger capacity.  This method is called automatically when the
+     * larger capacity.
+     * 扩容方法就是新申请一个更大的数组，然后拷贝。因为数组大小不能变
+     * This method is called automatically when the
      * number of keys in this map reaches its threshold.
      *
      * If current capacity is MAXIMUM_CAPACITY, this method does not
@@ -591,23 +606,28 @@ public class HashMap<K,V>
             threshold = Integer.MAX_VALUE;
             return;
         }
-
+        // 新table
         Entry[] newTable = new Entry[newCapacity];
         boolean oldAltHashing = useAltHashing;
         useAltHashing |= sun.misc.VM.isBooted() &&
                 (newCapacity >= Holder.ALTERNATIVE_HASHING_THRESHOLD);
         boolean rehash = oldAltHashing ^ useAltHashing;
+        // 复制到新table
         transfer(newTable, rehash);
         table = newTable;
+        // 更新阈值
         threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);
     }
 
-    /**
+    /** 时间复杂度O(N^2)
+     * 将老 table移动到新table
      * Transfers all entries from current table to newTable.
      */
     void transfer(Entry[] newTable, boolean rehash) {
         int newCapacity = newTable.length;
+        // 老table所有位置遍历
         for (Entry<K,V> e : table) {
+            // 某个位置上 链表遍历，所有算子 重新hash
             while(null != e) {
                 Entry<K,V> next = e.next;
                 if (rehash) {
@@ -895,16 +915,19 @@ public class HashMap<K,V>
      * Subclass overrides this to alter the behavior of put method.
      */
     void addEntry(int hash, K key, V value, int bucketIndex) {
+        // 如果阈值吵了，resize
         if ((size >= threshold) && (null != table[bucketIndex])) {
+            // 开始扩容，扩容两倍
             resize(2 * table.length);
             hash = (null != key) ? hash(key) : 0;
+            // 获取扩容后的位置
             bucketIndex = indexFor(hash, table.length);
         }
 
         createEntry(hash, key, value, bucketIndex);
     }
 
-    /**
+    /**在指定的table[bucketIndex]上，新建链表头
      * Like addEntry except that this version is used when creating entries
      * as part of Map construction or "pseudo-construction" (cloning,
      * deserialization).  This version needn't worry about resizing the table.

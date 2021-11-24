@@ -184,6 +184,7 @@ public class HashMap<K,V>
     final float loadFactor;
 
     /**
+     * hashMap结构变换的次数（包括重hash）
      * The number of times this HashMap has been structurally modified
      * Structural modifications are those that change the number of mappings in
      * the HashMap or otherwise modify its internal structure (e.g.,
@@ -266,12 +267,14 @@ public class HashMap<K,V>
     transient boolean useAltHashing;
 
     /**
+     * 速记hash因子
      * A randomizing value associated with this instance that is applied to
      * hash code of keys to make hash collisions harder to find.
      */
     transient final int hashSeed = sun.misc.Hashing.randomHashSeed(this);
 
     /**
+     * 使用 默认的初始容量与装在因子进行初始化
      * Constructs an empty <tt>HashMap</tt> with the specified initial
      * capacity and load factor.
      *
@@ -281,6 +284,7 @@ public class HashMap<K,V>
      *         or the load factor is nonpositive
      */
     public HashMap(int initialCapacity, float loadFactor) {
+        // 各种校验参数
         if (initialCapacity < 0)
             throw new IllegalArgumentException("Illegal initial capacity: " +
                                                initialCapacity);
@@ -294,7 +298,7 @@ public class HashMap<K,V>
         int capacity = 1;
         while (capacity < initialCapacity)
             capacity <<= 1;
-
+        // 计算 装载因子，扩容阈值
         this.loadFactor = loadFactor;
         threshold = (int)Math.min(capacity * loadFactor, MAXIMUM_CAPACITY + 1);
         table = new Entry[capacity];
@@ -323,6 +327,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 通过实现Map的接口进行初始化
      * Constructs a new <tt>HashMap</tt> with the same mappings as the
      * specified <tt>Map</tt>.  The <tt>HashMap</tt> is created with
      * default load factor (0.75) and an initial capacity sufficient to
@@ -350,6 +355,8 @@ public class HashMap<K,V>
     }
 
     /**
+     * 获得对象的hash值，如果是String，则调用系统的。
+     * 如果是其他对象，则调用对象的hashcode
      * Retrieve object hash code and applies a supplemental hash function to the
      * result hash, which defends against poor quality hash functions.  This is
      * critical because HashMap uses power-of-two length hash tables, that
@@ -364,17 +371,19 @@ public class HashMap<K,V>
             }
             h = hashSeed;
         }
-
+        // 调用对象的hashcode，如果类没有实现，则调用 Object的native hashcode，也就是底层操作系统的hashcode
         h ^= k.hashCode();
 
         // This function ensures that hashCodes that differ only by
         // constant multiples at each bit position have a bounded
         // number of collisions (approximately 8 at default load factor).
+        // 然后各种移位
         h ^= (h >>> 20) ^ (h >>> 12);
         return h ^ (h >>> 7) ^ (h >>> 4);
     }
 
     /**
+     * 位置就是将 hashcode 与 位置做 与 运算
      * Returns index for hash code h.
      */
     static int indexFor(int h, int length) {
@@ -382,6 +391,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 当前的数组的大小
      * Returns the number of key-value mappings in this map.
      *
      * @return the number of key-value mappings in this map
@@ -400,6 +410,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 常用方法
      * Returns the value to which the specified key is mapped,
      * or {@code null} if this map contains no mapping for the key.
      *
@@ -417,6 +428,7 @@ public class HashMap<K,V>
      * @see #put(Object, Object)
      */
     public V get(Object key) {
+        //如果空值，就拿控制
         if (key == null)
             return getForNullKey();
         Entry<K,V> entry = getEntry(key);
@@ -425,6 +437,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 返回 key 为 null的值。null值放在 table[0]上，同时遍历table[0]上的链表
      * Offloaded version of get() to look up null keys.  Null keys map
      * to index 0.  This null case is split out into separate methods
      * for the sake of performance in the two most commonly used
@@ -439,7 +452,7 @@ public class HashMap<K,V>
         return null;
     }
 
-    /**
+    /**是否存在
      * Returns <tt>true</tt> if this map contains a mapping for the
      * specified key.
      *
@@ -458,6 +471,8 @@ public class HashMap<K,V>
      */
     final Entry<K,V> getEntry(Object key) {
         int hash = (key == null) ? 0 : hash(key);
+        // hash值 与 entry table的大小做与运算，获得table数组的下标。
+        // 这个下标里的元素是个链表，e->e.next遍历，直到判断到hash值相等而且（同一个对象或者equals相同）
         for (Entry<K,V> e = table[indexFor(hash, table.length)];
              e != null;
              e = e.next) {
@@ -546,6 +561,10 @@ public class HashMap<K,V>
         createEntry(hash, key, value, i);
     }
 
+    /**
+     * 迭代put，
+     * @param m
+     */
     private void putAllForCreate(Map<? extends K, ? extends V> m) {
         for (Map.Entry<? extends K, ? extends V> e : m.entrySet())
             putForCreate(e.getKey(), e.getValue());
@@ -720,6 +739,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 将table中所有值 赋值为null
      * Removes all of the mappings from this map.
      * The map will be empty after this call returns.
      */
@@ -732,6 +752,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 判断有没有值，效率比较低，时间复杂度O(N^2)，先遍历table，再遍历每个table位置上的链表。
      * Returns <tt>true</tt> if this map maps one or more keys to the
      * specified value.
      *
@@ -786,6 +807,11 @@ public class HashMap<K,V>
         return result;
     }
 
+    /**
+     * Entry<K,V> 是一个单向链表，K是hashMap的key，V是hashMap的value
+     * @param <K>
+     * @param <V>
+     */
     static class Entry<K,V> implements Map.Entry<K,V> {
         final K key;
         V value;
@@ -816,6 +842,10 @@ public class HashMap<K,V>
             return oldValue;
         }
 
+        /** 如果 e1 与 e2 的k 和 v 都满足（同一个对象|equals相等）则相等。
+         * @param o
+         * @return
+         */
         public final boolean equals(Object o) {
             if (!(o instanceof Map.Entry))
                 return false;
@@ -857,6 +887,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 添加新值，可能涉及到resize
      * Adds a new entry with the specified key, value and hash code to
      * the specified bucket.  It is the responsibility of this
      * method to resize the table if appropriate.

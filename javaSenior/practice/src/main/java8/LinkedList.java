@@ -454,6 +454,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 将链表中的所有元素置为空。
      * Removes all of the elements from this list.
      * The list will be empty after this call returns.
      */
@@ -478,6 +479,7 @@ public class LinkedList<E>
     // Positional Access Operations
 
     /**
+     * 返回指定位置的元素
      * Returns the element at the specified position in this list.
      *
      * @param index index of the element to return
@@ -490,6 +492,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 设置指定位置的元素
      * Replaces the element at the specified position in this list with the
      * specified element.
      *
@@ -507,6 +510,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 在指定位置插入元素
      * Inserts the specified element at the specified position in this list.
      * Shifts the element currently at that position (if any) and any
      * subsequent elements to the right (adds one to their indices).
@@ -525,6 +529,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 在某个节点删除。
      * Removes the element at the specified position in this list.  Shifts any
      * subsequent elements to the left (subtracts one from their indices).
      * Returns the element that was removed from the list.
@@ -577,7 +582,7 @@ public class LinkedList<E>
             throw new IndexOutOfBoundsException(outOfBoundsMsg(index));
     }
 
-    /**
+    /** 逐个遍历，返回索引所在的元素
      * Returns the (non-null) Node at the specified element index.
      */
     Node<E> node(int index) {
@@ -599,6 +604,7 @@ public class LinkedList<E>
     // Search Operations
 
     /**
+     * 返回 元素第一次出现的位置。
      * Returns the index of the first occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the lowest index {@code i} such that
@@ -628,6 +634,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 返回最后一次出现的位置
      * Returns the index of the last occurrence of the specified element
      * in this list, or -1 if this list does not contain the element.
      * More formally, returns the highest index {@code i} such that
@@ -659,6 +666,7 @@ public class LinkedList<E>
     // Queue operations.
 
     /**
+     * 返回峰顶的元素
      * Retrieves, but does not remove, the head (first element) of this list.
      *
      * @return the head of this list, or {@code null} if this list is empty
@@ -670,6 +678,7 @@ public class LinkedList<E>
     }
 
     /**
+     * 返回头节点
      * Retrieves, but does not remove, the head (first element) of this list.
      *
      * @return the head of this list

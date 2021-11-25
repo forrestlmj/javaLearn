@@ -615,7 +615,7 @@ public class HashMap<K,V>
         // 复制到新table
         transfer(newTable, rehash);
         table = newTable;
-        // 更新阈值
+        // 更新阈值，新大小 * 装载因子
         threshold = (int)Math.min(newCapacity * loadFactor, MAXIMUM_CAPACITY + 1);
     }
 
@@ -1139,6 +1139,7 @@ public class HashMap<K,V>
     }
 
     /**
+     * 序列化，保存操作是序列化。
      * Save the state of the <tt>HashMap</tt> instance to a stream (i.e.,
      * serialize it).
      *
@@ -1176,6 +1177,7 @@ public class HashMap<K,V>
     private static final long serialVersionUID = 362498820763181265L;
 
     /**
+     * 反序列化，
      * Reconstitute the {@code HashMap} instance from a stream (i.e.,
      * deserialize it).
      */

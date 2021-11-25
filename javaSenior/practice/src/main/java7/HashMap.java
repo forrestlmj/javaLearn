@@ -162,7 +162,7 @@ public class HashMap<K,V>
     transient Entry<K,V>[] table;
 
     /**
-     * Entry<K,V>[] 的大小
+     * Entry<K,V>[] 的大小，也就是在 table[]
      * The number of key-value mappings contained in this map.
      */
     transient int size;
@@ -915,7 +915,7 @@ public class HashMap<K,V>
      * Subclass overrides this to alter the behavior of put method.
      */
     void addEntry(int hash, K key, V value, int bucketIndex) {
-        // 如果阈值吵了，resize
+        // 如果阈值超了，resize
         if ((size >= threshold) && (null != table[bucketIndex])) {
             // 开始扩容，扩容两倍
             resize(2 * table.length);

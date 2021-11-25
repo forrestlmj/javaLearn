@@ -8,7 +8,7 @@ import java.util.*;
 public class CollectionTest {
     Collection<String> c = new MyCollection<>();
     List<String> a = new ArrayList<>();
-
+    Map<String, String> m = new HashMap<>();
     @Before
     public void prepare(){
         a.clear();

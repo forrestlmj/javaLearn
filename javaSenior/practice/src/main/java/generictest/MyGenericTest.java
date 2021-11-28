@@ -1,6 +1,7 @@
 package generictest;
 
 import org.junit.Test;
+import sun.security.rsa.RSAUtil;
 
 import java.util.List;
 
@@ -20,5 +21,14 @@ public class MyGenericTest {
         List<Father<String>> fathers = someDao.toArray(fs);
         System.out.println(fathers);
 
+    }
+
+    @Test
+    public void test2(){
+        MyMap<String,Integer> m = new MyMapImpl<>();
+        m.put("yck",11);
+        m.put("zb",22);
+        System.out.println(m.get("yck"));
+        System.out.println(m);
     }
 }

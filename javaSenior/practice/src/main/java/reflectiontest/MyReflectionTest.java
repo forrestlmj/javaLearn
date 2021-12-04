@@ -51,6 +51,14 @@ public class MyReflectionTest {
             System.out.println(annotation.getClass());
         }
     }
+
+    @Test
+    public void testClass(){
+        Human human = new Human();
+        Class<? extends Human> aClass = human.getClass();
+        System.out.println(aClass);
+    }
+
 }
 interface Life{
     void breath();

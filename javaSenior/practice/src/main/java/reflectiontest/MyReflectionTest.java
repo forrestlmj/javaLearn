@@ -1,7 +1,11 @@
 package reflectiontest;
 
+import annotationtest.ApiInfo;
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.junit.Test;
 
+import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -32,6 +36,20 @@ public class MyReflectionTest {
         Constructor<Man> constructor = manClass.getDeclaredConstructor();
         Man man = constructor.newInstance();
         System.out.println(man);
+    }
+
+    /**
+     * 通过反射获得类的注解信息。
+     * Spring = IOC + AOP
+     * AOP = 反射 + 注解 + 设计模式
+     */
+    @Test
+    public void testAnnotation(){
+        Class<Man> manClass = Man.class;
+        for (Annotation annotation : manClass.getAnnotations()) {
+            System.out.println(annotation);
+            System.out.println(annotation.getClass());
+        }
     }
 }
 interface Life{
@@ -93,6 +111,7 @@ class Human implements Life{
 
     }
 }
+@ApiInfo(name = "男人", note = "继承人类，实现性别行为")
 class Man extends Human implements Gender{
 
     public Man() {

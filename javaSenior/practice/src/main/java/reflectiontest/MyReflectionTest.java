@@ -90,6 +90,30 @@ public class MyReflectionTest {
 
     }
 
+    @Test
+    public void testConstructor() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchFieldException {
+        Class<Human> humanClass = Human.class;
+        Constructor<Human> constructor = humanClass.getConstructor(String.class, Integer.class);
+        Human yck = constructor.newInstance("yck", 1);
+        System.out.println(yck);
+
+        Field name = humanClass.getDeclaredField("name");
+        name.setAccessible(true);
+        name.set(yck,"yck2");
+
+        System.out.println(yck);
+        Method[] methods = humanClass.getMethods();
+        for (Method method : methods) {
+//            method.invoke(yck);
+//            System.out.println(method.getName().equals("breath"));
+//            System.out.println(method);
+            if (method.getName().equals("breath")) {
+                method.invoke(yck);
+            }
+        }
+
+    }
+
 }
 interface Life{
     void breath();
@@ -104,9 +128,13 @@ interface Gender{
 class Human implements Life{
     private String name;
     private Integer age;
+
+    public Human() {
+    }
+
     @Override
     public void breath() {
-        System.out.println("Human Breath");
+        System.out.println("Human Breath from "+this.name);
     }
 
     public String getName() {
@@ -115,6 +143,11 @@ class Human implements Life{
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Human(String name, Integer age) {
+        this.name = name;
+        this.age = age;
     }
 
     public Integer getAge() {
@@ -154,6 +187,7 @@ class Human implements Life{
 class Man extends Human implements Gender{
 
     public Man() {
+        super();
     }
 
     @Override

@@ -52,6 +52,10 @@ public class MyReflectionTest {
         }
     }
 
+    /**
+     * 获取类的三种方法
+     * @throws ClassNotFoundException
+     */
     @Test
     public void testClass() throws ClassNotFoundException {
         Human human = new Human();
@@ -64,6 +68,26 @@ public class MyReflectionTest {
 
         Class<?> aClass1 = Class.forName("java.lang.String");
         System.out.println(aClass1);
+    }
+
+    @Test
+    public void testWhoCanGetClass(){
+        System.out.println("基本数据类型");
+        Class<Integer> integerClass = int.class;
+        System.out.println(integerClass);
+        System.out.println("数组");
+        String[] a = new String[5];
+        Class<? extends String[]> aClass = a.getClass();
+        System.out.println(aClass);
+        System.out.println("注解");
+        Class<ApiInfo> apiInfoClass = ApiInfo.class;
+        for (Annotation annotation : apiInfoClass.getAnnotations()) {
+            System.out.println(annotation);
+        }
+        System.out.println("接口:");
+        Class<Life> lifeClass = Life.class;
+        System.out.println(lifeClass);
+
     }
 
 }

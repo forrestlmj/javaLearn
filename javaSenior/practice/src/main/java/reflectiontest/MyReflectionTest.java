@@ -53,10 +53,17 @@ public class MyReflectionTest {
     }
 
     @Test
-    public void testClass(){
+    public void testClass() throws ClassNotFoundException {
         Human human = new Human();
         Class<? extends Human> aClass = human.getClass();
         System.out.println(aClass);
+
+
+        Class<Human> humanClass = Human.class;
+        System.out.println(humanClass);
+
+        Class<?> aClass1 = Class.forName("java.lang.String");
+        System.out.println(aClass1);
     }
 
 }

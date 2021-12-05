@@ -102,6 +102,17 @@ public class MyReflectionTest {
         name.set(yck,"yck2");
 
         System.out.println(yck);
+
+
+    }
+    @Test
+    public void testInvoke() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+        Class<Human> humanClass = Human.class;
+        Constructor<Human> constructor = humanClass.getConstructor(String.class, Integer.class);
+
+        Human yck = constructor.newInstance("yck", 1);
+
+
         Method[] methods = humanClass.getMethods();
         for (Method method : methods) {
 //            method.invoke(yck);
@@ -111,7 +122,6 @@ public class MyReflectionTest {
                 method.invoke(yck);
             }
         }
-
     }
 
 }

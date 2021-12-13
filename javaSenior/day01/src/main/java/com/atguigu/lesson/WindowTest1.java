@@ -6,19 +6,23 @@ import static java.lang.Thread.sleep;
 
 class ThreadWindow2 implements Runnable{
     private static int tickets = 0;
+    private static Object o = new Object();
     @Override
     public void run() {
         while(true){
-            if (tickets<100){
-                tickets ++;
-                try {
-                    sleep(300);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(Thread.currentThread().getName()+" 对王小宝的爱 达到了百分之 "
-                        +tickets+"%");
-            }else break;
+            synchronized (o){
+                if (tickets<100){
+                    tickets ++;
+                    try {
+                        sleep(80);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(Thread.currentThread().getName()+" 对王小宝的爱 达到了百分之 "
+                            +tickets+"%");
+                }else break;
+            }
+
         }
     }
 }

@@ -83,6 +83,7 @@ public class LambdaTest1 {
         BiFunction<String,String,Integer> bi = (s1,s2) ->{
             return Integer.compare(s1.length(),s2.length());
         };
+        System.out.println(bi.apply("1212", "a222aa"));
 
 
     }

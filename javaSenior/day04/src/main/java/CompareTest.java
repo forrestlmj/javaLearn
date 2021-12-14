@@ -3,6 +3,8 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.Comparator;
 
+import static java.util.Arrays.*;
+
 /**
  * 一、说明：Java中的对象，正常情况下，只能进行比较：==  或  != 。不能使用 > 或 < 的
  *          但是在开发场景中，我们需要对多个对象进行排序，言外之意，就需要比较对象的大小。
@@ -33,7 +35,7 @@ Comparable接口的使用举例：  自然排序
     @Test
     public void test1(){
         String[] arr = {"abc","ab","de","a","c"};
-        Arrays.sort(arr);
+        sort(arr);
         System.out.println(Arrays.toString(arr));
     }
     @Test
@@ -44,7 +46,7 @@ Comparable接口的使用举例：  自然排序
         arr[2] = new Goods("ycj",12);
         arr[3] = new Goods("ycj",12);
         arr[4] = new Goods("ycj",12);
-        Arrays.sort(arr);
+        sort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
@@ -55,12 +57,9 @@ Comparable接口的使用举例：  自然排序
         arr[2] = new Goods("ycj",12);
         arr[3] = new Goods("ycj",12);
         arr[4] = new Goods("ycj",12);
-        Arrays.sort(arr, new Comparator<Goods>() {
-            @Override
-            public int compare(Goods o1, Goods o2) {
-                if(o1.getPrice()>o2.getPrice()) return 1;
-                else return -1;
-            }
+        sort(arr, (o1, o2) -> {
+            if(o1.getPrice()>o2.getPrice()) return 1;
+            else return -1;
         });
         System.out.println(arr);
     }

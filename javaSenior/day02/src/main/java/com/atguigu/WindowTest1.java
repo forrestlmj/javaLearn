@@ -8,11 +8,11 @@ class Test1 implements Runnable{
         while(true){
             synchronized(Test1.class){
                 if(tickets > 0){
-                    try {
-                        Thread.sleep(50);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+//                    try {
+//                        Thread.sleep(50);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
                     System.out.println(Thread.currentThread().getName()+":->"+tickets);
                     tickets --;
                 }

@@ -1,6 +1,6 @@
 package com.yck1;
 
-public class    DynamicLinkingTest {
+public class DynamicLinkingTest {
     int count = 10;
 
 //    public static void main(String[] args) {

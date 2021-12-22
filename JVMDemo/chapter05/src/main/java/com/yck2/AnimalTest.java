@@ -9,11 +9,29 @@ class Animal{
     public void eat(){
         System.out.println("动物吃东西");
     }
+
+    /**
+     *  0 aload_0
+     *  1 invokespecial #5 <com/yck2/Animal.methodPrivate : ()V>
+     *  4 invokestatic #6 <com/yck2/Animal.methodStatic : ()V>
+     *  7 getstatic #2 <java/lang/System.out : Ljava/io/PrintStream;>
+     * 10 ldc #7 <动物总要睡觉>
+     * 12 invokevirtual #4 <java/io/PrintStream.println : (Ljava/lang/String;)V>
+     * 15 return
+     *
+     * 其中第1和4为invokespecial，invokestatic，这里就是早期绑定+静态绑定。
+     */
     public final void sleep(){
+        methodPrivate();
+        methodStatic();
+
         System.out.println("动物总要睡觉");
     }
-    public static void die(){
+    public static void methodStatic(){
         System.out.println("动物总会消失");
+    }
+    private void methodPrivate(){
+
     }
 }
 

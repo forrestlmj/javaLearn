@@ -1,5 +1,8 @@
 package com.yck;
 
+/**
+ * -Xms20m -Xmx20m -XX:+PrintGCDetails
+ */
 public class SimpleHeap {
     public SimpleHeap(Integer id) {
         this.id = id;

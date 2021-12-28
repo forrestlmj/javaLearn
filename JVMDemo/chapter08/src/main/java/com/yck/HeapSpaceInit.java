@@ -20,6 +20,6 @@ public class HeapSpaceInit {
         System.out.println("初始堆大小 -Xms"+initMemory/1024);
         long maxMemory = Runtime.getRuntime().maxMemory();
         System.out.println("最大堆大小 -Xmx"+maxMemory/1024);
-//        Thread.sleep(1000000);
+        Thread.sleep(1000000);
     }
 }

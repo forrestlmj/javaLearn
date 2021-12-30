@@ -13,7 +13,7 @@ public class OOMTest {
         ArrayList<Picture> list = new ArrayList<>();
         while(true){
             try {
-                Thread.sleep(20);
+                Thread.sleep(50);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

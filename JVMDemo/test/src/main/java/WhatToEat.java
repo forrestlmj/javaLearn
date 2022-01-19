@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class WaterToEat {
+public class WhatToEat {
     public static void main(String[] args) throws InterruptedException {
         ArrayList<String> foodList = new ArrayList<>();
         String[] a = {
                "钵钵鸡     ",
                "淮南牛肉米线  ",
-//               "夜市土豆粉   ",
-//               "夜市炒方便面  ",
-//               "夜市酒酿小丸子 ",
+               "夜市土豆粉   ",
+               "夜市炒方便面  ",
+               "夜市酒酿小丸子 ",
                "炸蘑菇     ",
                "炸丸子     ",
                "汉堡王     ",
@@ -27,12 +27,12 @@ public class WaterToEat {
             foodList.add(s.trim());
         }
         Random random = new Random();
-        int i = random.nextInt(100);
+        int i = random.nextInt(200);
         int j = 0;
         while(true){
             for (String s : foodList) {
 
-                Thread.sleep(random.nextInt(50));
+                Thread.sleep(random.nextInt(20));
                 if(i == j){
                     System.out.println("今天吃："+s);
                     return;

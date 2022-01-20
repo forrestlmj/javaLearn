@@ -7,6 +7,7 @@ public class WhatToEat {
         String[] a = {
                "钵钵鸡     ",
                "淮南牛肉米线  ",
+                "老乡鸡",
                "夜市土豆粉   ",
                "夜市炒方便面  ",
                "夜市酒酿小丸子 ",
@@ -27,13 +28,13 @@ public class WhatToEat {
             foodList.add(s.trim());
         }
         Random random = new Random();
-        int i = random.nextInt(200);
+        int i = random.nextInt(1000000);
         int j = 0;
         while(true){
             for (String s : foodList) {
 
                 Thread.sleep(random.nextInt(20));
-                if(i == j){
+                if(i % a.length == j){
                     System.out.println("今天吃："+s);
                     return;
                 }

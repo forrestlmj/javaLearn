@@ -36,6 +36,7 @@ public class WhatToEat {
                 Thread.sleep(random.nextInt(20));
                 if(i % a.length == j){
                     System.out.println("今天吃："+s);
+                    // this is a pr test comment.
                     return;
                 }
                 j++;

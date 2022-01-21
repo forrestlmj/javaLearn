@@ -1,0 +1,2 @@
+org.apache.flink.util.FlinkUserCodeClassLoader.loadClass
+用户编写的类会被这个加载器加载到内存中，复习类加载器时候可以看下flink的实现。

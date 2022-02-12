@@ -20,6 +20,7 @@
         <module>chapter09</module>
         <module>test</module>
         <module>chapter10</module>
+        <module>chapter11</module>
     </modules>
 
     <properties>

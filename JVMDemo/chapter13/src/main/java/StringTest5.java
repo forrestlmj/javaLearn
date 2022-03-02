@@ -7,6 +7,13 @@ import org.junit.Test;
  */
 public class StringTest5 {
     @Test
+    public void test0(){
+        String abc = new String("abc12");
+        String abc2 = new String("abc12");
+        System.out.println(abc == abc2);
+        System.out.println(abc.intern() == abc2.intern());
+    }
+    @Test
     public void test1(){
         String s1 = "a" + "b" + "c";//编译期优化：等同于"abc"
         String s2 = "abc"; //"abc"一定是放在字符串常量池中，将此地址赋给s2

@@ -1,0 +1,22 @@
+下面这个错误就是典型的元空间oom。
+这个错误是因为每次flink打的都是jar-with-dependencies的包，每次上传jar包时候，TaskManager 加载的类太多，导致元空间溢出。
+报错提示两点：
+ 1、调大配置 `taskmanager.memory.jvm-metaspace.size` 的值，这个配置就是 TaskManager 进程的 jvm 元空间大小配置。
+```
+2021-09-16 18:29:36,689 ERROR org.apache.flink.runtime.taskexecutor.TaskManagerRunner      [] - Fatal error occurred while executing the TaskManager. Shutting it down...
+java.lang.OutOfMemoryError: Metaspace. The metaspace out-of-memory error has occurred. This can mean two things: either the job requires a larger size of JVM metaspace to load classes or there is a class loading leak. In the first case'taskmanager.memory.jvm-metaspace.size' configuration option should be increased. If the error persists (usually in cluster after several job (re-)submissions) then there is probably a class loading leak in user code or some of its dependencies which has to be investigated and fixed. The task executor has to be shutdown...
+        at java.lang.ClassLoader.defineClass1(Native Method) ~[?:1.8.0_301]
+        at java.lang.ClassLoader.defineClass(ClassLoader.java:756) ~[?:1.8.0_301]
+        at java.security.SecureClassLoader.defineClass(SecureClassLoader.java:142) ~[?:1.8.0_301]
+        at java.net.URLClassLoader.defineClass(URLClassLoader.java:468) ~[?:1.8.0_301]
+        at java.net.URLClassLoader.access$100(URLClassLoader.java:74) ~[?:1.8.0_301]
+        at java.net.URLClassLoader$1.run(URLClassLoader.java:369) ~[?:1.8.0_301]
+        at java.net.URLClassLoader$1.run(URLClassLoader.java:363) ~[?:1.8.0_301]
+        at java.security.AccessController.doPrivileged(Native Method) ~[?:1.8.0_301]
+        at java.net.URLClassLoader.findClass(URLClassLoader.java:362) ~[?:1.8.0_301]
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:418) ~[?:1.8.0_301]
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClassWithoutExceptionHandling(FlinkUserCodeClassLoader.java:64) ~[flink-dist_2.12-1.12.4.jar:1.12.4]
+        at org.apache.flink.util.FlinkUserCodeClassLoader.loadClass(FlinkUserCodeClassLoader.java:48) ~[flink-dist_2.12-1.12.4.jar:1.12.4]
+        at java.lang.ClassLoader.loadClass(ClassLoader.java:351) ~[?:1.8.0_301]
+        at com.fasterxml.jackson.databind.deser.std.StdKeyDeserializers.findKeyDeserializer(StdKeyDeserializers.java:92) ~[blob_p-f04292924beb80ee428aa73a413c203da899c5fa-fde5cbb69e66a7abc6d830b90d7f5752:?]
+```

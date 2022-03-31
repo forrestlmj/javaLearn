@@ -1,3 +1,4 @@
+package reference;
 
 /**
  *  强引用的测试

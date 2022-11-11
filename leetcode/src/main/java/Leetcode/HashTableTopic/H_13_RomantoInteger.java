@@ -8,7 +8,7 @@ import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
 
-class Solution {
+class Solution_H_13 {
 
 
     public int romanToInt(String s) {
@@ -46,19 +46,13 @@ class Solution {
         return re;
     }
 }
+
+/**
+ * https://leetcode.com/problems/roman-to-integer/
+ */
 public class H_13_RomantoInteger {
     public static void main(String[] args) {
 
     }
-    private Solution s = new Solution();
-    @Test
-    public void test(){
-        assertEquals(3,s.romanToInt("III"));
-        assertEquals(58,s.romanToInt("LVIII"));
-        assertEquals(1994,s.romanToInt("MCMXCIV"));
 
-
-        assertEquals(1,s.romanToInt("I"));
-        assertEquals(2,s.romanToInt("II"));
-    }
 }

@@ -24,24 +24,29 @@ class Solution_H_12{
             re.add('M');
         }
 
-        num = num % mod;
-        int h_rep = num % (mod/2);
 
-        if((10*num)/mod < 4) {
+        int h_rep = (num % mod) % (mod/2);
+        num = num % mod;
+
+
+        if(10*num/mod < 4) {
             tmp(h_rep,'C');
-        }else if((10*num)/mod == 4) {
+        }else if(10*num/mod == 4) {
             re.add('C');
             re.add('D');
-        } else if((10*num)/mod > 4 && (10*num)/mod < 9){
+        } else if(10*num/mod > 4 && 10*num/mod < 9){
             re.add('D');
             tmp(h_rep,'C');
-        } else if((10*num)/mod == 9){
+        } else if(10*num/mod == 9){
             re.add('C');
             re.add('M');
         }
 
-
-        return re.toString();
+        StringBuilder sb = new StringBuilder();
+        for (Character character : re) {
+            sb.append(character);
+        }
+        return sb.toString();
     }
 }
 public class H_12_IntegertoRoman {

@@ -9,6 +9,7 @@ public class H_12_IntegertoRomanTest {
     public void test(){
 
         Solution_H_12 solution_h_121 = new Solution_H_12();
-        assertEquals(solution_h_121.intToRoman(3),"III");
+//        System.out.println(500%500);
+        assertEquals(solution_h_121.intToRoman(1993),"MCM");
     }
 }

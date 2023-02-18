@@ -1,4 +1,4 @@
-package com.github.yck.principle.singleresponsibility;
+package com.github.yck.principle.singleresponsibility.improve;
 
 /**
  * Single Responsibility 单一职责

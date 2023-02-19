@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N1
+    <b>接口隔离原则</b>
+    <i>这个例子中，展示了</i>
+    <i>B和D类实现接口，而</i>
+    <i>A和C类通过接口传参的方式，来调用B和D方法 </i>
+    <i>问题在于</i>
+end note
+
+interface Interface1{
+
+    operation1()
+    operation2()
+    operation3()
+    operation4()
+    operation5()
+
+}
+
+class A{
+
+    depend1(Interface1 i)
+    depend2(Interface1 i)
+    depend3(Interface1 i)
+
+}
+
+note bottom: "类A通过Interface1依赖类B的1,2,3方法"
+Interface1 <|.. A
+
+class C{
+    depend1(Interface1 i)
+    depend4(Interface1 i)
+    depend5(Interface1 i)
+}
+
+Interface1 <|.. C
+note bottom: "类C通过Interface1依赖类D的1,4,5方法
+Interface1 <|-- B
+note bottom: "B实现接口"
+Interface1 <|-- D
+note bottom: "D实现接口"
+
+@enduml

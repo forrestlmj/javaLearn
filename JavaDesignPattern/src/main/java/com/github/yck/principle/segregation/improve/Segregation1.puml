@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b>接口隔离原则 </b>
+    <i>B类实现接口1与接口2， </i>
+    <i>"类A通过接口1与接口2依赖类B的方法" </i>
+    <i>D类实现接口1与接口3， </i>
+    <i>"类C通过接口1与接口3依赖类D的方法" </i>
+end note
+interface Interface1 {
+    method1()
+}
+interface Interface2 {
+    method2()
+    method3()
+}
+interface Interface3{
+    method4()
+    method5()
+}
+
+class B implements Interface1, Interface2
+class D implements Interface1, Interface3
+
+class A{
+    depend1(Interface1)
+    depend2(Interface2)
+    depend3(Interface2)
+}
+note bottom: "类A通过接口1与接口2依赖类B的方法"
+
+Interface1 <.. A
+Interface2 <.. A
+
+class C{
+    depend1(Interface1)
+    depend4(Interface3)
+    depend5(Interface3)
+}
+note bottom: "类C通过接口1与接口3依赖类D的方法"
+Interface1 <.. C
+Interface3 <.. C
+@enduml

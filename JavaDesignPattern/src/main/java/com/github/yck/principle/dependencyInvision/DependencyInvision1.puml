@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b> 依赖倒置原则</b>
+    <i> 这里People类依赖 很多类似Email</i>
+    <i> 的一样类，在依赖时候，有Email
+    版本 ，有Wechat版本，这个时候最好的方式是抽象
+    出一个接口，这些渠道都实现这个接口。
+
+    Person只需要一个方法，依赖这个接口。在调用的时候，
+    根据多态性，来确定用哪个方法。
+    </i>
+
+
+end note
+class Email{
+    String getInfo()
+}
+class Wechat{
+    String getInfo()
+}
+class People{
+    receive(Email)
+    receive2(Wechat)
+}
+
+Email <.. People
+Wechat <.. People
+@enduml

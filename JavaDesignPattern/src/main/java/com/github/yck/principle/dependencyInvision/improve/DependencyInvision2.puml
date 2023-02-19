@@ -1,0 +1,19 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as N
+
+end note
+interface Device{
+    String getInfo()
+}
+class Email implements Device
+class Wechat implements Device
+
+class Person{
+    void receive(Device d)
+}
+
+Email <.. Person
+Wechat <.. Person
+@enduml

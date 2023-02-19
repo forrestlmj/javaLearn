@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as N
+    <b> 开闭原则的改进 </b>
+    <i> 这里就是增加一个图形，不要让GraphEditor再增加新方法</i>
+end note
+abstract class Shape{
+    void draw()
+}
+
+class Circle {
+    void draw()
+}
+class Triangle {
+    void draw()
+}
+class Rectangle {
+    void draw()
+}
+Shape <|-- Circle
+Shape <|-- Triangle
+Shape <|-- Rectangle
+class GraphEditor{
+    void drawAnythingYouWant(Shape s)
+}
+Shape <-- GraphEditor
+note bottom: "这里通过 drawAnythingYouWant 方法来穿接口，实现开闭原则"
+@enduml

@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b> 开闭原则</b>
+    <i> 对于扩展（开发者）开放</i>
+    <i> 对于（使用者）封闭</i>
+    <i> 核心还是在于代码要添加新 feature 时候</i>
+    <i> 不改动调用方的代码 </i>
+
+    <i> 下面举的这个例子就是说如果添加了 </i>
+    <i> 一个新的图形，需要在调用方增加相应的</i>
+    <i> 方法</i>
+
+end note
+
+class Shape{
+    Integer shape_type;
+}
+
+class Circle{
+    draw()
+}
+Shape <|-- Circle
+class Rectangle {
+    draw()
+}
+Shape <|-- Rectangle
+
+class GraphEditor{
+    drawRectangle(Shape s)
+    drawCircle(Shape s)
+}
+Shape <-- GraphEditor
+Circle <-- GraphEditor
+Rectangle <-- GraphEditor
+note bottom: "GraphEditor中方法是按照形状添加的"
+
+Class Triangle{
+    draw()
+}
+Shape <|-- Triangle
+note bottom: "这里新增了一个 Triangle，要想让GraphEditor支持它，必须该GraphEditor"
+
+
+@enduml

@@ -82,7 +82,7 @@ class CollegeEmployeeManager{
         // Print every member of the Employee.
         // 这里出现了 Employee 是局部变量，所以不满足 demeter 原则
         // 改进方法是把这个方法放到 EmployeeManager 中，然后调用
-//        for (Employee employee : sub.getAllEmployee()) {
+//        for (Employee : sub.getAllEmployee()) {
 //            System.out.println(employee);
 //        }
         sub.printAllEmployees();

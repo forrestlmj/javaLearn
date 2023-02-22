@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as N
+    <b> 泛化，也就是继承</b>
+end note
+
+class IDCard
+class Person
+class Departure
+class PersonDao
+
+class PersonServiceDao{
+   ps: PersonDao
+   save(p: Person): void
+   getIDCard(personID: Integer): IDCard
+   modify(): void
+}
+
+IDCard <.. PersonServiceDao
+Person <.. PersonServiceDao
+Departure <.. PersonServiceDao
+PersonDao <.. PersonServiceDao
+
+@enduml

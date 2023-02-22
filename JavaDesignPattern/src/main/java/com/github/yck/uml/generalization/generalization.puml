@@ -5,13 +5,13 @@ note as N
     <b> 泛化，也就是继承</b>
 end note
 
-class IDCard
-class Person
-class Departure
-class PersonDao
-
-class PersonServiceDao{
-
+class DaoSupport{
+    void save(Object o)
+    void delete(Object id)
 }
+
+class PersonServiceBean
+
+DaoSupport <|-- PersonServiceBean
 
 @enduml

@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b> 实现接口</b>
+    <i> </i>
+
+end note
+interface PersonService{
+    void delete(Integer: id)
+}
+
+class PersonServiceBean {
+    void delete(Integer: id)
+}
+
+PersonService <|.. PersonServiceBean
+@enduml

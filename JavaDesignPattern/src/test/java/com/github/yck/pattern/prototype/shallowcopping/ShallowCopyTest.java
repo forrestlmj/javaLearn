@@ -10,7 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /**
  *
- * @see ShallowCopy 的测试类
+ * <p>
+ *     当值不更新时候，无论是 Immutable 还是 Mutable 对象，浅拷贝只会克隆成员变量的引用。
+ * <li> 对于 8 种基本数据类型及其包装类、String类、遗留类（HashTable）这些 Immutable 对象，
+ * 当改变其值，新的引用给新值，旧的引用给旧值，所以既不 equals 也不 same
+ * <li> 对于 其他类，由于是 Mutable 的，值更新，新旧引用依然指向同一值，所以 equal 又 same
+ * @see ShallowCopy ShallowCopy的测试类
+ * @see <a href="https://www.javatpoint.com/mutable-and-immutable-in-java"> For example, primitive objects such as int, long, float, double, all legacy classes,
+ * Wrapper class, String class, etc. </a>
  */
 public class ShallowCopyTest {
     Person p1;

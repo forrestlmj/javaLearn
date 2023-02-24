@@ -8,16 +8,21 @@ import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ShallowCopyTestTest {
+/**
+ *
+ * @see ShallowCopy 的测试类
+ */
+public class ShallowCopyTest {
     Person p1;
     Person dolly;
     @BeforeEach
     public void prepare() {
-        Address address = new Address("TJ",
-                new HashMap<String, String>() {{
-                    put("located", "China");
-                    put("food", "salty");
-                }});
+        HashMap<String, String> hashMap = new HashMap<String, String>() {{
+            put("located", "China");
+            put("food", "salty");
+        }};
+        Address address = new Address("TJ",hashMap
+                );
         p1 = new Person("yck",
                 18,'M',address,new int[]{1,2,3}
         );
@@ -37,10 +42,10 @@ public class ShallowCopyTestTest {
                 // 字符串
                 () -> assertSame(dolly.getName(), p1.getName(), "String 类型指向的统一数据类型"),
 
-                () -> assertSame("yck", "yck", "这里源代码直接近常量池"),
-                () -> assertNotSame("yck", new String("yck"), "只要是 new 的就不一样"),
-                () -> assertNotSame(new String("yck"), new String("yck"), "只要是 new 的就不一样"),
-                () -> assertNotSame(new String("yck"), new String("yck"), "只要是 new 的就不一样"),
+//                () -> assertSame("yck", "yck", "这里源代码直接近常量池"),
+//                () -> assertNotSame("yck", new String("yck"), "只要是 new 的就不一样"),
+//                () -> assertNotSame(new String("yck"), new String("yck"), "只要是 new 的就不一样"),
+//                () -> assertNotSame(new String("yck"), new String("yck"), "只要是 new 的就不一样"),
 
                 () -> assertNotSame(dolly.getName(), new String("yck"), "证明两个值一样的 String 是两个对象"),
                 () -> assertSame(dolly.getName().intern(), "yck", "intern() 后肯定一样"),
@@ -58,7 +63,8 @@ public class ShallowCopyTestTest {
                 () ->assertEquals(dolly.getSex(),'M',"性别"),
 
                 () ->assertEquals(dolly.getAddress().getAddressName(),"TJ","注意，" +
-                        "等于TJ")
+                        "等于TJ"),
+                () -> assertSame(dolly.getAge(), p1.getAge(), "变换之前，Integer地址 一样")
 
         );
         p1.setName("wsn");
@@ -74,7 +80,11 @@ public class ShallowCopyTestTest {
                 () ->assertNotEquals(dolly.getAddress().getAddressName(),"TJ","注意，" +
                         "不等于TJ了"),
                 () ->assertEquals(dolly.getAddress().getAddressName(),"Canada","注意，" +
-                        "等于 Canada 了")
+                        "等于 Canada 了"),
+
+                () -> assertNotSame(dolly.getAge(), p1.getAge(), "由于p1地址变了，Integer应该是不可变的，所以这里也不相等了"),
+        () -> assertNotSame(dolly.getName(), p1.getName(), "由于p1地址变了，String应该是不可变的，所以这里也不相等了")
+
         );
 
 

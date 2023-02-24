@@ -4,7 +4,7 @@ import java.util.*;
 
 /**
  * 懒汉模式线程不安全版本，
- *
+ * 单线程可以。但是正式环境不要用。
  */
 public class Singleton3 {
     public static void main(String[] args) {
@@ -51,6 +51,7 @@ class SingletonLazy3 {
      */
     public static SingletonLazy3 getInstance(){
         if ( singletonLazy3 == null ){
+            // 这一步不是原子操作，字节码有三行，容易有指令重排的可能性
             singletonLazy3 = new SingletonLazy3();
         }
         return singletonLazy3;

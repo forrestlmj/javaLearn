@@ -1,5 +1,11 @@
 package com.github.yck.pattern.singleton.type1;
 
+/**
+ * 饿汉式（静态变量 + 静态方法）
+ * 在加载时候时候，就实例化了静态变量。
+ * 不管用不用都生成一个，所以叫做饿汉式。
+ * 缺点是浪费资源。
+ */
 public class Singleton1 {
     public static void main(String[] args) {
         SingletonHunger s1 = SingletonHunger.getInstance();
@@ -11,9 +17,12 @@ public class Singleton1 {
 }
 
 class SingletonHunger{
+
+    private static SingletonHunger sh = new SingletonHunger();
     private SingletonHunger(){
 
     }
-    private static final SingletonHunger s = new SingletonHunger();
-    public static SingletonHunger getInstance(){return s;}
+    public static SingletonHunger getInstance(){
+        return sh;
+    }
 }

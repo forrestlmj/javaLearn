@@ -31,7 +31,7 @@ class Runner implements Runnable{
     private static Set<Integer> set = new HashSet<>();
     @Override
     public void run() {
-        SingletonLazy3 instance = SingletonLazy3.getInstance();
+        SingletonLazy4 instance = SingletonLazy4.getInstance();
         System.out.println(instance.hashCode());
             synchronized (Runner.class){
                 set.add(instance.hashCode());
@@ -43,20 +43,20 @@ class Runner implements Runnable{
 /**
  * 线程安全解决途径：synchronized（同步代码） + volatile（指令重排）
  */
-class SingletonLazy3 {
+class SingletonLazy4 {
 
-    private static volatile SingletonLazy3 singletonLazy3;
+    private static volatile SingletonLazy4 singletonLazy3;
 
-    private SingletonLazy3(){}
+    private SingletonLazy4(){}
 
     /**
      * @return 这里线程不安全，有 if 时候，多线程进入 if 后
      * 就不是一个实例喽
      */
-    public synchronized static SingletonLazy3 getInstance(){
+    public synchronized static SingletonLazy4 getInstance(){
         if ( singletonLazy3 == null ){
             // 这一步不是原子操作，字节码有三行，容易有指令重排的可能性
-            singletonLazy3 = new SingletonLazy3();
+            singletonLazy3 = new SingletonLazy4();
         }
         return singletonLazy3;
     }

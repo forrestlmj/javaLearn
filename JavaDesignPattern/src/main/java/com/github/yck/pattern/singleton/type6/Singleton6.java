@@ -12,8 +12,8 @@ import java.util.Set;
  */
 public class Singleton6 {
     public static void main(String[] args) {
-//        System.out.println(SingletonLazy3.getInstance().hashCode());
-//        System.out.println(SingletonLazy3.getInstance().hashCode());
+//        System.out.println(SingletonLazy6.getInstance().hashCode());
+//        System.out.println(SingletonLazy6.getInstance().hashCode());
 
         List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 50; i++) {
@@ -32,7 +32,7 @@ class Runner implements Runnable{
     private static Set<Integer> set = new HashSet<>();
     @Override
     public void run() {
-        SingletonLazy3 instance = SingletonLazy3.getInstance();
+        SingletonLazy6 instance = SingletonLazy6.getInstance();
         System.out.println(instance.hashCode());
             synchronized (Runner.class){
                 set.add(instance.hashCode());
@@ -44,24 +44,24 @@ class Runner implements Runnable{
 /**
  * 双重检查
  */
-class SingletonLazy3 {
+class SingletonLazy6 {
 
-    private static volatile SingletonLazy3 singletonLazy3;
+    private static volatile SingletonLazy6 SingletonLazy6;
 
-    private SingletonLazy3(){}
+    private SingletonLazy6(){}
 
     /**
      * @return
      */
-    public static SingletonLazy3 getInstance(){
-        if ( singletonLazy3 == null ){
-            synchronized (SingletonLazy3.class){
-                if (singletonLazy3 == null){
-                    singletonLazy3 = new SingletonLazy3();
+    public static SingletonLazy6 getInstance(){
+        if ( SingletonLazy6 == null ){
+            synchronized (SingletonLazy6.class){
+                if (SingletonLazy6 == null){
+                    SingletonLazy6 = new SingletonLazy6();
                 }
             }
         }
-        return singletonLazy3;
+        return SingletonLazy6;
     }
 
 

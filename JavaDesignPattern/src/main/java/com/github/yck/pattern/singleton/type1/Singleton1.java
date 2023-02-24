@@ -19,6 +19,10 @@ public class Singleton1 {
 class SingletonHunger{
 
     private static SingletonHunger sh = new SingletonHunger();
+
+    /**
+     * 构造器私有化，防止用户调用
+     */
     private SingletonHunger(){
 
     }

@@ -1,0 +1,57 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as n
+    <i> 抽象工厂模式 </i>
+    <i> 先定义一个接口，定制规范 </i>
+    <i> 在定义工厂类实现接口，分别实现具体业务 </i>
+    <i> 比如，北京的工厂只生产北京口味的披萨 </i>
+    <i> 比如，加拿大的工厂只生产加拿大口味的披萨 </i>
+    <i> 同样地，增加新代码时候，只需要该工厂类，
+     而调用方 OrderPizza1 不需要改</i>
+
+end note
+abstract class Pizza{
+    abstract prepare()
+    bake()
+    cut()
+    box()
+}
+Pizza <|-- CheesePizza
+Pizza <|-- ChinaPizza
+Pizza <|-- ChickenPizza
+Pizza <|-- PepperPizza
+Pizza <|-- MaplePizza
+
+Pizza <.. abstractFactory
+
+interface abstractFactory{
+    createPizza(String type);
+}
+
+class BeijingFactory{
+    createPizza(String type)
+}
+ChickenPizza <.. BeijingFactory
+ChinaPizza <.. BeijingFactory
+CheesePizza <.. BeijingFactory
+abstractFactory <|.. BeijingFactory
+
+class CanadaFactory{
+    createPizza(String type)
+}
+PepperPizza <.. CanadaFactory
+MaplePizza <.. CanadaFactory
+CheesePizza <.. CanadaFactory
+
+abstractFactory <|.. CanadaFactory
+
+
+CanadaFactory <.. OrderPizza1
+BeijingFactory <.. OrderPizza1
+
+class OrderPizza1{
+    setFactory(abstractFactory f)
+}
+
+@enduml

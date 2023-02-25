@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as n
+    <i> 简单（静态）工厂模式 </i>
+    <i> 其实就是专门有一个的工厂类来初始化对象 </i>
+
+end note
+abstract class Pizza{
+    prepare()
+    bake()
+    cut()
+    box()
+}
+Pizza <|-- CheesePizza
+Pizza <|-- ChinaPizza
+Pizza <|-- PepperPizza
+Pizza <|-- GreekPizza
+
+class SimpleFactory{
+    static orderPizza()
+}
+
+CheesePizza <.. SimpleFactory
+ChinaPizza <.. SimpleFactory
+PepperPizza <.. SimpleFactory
+GreekPizza <.. SimpleFactory
+
+SimpleFactory <.. OrderClass1
+SimpleFactory <.. OrderClass2
+
+@enduml

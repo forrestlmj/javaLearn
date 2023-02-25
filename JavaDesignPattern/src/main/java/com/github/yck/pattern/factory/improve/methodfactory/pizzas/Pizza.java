@@ -12,7 +12,7 @@ public abstract class Pizza {
     }
 
     private String name;
-    public void prepare(){ System.out.println("Pizza is prepared. "); }
+    public abstract void prepare();
     public void cut(){ System.out.println("Pizza is cut. "); }
     public void bake(){ System.out.println("Pizza is baked. "); }
     public void box(){ System.out.println("Pizza is boxed. "); }

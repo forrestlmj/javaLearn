@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <i> 不使用工厂模式时候 </i>
+    <i> 每当这增加一个Pizza类型时候 </i>
+    <i> 都需要在 OrderPizza 中增加一个Pizza判断逻辑 </i>
+end note
+abstract class Pizza{
+    prepare()
+    bake()
+    cut()
+    box()
+}
+
+
+Pizza <|-- CheesePizza
+Pizza <|-- GreekPizza
+Pizza <|-- ChinaPizza
+
+class OrderPizza{
+    orderPizza(Pizza p)
+}
+
+CheesePizza <.. OrderPizza
+GreekPizza <.. OrderPizza
+ChinaPizza <.. OrderPizza
+
+Pizza *-- OrderPizza
+
+Pizza <|-- PepperPizza
+note bottom: "新增一个类就要动用户代码"
+@enduml

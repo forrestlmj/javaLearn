@@ -6,13 +6,13 @@ import java.io.InputStreamReader;
 
 /**
  * 读取命令行
- * @see cmdUtilTest
+ * @see
  */
 public class cmdUtil {
-    public static String getType() {
+    public static String getCmdInput(String inputMessage) {
         try {
             BufferedReader strin = new BufferedReader(new InputStreamReader(System.in));
-            System.out.println("input pizza 种类:");
+            System.out.println(inputMessage);
             String str = strin.readLine();
             return str;
         } catch (IOException e) {
@@ -21,9 +21,10 @@ public class cmdUtil {
         }
     }
 
+
     public static void main(String[] args) {
         for (int i = 0; i < 3; i++) {
-            System.out.println(cmdUtil.getType());
+            System.out.println(cmdUtil.getCmdInput("input pizza 种类:"));
         }
     }
 }

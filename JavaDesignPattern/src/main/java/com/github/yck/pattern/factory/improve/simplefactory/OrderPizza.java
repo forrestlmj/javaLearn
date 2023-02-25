@@ -10,7 +10,7 @@ public class OrderPizza {
     public static void orderPizza(){
         Pizza p = null;
         while (true){
-            String type = cmdUtil.getType();
+            String type = cmdUtil.getCmdInput("input pizza 种类:");
             p = SimpleFactory.getPizza(type);
             p.prepare();
             p.bake();
@@ -21,7 +21,7 @@ public class OrderPizza {
     public void orderPizza2(){
         Pizza p = null;
         while (true){
-            String type = cmdUtil.getType();
+            String type = cmdUtil.getCmdInput("input pizza 种类:");
             switch (type.toLowerCase().trim()){
                 case "cheese": p = new CheesePizza();
                 case "china": p = new ChinaPizza();

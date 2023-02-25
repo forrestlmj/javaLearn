@@ -1,24 +1,17 @@
-package com.github.yck.pattern.factory.unefficient;
+package com.github.yck.pattern.factory.improve.simplefactory;
 
 import com.github.yck.pattern.factory.cmdUtil;
-import com.github.yck.pattern.factory.unefficient.pizzas.*;
+import com.github.yck.pattern.factory.improve.simplefactory.pizzas.*;
 
 /**
- * 使用方，如果增加一个新披萨类型，必须动代码
+ * 使用方，这里有了工厂类，不用再有业务代码，设置工厂类即可。
  */
 public class OrderPizza {
     public static void orderPizza(){
         Pizza p = null;
         while (true){
             String type = cmdUtil.getType();
-            switch (type.trim().toLowerCase()){
-                case "cheese": p = new CheesePizza();break;
-                case "china": p = new ChinaPizza();break;
-                case "greek": p = new GreekPizza();break;
-                case "pepper": p = new PepperPizza();break;
-                default:
-                    System.out.println("Not support");break;
-            }
+            p = SimpleFactory.getPizza(type);
             p.prepare();
             p.bake();
             p.cut();

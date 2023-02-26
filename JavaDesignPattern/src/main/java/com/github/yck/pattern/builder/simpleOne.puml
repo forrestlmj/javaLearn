@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as N
+    <b> 不使用设计模式时候 </b>
+    <i> 客户端直接调用不同类来构建不同的房子 </i>
+end note
+class House{
+    String wall
+    String roof
+    String Struct
+}
+abstract class AbstractHouse{
+    abstract buildWall()
+    abstract buildRoof()
+    abstract buildBasic()
+    House build()
+}
+House <-- AbstractHouse
+
+AbstractHouse <|-- CommonHouse
+AbstractHouse <|-- HighBuilding
+
+CommonHouse <.. Client
+HighBuilding <.. Client
+
+@enduml

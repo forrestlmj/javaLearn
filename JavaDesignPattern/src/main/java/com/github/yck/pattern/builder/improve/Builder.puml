@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as N
+    <b> 使用建造者设计模式时候 </b>
+    <i> 不同建造者类来重写不同的方法来构造房子 </i>
+end note
+class House{
+    String wall
+    String roof
+    String Struct
+}
+abstract class AbstractHouse{
+    abstract buildWall()
+    abstract buildRoof()
+    abstract buildBasic()
+    House getResult()
+}
+House <-- AbstractHouse
+
+AbstractHouse <|-- CommonHouse
+AbstractHouse <|-- HighBuilding
+
+AbstractHouse <.. Director
+
+Class Director{
+    House construct(AbstractHouse h)
+}
+
+Director <.. Client2
+Director <.. Client1
+@enduml

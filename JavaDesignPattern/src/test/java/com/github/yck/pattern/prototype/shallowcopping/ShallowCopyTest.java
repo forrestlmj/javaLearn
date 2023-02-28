@@ -1,5 +1,8 @@
 package com.github.yck.pattern.prototype.shallowcopping;
 
+import com.github.yck.pattern.creational.prototype.shallowcopping.Address;
+import com.github.yck.pattern.creational.prototype.shallowcopping.Person;
+import com.github.yck.pattern.creational.prototype.shallowcopping.ShallowCopy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

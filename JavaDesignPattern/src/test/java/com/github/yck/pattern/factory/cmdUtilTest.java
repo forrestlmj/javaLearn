@@ -1,5 +1,7 @@
 package com.github.yck.pattern.factory;
 
+import com.github.yck.pattern.creational.factory.cmdUtil;
+
 class cmdUtilTest {
 //    @Test
     public void test(){

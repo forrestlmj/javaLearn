@@ -1,7 +1,7 @@
 package com.github.yck.pattern.prototype.deepcopy;
 
-import com.github.yck.pattern.prototype.deepcopy.Address;
-import com.github.yck.pattern.prototype.deepcopy.Person;
+import com.github.yck.pattern.creational.prototype.deepcopy.Address;
+import com.github.yck.pattern.creational.prototype.deepcopy.Person;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

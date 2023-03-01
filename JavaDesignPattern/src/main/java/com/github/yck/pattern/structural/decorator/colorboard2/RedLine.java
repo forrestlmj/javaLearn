@@ -7,7 +7,7 @@ public class RedLine extends Decorator {
 
     @Override
     public void draw() {
-        s.draw();
+        super.draw();
         System.out.println("Decorate with RedLine.");
     }
 

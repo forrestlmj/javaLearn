@@ -6,9 +6,9 @@ public class Client {
         System.out.println("  ============ ");
         new BlueLine(new BlackLine(new RedLine(new Rectangle()))).draw();
         System.out.println("  ============ ");
-        new RedLine(new BlueLine(new BlackLine(new Triangle()))).draw();
+        new RedLine(new BlackDot(new BlackLine(new Triangle()))).draw();
         System.out.println("  ============ ");
-        new Rectangle().draw();
+        new BlackDot(new BlueLine(new BlackLine(new Circle()))).draw();
 
     }
 }

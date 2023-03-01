@@ -10,7 +10,6 @@ public abstract class Decorator implements Shape {
     /**
      * 这里递归被装饰的对象
      */
-
-    abstract public void draw();
+    public void draw(){s.draw();};
 
 }

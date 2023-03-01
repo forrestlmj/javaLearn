@@ -1,0 +1,51 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b> 装饰者模式 </b>
+    <i> 这个模式相比于其他的结构式模式比较难理解一些 </i>
+
+
+    <i> 首先，它的目的在于不去动原抽象类的情况下， </i>
+    <i> 继承改类，同时把继承该类，并组合该类 </i>
+    <i> 这样便有了 this.methodA() 中调用 super.methodA()  </i>
+    <i> 来起到装饰的作用。  </i>
+
+
+    <i> 更有意思的做法是在this.methodA() 回调 自身方法 + super.methodA  </i>
+    <i> 通过super的办法，递归的去装饰。  </i>
+
+    <i> 在想装饰者模式时候，可以把它想象成俄罗斯套娃，  </i>
+    <i> 满足继承+组合的特点，类似于大的娃形状与小的娃一样（继承），  </i>
+    <i> 同时大娃里面放小娃（组合），来起到装饰的作用（看起来像是递归 ）  </i>
+
+    https://www.geeksforgeeks.org/decorator-design-pattern-in-java-with-example/
+end note
+abstract class Drink{
+    float price
+    String name
+    getName() setName()
+    getPrice() setPrice()
+}
+note bottom: "被装饰的类"
+
+Drink <|-- CaffeDeCaf
+Drink <|-- CaffeEspresso
+Drink <|-- CaffeLongBlack
+Drink <|-- CaffeShortBlack
+
+class Decorator{
+    Drink drink
+    String Description
+}
+
+Drink <|-- Decorator
+Drink o-- Decorator
+
+Decorator <|-- Milk
+Decorator <|-- Chocolate
+
+Milk <.. Client
+Chocolate <.. Client
+CaffeEspresso <.. Client
+CaffeShortBlack <.. Client
+@enduml

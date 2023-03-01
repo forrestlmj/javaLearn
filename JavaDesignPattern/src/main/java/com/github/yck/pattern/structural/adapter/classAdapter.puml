@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b> 类适配器模式</b>
+    <li> Adapter 实现需要适配的接口，
+    继承要适配的类 </li>
+    <li> 调用方 Client 将 Adapter
+    通过参数方式传给被调用方 Phone </li>
+
+end note
+interface Voltage5V{
+    output5V()
+}
+
+class Voltage220V{
+    output220V()
+}
+
+Voltage5V <|.. VoltageAdapter
+Voltage220V <|-- VoltageAdapter
+
+class Phone{
+    charging(Voltage5V v5)
+}
+
+Voltage5V <.. Phone
+Phone <.. Client
+VoltageAdapter <.. Client
+@enduml

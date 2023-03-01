@@ -1,7 +1,6 @@
 package com.github.yck.pattern.creational.factory.improve.simplefactory;
 
 import com.github.yck.pattern.creational.factory.improve.simplefactory.pizzas.*;
-import com.github.yck.pattern.factory.improve.simplefactory.pizzas.*;
 
 
 public class SimpleFactory {

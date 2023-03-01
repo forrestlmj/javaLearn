@@ -2,7 +2,6 @@ package com.github.yck.pattern.creational.factory.improve.simplefactory;
 
 import com.github.yck.pattern.creational.factory.cmdUtil;
 import com.github.yck.pattern.creational.factory.improve.simplefactory.pizzas.*;
-import com.github.yck.pattern.factory.improve.simplefactory.pizzas.*;
 
 /**
  * 使用方，这里有了工厂类，不用再有业务代码，设置工厂类即可。

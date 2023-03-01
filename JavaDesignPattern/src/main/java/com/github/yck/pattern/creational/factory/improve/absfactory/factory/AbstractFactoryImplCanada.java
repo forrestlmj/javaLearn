@@ -4,7 +4,6 @@ import com.github.yck.pattern.creational.factory.improve.absfactory.pizzas.Chees
 import com.github.yck.pattern.creational.factory.improve.absfactory.pizzas.MaplePizza;
 import com.github.yck.pattern.creational.factory.improve.absfactory.pizzas.PepperPizza;
 import com.github.yck.pattern.creational.factory.improve.absfactory.pizzas.Pizza;
-import com.github.yck.pattern.factory.improve.absfactory.pizzas.*;
 
 public class AbstractFactoryImplCanada implements AbstractFactory {
     @Override

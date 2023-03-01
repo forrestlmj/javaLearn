@@ -4,7 +4,6 @@ import com.github.yck.pattern.creational.factory.improve.methodfactory.pizzas.Ch
 import com.github.yck.pattern.creational.factory.improve.methodfactory.pizzas.MaplePizza;
 import com.github.yck.pattern.creational.factory.improve.methodfactory.pizzas.PepperPizza;
 import com.github.yck.pattern.creational.factory.improve.methodfactory.pizzas.Pizza;
-import com.github.yck.pattern.factory.improve.methodfactory.pizzas.*;
 
 public class MethodFactoryImplCanada extends MethodFactory {
     /**

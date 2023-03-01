@@ -2,7 +2,6 @@ package com.github.yck.pattern.creational.factory.unefficient;
 
 import com.github.yck.pattern.creational.factory.cmdUtil;
 import com.github.yck.pattern.creational.factory.unefficient.pizzas.*;
-import com.github.yck.pattern.factory.unefficient.pizzas.*;
 
 /**
  * 使用方，如果增加一个新披萨类型，必须动代码

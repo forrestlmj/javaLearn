@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b> 默认适配器 也叫做 缺省适配器、接口适配器</b>
+    <i> 非常简单，定义一个抽象方法，实现接口所有方法，全是默认 </i>
+    <i> 当用到的时候，再通过匿名函数的方式继承的去写 </i>
+end note
+interface AllMethod{
+    Object map1(Object o)
+    Object map2(Object o)
+    Object map3(Object o)
+    Object map4(Object o)
+}
+
+abstract class AllDefaultMethod{
+    Object map1(Object o)
+    Object map2(Object o)
+    Object map3(Object o)
+    Object map4(Object o)
+}
+
+AllMethod <|.. AllDefaultMethod
+
+AllDefaultMethod <-- Client
+@enduml

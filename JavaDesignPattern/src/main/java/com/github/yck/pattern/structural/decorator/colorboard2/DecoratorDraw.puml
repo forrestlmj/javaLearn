@@ -1,0 +1,45 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b> 装饰者模式 </b>
+    <i> 这个是自己写的 </i>
+    <i> 被装饰类改为了接口版本 </i>
+
+end note
+
+interface Shape{
+    void draw()
+}
+
+Shape <|.. Triangle
+Shape <|.. Rectangle
+Shape <|.. Circle
+
+abstract class Decorator{
+    Shape s
+    abstract void draw(){s.draw()}
+}
+
+Shape <|-- Decorator
+
+class RedLine{
+    draw(){super.draw();print""}
+}
+Decorator <|-- RedLine
+
+class BlackLine{
+    draw(){super.draw();print""}
+}
+Decorator <|-- BlackLine
+class BlackDot{
+    draw(){super.draw();print""}
+}
+Decorator <|-- BlackDot
+
+BlackDot <.. Client
+BlackLine <.. Client
+RedLine <.. Client
+Triangle <.. Client
+Rectangle <.. Client
+Circle <.. Client
+@enduml

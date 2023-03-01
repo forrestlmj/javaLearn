@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+    <b> 实例适配器模式</b>
+    <li> 与类适配器几乎完全一样 </li>
+    <li> 只不过是通过聚合的方式，将
+     将220v进行适配，不再是继承
+     </li>
+
+end note
+interface Voltage5V{
+    output5V()
+}
+
+class Voltage220V{
+    output220V()
+}
+
+Voltage5V <|.. VoltageAdapter
+Voltage220V --o VoltageAdapter
+
+class VoltageAdapter{
+    Voltage220V v220
+    VoltageAdapter(Voltage220V v220)
+    output5V()
+}
+class Phone{
+    charging(Voltage5V v5)
+}
+
+Voltage5V <.. Phone
+Phone <.. Client
+VoltageAdapter <.. Client
+Voltage220V <.. Client
+
+@enduml

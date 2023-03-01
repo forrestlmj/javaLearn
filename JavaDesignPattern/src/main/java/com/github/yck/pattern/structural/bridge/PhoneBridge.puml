@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as N
+    <b> 桥接模式 </b>
+    <i> 乍一看很像 Adapter</i>
+    <i> 但其实它的核心在于通过抽象与接口</i>
+    <i> 将 维度1 与 维度2 分离，</i>
+    <i> 有点像抽象工厂模式那种按照层级分离，但</i>
+    <i> 桥接更像是 维度-指标 建模中的渐变维度</i>
+    <i> 比如 形状-颜色，手机种类-手机品牌，或者 饮料种类-大小型号 </i>
+    <i> 形状-颜色 https://www.baeldung.com/java-bridge-pattern </i>
+
+end note
+
+interface Brand{
+    open()
+    call()
+    close()
+}
+
+Brand <|.. Xiaomi
+Brand <|.. Huawei
+Brand <|.. Vivo
+
+abstract class Phone{
+    Brand b
+        open()
+        call()
+        close()
+    Phone(Brand b)
+}
+
+Brand o-- Phone
+Phone <|- FoldPhone
+Phone <|- UpRightPhone
+
+Phone <.. Client
+Brand <.. Client
+
+
+@enduml

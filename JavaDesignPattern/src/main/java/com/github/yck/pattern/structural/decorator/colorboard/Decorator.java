@@ -7,8 +7,14 @@ public abstract class Decorator implements Shape{
         this.s = s;
     }
 
-    public void draw(){
-        s.draw();
-
+    /**
+     * 这里递归被装饰的对象
+     */
+    @Override
+    public void drawAll() {
+        s.drawAll();
+        draw();
     }
+    abstract public void draw();
+
 }

@@ -2,11 +2,13 @@ package com.github.yck.pattern.structural.decorator.colorboard;
 
 public class Client {
     public static void main(String[] args) {
-        Shape art = new Rectangle();
-        art = new RedLine(art);
-        art.draw();
+
         System.out.println("  ============ ");
-        art = new BlackLine(art);
-        art.draw();
+        new BlueLine(new BlackLine(new RedLine(new Rectangle()))).drawAll();
+        System.out.println("  ============ ");
+        new RedLine(new BlueLine(new BlackLine(new Triangle()))).drawAll();
+        System.out.println("  ============ ");
+        new Rectangle().drawAll();
+
     }
 }

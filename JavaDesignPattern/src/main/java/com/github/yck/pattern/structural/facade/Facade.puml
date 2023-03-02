@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as N
+    <b> 门面模式</b>
+    <i> 通过一个类聚合其他类 </i>
+    <i> 统一的调度其他类的</i>
+    <i> 方法。</i>
+end note
+
+class DVDPlayer{
+    On()
+    setDVD()
+    Close()
+}
+
+class Screen{
+    Up()
+    Down()
+{
+
+class PopCorn{
+    On()
+    Pop()
+    Off()
+}
+
+class TV{
+    On()
+    CCTV()
+    Off()
+}
+class HomeTheaterFacade{
+    TV tv
+    DVDPlayer dvdPlayer
+    Screen s
+    PopCorn p
+
+    Ready()
+    Play()
+    End()
+}
+
+TV o.. HomeTheaterFacade
+DVDPlayer o.. HomeTheaterFacade
+Screen o.. HomeTheaterFacade
+PopCorn o.. HomeTheaterFacade
+
+HomeTheaterFacade <-- Client
+@enduml

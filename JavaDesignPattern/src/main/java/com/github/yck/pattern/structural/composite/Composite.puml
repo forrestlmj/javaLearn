@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as N
+    <b> 组合模式 </b>
+    <i> 组合模式的核心是通过 </i>
+    <i> 组合的方式，代替继承
+     来表示组织架构。
+
+     通过树的方式，将下一层节点
+     放在类变量中，通过add，
+     remove，等方式扩充子节点
+
+     </i>
+end note
+
+abstract class OrganizationComponent{
+    String name;
+    String desc;
+    abstract addChild(OrganizationComponent)
+    abstract removeChild(OrganizationComponent)
+    abstract OrganizationComponent getChild(String name)
+    abstract List<OrganizationComponent> listAllChild()
+}
+class University{
+    List<OrganizationComponent> child
+}
+note left: "使用 List 存储子节点"
+class College{
+    Map<String, OrganizationComponent> child
+}
+note right: "使用 Map 来存储子节点"
+OrganizationComponent <|-- University
+OrganizationComponent <|-- College
+OrganizationComponent <|-- Department
+
+University o-- College
+College o-- Department
+
+University <-- Client
+College <-- Client
+Department <-- Client
+
+@enduml

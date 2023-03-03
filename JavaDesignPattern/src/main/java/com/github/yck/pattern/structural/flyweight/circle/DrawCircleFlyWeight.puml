@@ -44,4 +44,7 @@ class CircleFactory{
 
 HashMap *-- CircleFactory
 Circle <.. CircleFactory
+
+CircleFactory <-- Client
+Circle <-- Client
 @enduml

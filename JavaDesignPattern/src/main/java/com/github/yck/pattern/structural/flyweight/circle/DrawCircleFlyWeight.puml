@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+note as a
+    <b> 网上找的 FlyWeight 模式 <b>
+
+    <i> 尚硅谷的例子有点抽象，先看
+    这个例子：
+
+    要求：在一张画布上随机画
+    50 个圆圈（调用draw方法），
+    颜色、半径有五种方案。
+
+    一般的思路：建立五十个圈圈对象，
+    来画。
+
+    FlyWeight 思路：共享同样的属性，调度
+    这里就是方案，将共享的方案放在Map中，
+    通过工厂类返回。有点像多实例的单例模式。
+
+    </i>
+end note
+
+interface Shape{
+    draw()
+}
+
+class Circle{
+    Integer x
+    Integer y
+    String color
+    String size
+    setX()
+    setY()
+    draw()
+}
+
+Shape <|.. Circle
+
+class CircleFactory{
+    Map<String, Circle> m;
+    Circle getCircle()
+}
+
+HashMap *-- CircleFactory
+Circle <.. CircleFactory
+@enduml

@@ -1,0 +1,54 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface Command{
+    execute()
+    undo()
+}
+
+Command <|.. LightOnCommand
+Command <|.. LightOffCommand
+Command <|.. TvOnCommand
+Command <|.. TvOffCommand
+Command <|.. EmptyCommand
+
+interface LightReceiver{
+    open()
+    plugin()
+    close()
+    plugOff()
+}
+
+LightReceiver o-- LightOnCommand
+LightReceiver o-- LightOffCommand
+
+LightReceiver <|.. XiaoMiLight
+LightReceiver <|.. HuaweiMiLight
+interface TvReceiver{
+    turnOn()
+    CCTV()
+    turnOff()
+}
+
+TvReceiver o-- TvOnCommand
+TvReceiver o-- TvOffCommand
+TvReceiver <|.. XiaoMiTv
+class RemoteController{
+    List<Command> = new ArrayList<>()
+    pushOnButton(Integer id)
+    pushOffButton(Integer id)
+    undo(Integer id)
+}
+
+Command <.. RemoteController
+
+XiaoMiLight <.. Client
+HuaweiMiLight <.. Client
+LightOnCommand <.. Client
+LightOffCommand <.. Client
+XiaoMiTv <.. Client
+TvOnCommand <.. Client
+TvOffCommand <.. Client
+EmptyCommand <.. Client
+RemoteController <.. Client
+@enduml

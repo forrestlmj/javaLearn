@@ -1,0 +1,30 @@
+@startuml
+'https://plantuml.com/class-diagram
+interface Iterator<T>{
+    Boolean hasNext()
+    next(T)
+    remove()
+}
+
+Iterator <|.. ComputerCollegeIterator
+Iterator <|.. InfoCollegeIterator
+
+interface College{
+    Iterator i
+    Iterator createIterator();
+}
+
+College <|.. ComputerCollege
+College <|.. InfoCollege
+ComputerCollegeIterator <.. ComputerCollege
+InfoCollegeIterator <.. InfoCollege
+
+Department --o ComputerCollege
+Department --o InfoCollege
+Department --o ComputerCollegeIterator
+Department --o InfoCollegeIterator
+
+Department o-- Client
+InfoCollege o-- Client
+ComputerCollege o-- Client
+@enduml

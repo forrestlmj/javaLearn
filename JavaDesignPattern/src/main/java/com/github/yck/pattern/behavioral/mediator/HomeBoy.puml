@@ -6,6 +6,9 @@ note as C
     <i> 闹钟-》调用咖啡 </i>
     <i> 咖啡-》同时调用电视与收音机 </i>
     <i> 电视-》 </i>
+    <i> 实现的关键点在于 </i>
+    <i> 1.Map 存储  Thing，来让中介与各个组建双向交互 </i>
+    <i> 2.各个服务只需要完成，sendMessage，中介来负责调用  </i>
 
 end note
 interface mediator{

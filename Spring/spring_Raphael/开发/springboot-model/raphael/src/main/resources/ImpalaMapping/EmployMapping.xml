@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.EmployMapper">
+
+    <!--    企业高管信息-->
+    <resultMap id="EmployResult" type="com.yzf.raphael.model.Employ">
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="ent_name" property="ent_name"/>
+        <result column="job_title" property="job_title"/>
+    </resultMap>
+    <select id="getEmployByQyid" resultMap="EmployResult">
+        select qyid,qymc,ent_name,job_title
+        from test.ent_basic_employ where qyid = #{qyid}
+    </select>
+
+</mapper>

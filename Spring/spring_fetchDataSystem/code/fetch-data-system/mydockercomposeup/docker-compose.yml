@@ -1,0 +1,55 @@
+version: '3.6'
+
+services:
+  mysqlfetchdata:
+    image: mysql:5.6
+    restart: always
+    container_name: mysqlfetchdata-container
+    ports:
+      - "0.0.0.0:3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      # - /data/yzf/var/lib/mysqlfetchdata-data:/var/lib/mysql 挂载目录可能会有问题。
+      - ./script/fetch_data_system_schema.sql:/data/application/init.sql
+    command: --init-file /data/application/init.sql
+
+  # MySQL 172.37.4.57
+
+
+  ndz_account_0:
+    image: mysql:5.6
+    restart: always
+    container_name: ndz_account_0-container
+    ports:
+      - "0.0.0.0:3357:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: yzf@2015
+    volumes:
+      # - /data/yzf/var/lib/ndz_account_0-data:/var/lib/mysql
+      # mysqldump -h 172.20.120.180 -P 5688 -u repl -p --no-data --databases fintax_account_0 --single-transaction > ndz_account_0.sql
+      - ./script/ndz_account_0.sql:/data/application/init.sql
+    command: --init-file /data/application/init.sql
+
+
+  ndz_fintask1:
+    image: mysql:5.6
+    restart: always
+    container_name: ndz_fintask1-container
+    ports:
+      - "0.0.0.0:3359:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: yzf@2015
+    volumes:
+      # - /data/yzf/var/lib/ndz_fintask1-data:/var/lib/mysql
+      # mysqldump -h 172.16.120.181 -P 5688 -u repl -p --no-data --databases fintax_task_0 fintax_task_1 fintax_task_2 fintax_task_3 --single-transaction > ndz_fintask1.sql
+      - ./script/ndz_fintask1.sql:/data/application/init.sql
+    command: --init-file /data/application/init.sql
+
+
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "0.0.0.0:8080:8080"

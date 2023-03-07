@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.DwsCompanyFinTaxInfoMMapper">
+    <resultMap id="getFinInfoMResult" type="com.yzf.raphael.model.DwsCompanyFinTaxInfoM">
+        <!-- 用id属性来映射主键字段 -->
+<!--        <id property="id" column="uid"/>-->
+<!--         用result属性来映射非主键字段 -->
+        <result column="set_cd" property="set_cd"/>
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+        <result column="area_code" property="area_code"/>
+        <result column="area_name" property="area_name"/>
+        <result column="voucher_cnt" property="voucher_cnt"/>
+        <result column="manual_voucher_cnt" property="manual_voucher_cnt"/>
+        <result column="bank_voucher_cnt" property="bank_voucher_cnt"/>
+        <result column="fee_voucher_cnt" property="fee_voucher_cnt"/>
+        <result column="tax_provision_voucher_cnt" property="tax_provision_voucher_cnt"/>
+        <result column="input_invoice_voucher_cnt" property="input_invoice_voucher_cnt"/>
+        <result column="output_invoice_voucher_cnt" property="output_invoice_voucher_cnt"/>
+        <result column="bank_bill_cnt" property="bank_bill_cnt"/>
+        <result column="fee_amt_total" property="fee_amt_total"/>
+    </resultMap>
+    <select id="getFinInfoM" resultMap="getFinInfoMResult">
+        select
+set_cd,k_kjnd,k_kjqj,qyid,qymc,gsid,
+gsmc,area_code,area_name,voucher_cnt,manual_voucher_cnt,bank_voucher_cnt,
+fee_voucher_cnt,tax_provision_voucher_cnt,input_invoice_voucher_cnt,
+output_invoice_voucher_cnt,bank_bill_cnt,fee_amt_total
+from dws.dws_company_fin_tax_info_m where qyid = #{qyid}
+        and k_kjnd &gt;= #{k_kjnd_start} and k_kjqj &gt;= #{k_kjqj_start}
+        and k_kjnd &lt;= #{k_kjnd_end} and k_kjqj &lt;= #{k_kjqj_end}
+    </select>
+    <resultMap id="getTaxInfoMResult" type="com.yzf.raphael.model.DwsCompanyFinTaxInfoM">
+        <!-- 用id属性来映射主键字段 -->
+        <!--        <id property="id" column="uid"/>-->
+        <!-- 用result属性来映射非主键字段 -->
+        <result column="set_cd" property="set_cd"/>
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+        <result column="area_code" property="area_code"/>
+        <result column="area_name" property="area_name"/>
+        <result column="declare_amt_total" property="declare_amt_total"/>
+        <result column="personal_declare_cnt" property="personal_declare_cnt"/>
+        <result column="person_tax_amt" property="person_tax_amt"/>
+        <result column="vat_amt" property="vat_amt"/>
+        <result column="add_tax_amt" property="add_tax_amt"/>
+        <result column="company_tax_amt" property="company_tax_amt"/>
+        <result column="other_tax_amt" property="other_tax_amt"/>
+        <result column="other_tax_except_social_security" property="other_tax_except_social_security"/>
+
+    </resultMap>
+    <select id="getTaxInfoM" resultMap="getTaxInfoMResult">
+        select
+         set_cd,k_kjnd,k_kjqj,qyid,qymc,gsid,gsmc,
+         area_code,area_name,declare_amt_total,personal_declare_cnt,person_tax_amt,
+         vat_amt,add_tax_amt,company_tax_amt,other_tax_amt,other_tax_except_social_security
+         from dws.dws_company_fin_tax_info_m where qyid = #{qyid}
+        and k_kjnd &gt;= #{k_kjnd_start} and k_kjqj &gt;= #{k_kjqj_start}
+        and k_kjnd &lt;= #{k_kjnd_end} and k_kjqj &lt;= #{k_kjqj_end}
+
+    </select>
+</mapper>

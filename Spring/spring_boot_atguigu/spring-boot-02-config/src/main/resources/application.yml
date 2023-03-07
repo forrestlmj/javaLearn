@@ -1,0 +1,26 @@
+
+spring:
+  profiles:
+    active: prod
+service:
+  name: thisService
+test:
+  testvalue2: testvaluevalue2
+  testvalue1: testvaluevalue1
+
+---
+server:
+  port: 8082
+spring:
+  profiles: dev
+test:
+  testvalue2: testvaluevalue2Dev
+debug: true
+---
+server:
+  port: 8083
+spring:
+  profiles: prod
+test:
+  testvalue2: testvaluevalue2Prod
+

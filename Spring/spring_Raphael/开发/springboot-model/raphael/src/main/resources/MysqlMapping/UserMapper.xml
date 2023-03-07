@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.MysqlMapping.UserMapper">
+    <!--    企业基本信息 -->
+    <resultMap id="UserResult" type="com.yzf.raphael.model.Mysql.User">
+        <result column="username" property="username"/>
+        <result column="password" property="password"/>
+    </resultMap>
+    <select id="getUserByName" resultMap="UserResult">
+        SELECT username,password from raphael.user where username = #{username,jdbcType=VARCHAR}
+    </select>
+    <insert id="save">
+        insert into raphael.user(username, password)
+        values(#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+    </insert>
+
+</mapper>

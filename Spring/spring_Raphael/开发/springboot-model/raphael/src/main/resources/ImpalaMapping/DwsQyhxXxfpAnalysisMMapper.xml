@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.DwsQyhxXxfpAnalysisMMapper">
+    <resultMap id="getDwsQyhxXxfpAnalysisMResult" type="com.yzf.raphael.model.DwsQyhxXxfpAnalysisM">
+        <!-- 用id属性来映射主键字段 -->
+<!--        <id property="id" column="uid"/>-->
+        <!-- 用result属性来映射非主键字段 -->
+        <result column="set_cd" property="set_cd"/>
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+        <result column="area_code" property="area_code"/>
+        <result column="area_name" property="area_name"/>
+        <result column="red_cnt" property="red_cnt"/>
+        <result column="red_amt" property="red_amt"/>
+        <result column="red_tax" property="red_tax"/>
+        <result column="void_cnt" property="void_cnt"/>
+        <result column="void_amt" property="void_amt"/>
+        <result column="void_tax" property="void_tax"/>
+        <result column="special_cnt" property="special_cnt"/>
+        <result column="special_amt" property="special_amt"/>
+        <result column="special_tax" property="special_tax"/>
+        <result column="general_cnt" property="general_cnt"/>
+        <result column="general_amt" property="general_amt"/>
+        <result column="general_tax" property="general_tax"/>
+        <result column="red_amt_rate" property="red_amt_rate"/>
+        <result column="red_cnt_rate" property="red_cnt_rate"/>
+        <result column="void_amt_rate" property="void_amt_rate"/>
+        <result column="void_cnt_rate" property="void_cnt_rate"/>
+        <result column="special_amt_rate" property="special_amt_rate"/>
+        <result column="special_cnt_rate" property="special_cnt_rate"/>
+        <result column="general_amt_rate" property="general_amt_rate"/>
+        <result column="general_cnt_rate" property="general_cnt_rate"/>
+        <result column="sum_cnt" property="sum_cnt"/>
+        <result column="sum_amt" property="sum_amt"/>
+        <result column="hand_cnt" property="hand_cnt"/>
+        <result column="down_top10_rate" property="down_top10_rate"/>
+        <result column="down_qy_cnt" property="down_qy_cnt"/>
+        <result column="first_kprq" property="first_kprq"/>
+        <result column="last_kprq" property="last_kprq"/>
+        <result column="flag" property="flag"/>
+
+    </resultMap>
+    <select id="getDwsQyhxXxfpAnalysisM" resultMap="getDwsQyhxXxfpAnalysisMResult">
+        select * from dws.dws_qyhx_xxfp_analysis_m where qyid = #{qyid} and flag = #{flag} and k_kjnd = #{k_kjnd} and k_kjqj = #{k_kjqj}
+    </select>
+    <resultMap id="ReceiptAnalysisDetailResult" type="com.yzf.raphael.model.ReceiptAnalysisDetail">
+        <!-- 用id属性来映射主键字段 -->
+        <!--        <id property="id" column="uid"/>-->
+        <!-- 用result属性来映射非主键字段 -->
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="flag" property="flag"/>
+        <result column="amt" property="amt"/>
+    </resultMap>
+    <select id="getReceiptAnalysisDetail" resultMap="ReceiptAnalysisDetailResult">
+        select k_kjnd,k_kjqj,qyid,qymc,flag
+        <choose>
+            <when test='type == "sum_amt"'>
+                ,sum_amt as amt
+            </when>
+            <when test='type == "red_amt"'>
+                ,red_amt as amt
+            </when>
+            <when test='type == "void_amt"'>
+                ,void_amt as amt
+            </when>
+        </choose>
+        from dws.dws_qyhx_xxfp_analysis_m where qyid = #{qyid} and k_kjnd &gt;= #{k_kjnd_start} and  k_kjnd &lt;= #{k_kjnd_end}
+        and flag = 1
+    </select>
+</mapper>

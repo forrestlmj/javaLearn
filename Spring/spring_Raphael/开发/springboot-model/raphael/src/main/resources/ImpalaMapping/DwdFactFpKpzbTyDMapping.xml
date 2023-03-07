@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.DwdFactFpKpzbTyDMapper">
+    <resultMap id="getResult" type="com.yzf.raphael.model.DwdFactFpKpzbTyD">
+        <!-- 用id属性来映射主键字段 -->
+<!--        <id property="id" column="uid"/>-->
+        <!-- 用result属性来映射非主键字段 -->
+        <result column="set_cd" property="set_cd"/>
+        <result column="k_fpid" property="k_fpid"/>
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+        <result column="k_ztdm" property="k_ztdm"/>
+        <result column="k_ztmc" property="k_ztmc"/>
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="kjndqj" property="kjndqj"/>
+        <result column="k_djly" property="k_djly"/>
+        <result column="k_kpzlid" property="k_kpzlid"/>
+        <result column="k_sfdk" property="k_sfdk"/>
+        <result column="k_jehj" property="k_jehj"/>
+        <result column="k_sehj" property="k_sehj"/>
+        <result column="k_jshj" property="k_jshj"/>
+        <result column="k_zfbz" property="k_zfbz"/>
+        <result column="k_gfdwmc" property="k_gfdwmc"/>
+        <result column="k_kprq" property="k_kprq"/>
+
+    </resultMap>
+    <select id="getDwdFactFpKpzbTyDTop10" resultMap="getResult">
+    select    set_cd,
+        k_fpid,
+        qyid,
+        qymc,
+        gsid,
+        gsmc,
+        k_ztdm,
+        k_ztmc,
+        k_kjnd,
+        k_kjqj,
+        kjndqj,
+        case when k_djly = '1' then '手工填写'
+        when k_djly = '2' then 'EXCEL导入'
+        when k_djly = '3' then '自动取数'
+        else k_djly end as k_djly,
+        case when k_kpzlid = '0001' then '增值税专用发票'
+             when k_kpzlid = '0011' then '增值税普通发票'
+             when k_kpzlid = '0031' then '农产品收购发票、销售发票、普通发票'
+             when k_kpzlid = '51' then '货物运输业增值税专用发票'
+             when k_kpzlid = '61' then '机动车销售统一发票'
+             when k_kpzlid = '71' then '国税通用机打发票'
+             when k_kpzlid = '81' then '国税其他发票'
+             when k_kpzlid = '101' then '地税发票'
+        else k_kpzlid
+        end as k_kpzlid,
+        k_sfdk,
+        k_jehj,
+        k_sehj,
+        k_jshj,
+        k_zfbz,
+        k_gfdwmc,
+        k_kprq
+        from dwd.dwd_fact_fp_kpzb_ty_d where qyid = #{qyid} and k_kjnd = #{k_kjnd} and k_kjqj = #{k_kjqj} order by k_jehj limit  10;
+
+
+
+ </select>
+</mapper>

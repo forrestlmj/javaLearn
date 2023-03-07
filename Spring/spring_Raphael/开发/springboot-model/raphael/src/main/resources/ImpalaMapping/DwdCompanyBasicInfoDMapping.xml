@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.DwdCompanyBasicInfoDMapper">
+    <!--    企业基本信息 -->
+    <resultMap id="DwdCompanyBasicInfoDResult" type="com.yzf.raphael.model.DwdCompanyBasicInfoD">
+<!--        <result column="set_cd" property="set_cd"/>-->
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+<!--        <result column="gslx" property="gslx"/>-->
+        <result column="k_ztdm" property="k_ztdm"/>
+        <result column="k_ztmc" property="k_ztmc"/>
+        <result column="nsrzgdm" property="nsrzgdm"/>
+        <result column="nsrxydj" property="nsrxydj"/>
+        <result column="djzclx_dm" property="djzclx_dm"/>
+        <result column="jsfw" property="jsfw"/>
+        <result column="qy_zcrq" property="qy_zcrq"/>
+<!--        <result column="qy_dqbm" property="qy_dqbm"/>-->
+        <result column="dz" property="dz"/>
+        <result column="zczb" property="zczb"/>
+        <result column="sszb" property="sszb"/>
+        <result column="credit_code" property="credit_code"/>
+        <result column="oper_name" property="oper_name"/>
+        <result column="econ_kind" property="econ_kind"/>
+        <result column="start_date" property="start_date"/>
+        <result column="check_date" property="check_date"/>
+        <result column="status" property="status"/>
+        <result column="business_term" property="business_term"/>
+        <result column="industry" property="industry"/>
+<!--        <result column="ty_kjnd" property="ty_kjnd"/>-->
+<!--        <result column="ty_kjqj" property="ty_kjqj"/>-->
+<!--        <result column="ty_kjndqj" property="ty_kjndqj"/>-->
+        <result column="ty_zt" property="ty_zt"/>
+<!--        <result column="qylxmc" property="qylxmc"/>-->
+<!--        <result column="area_code" property="area_code"/>-->
+<!--        <result column="area_name" property="area_name"/>-->
+        <result column="province_name" property="province_name"/>
+        <result column="city_name" property="city_name"/>
+        <result column="county_name" property="county_name"/>
+        <result column="zt" property="zt"/>
+<!--        <result column="dzgs_zcrq" property="dzgs_zcrq"/>-->
+        <result column="csfl_type" property="csfl_type"/>
+        <result column="product_type" property="product_type"/>
+        <result column="dzgs_create_time" property="dzgs_create_time"/>
+<!--        <result column="k_kjhszzid" property="k_kjhszzid"/>-->
+        <result column="k_qykjnd" property="k_qykjnd"/>
+        <result column="k_qykjqj" property="k_qykjqj"/>
+        <result column="k_ztqybz" property="k_ztqybz"/>
+        <result column="k_creatr_data" property="k_creatr_data"/>
+
+    </resultMap>
+    <select id="selectByQyid" resultMap="DwdCompanyBasicInfoDResult">
+        SELECT * from dwd.dwd_company_basic_info_d where qyid = #{qyid} limit 1
+    </select>
+    <!--    企业简要信息-->
+    <resultMap id="CompanyBriefInfoResult" type="com.yzf.raphael.model.CompanyBriefInfo">
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+        <result column="dz" property="dz"/>
+<!--        <result column="area_name" property="area_name"/>-->
+        <result column="province_name" property="province_name"/>
+        <result column="city_name" property="city_name"/>
+        <result column="county_name" property="county_name"/>
+        <result column="zt" property="zt"/>
+        <result column="industry" property="industry"/>
+        <result column="oper_name" property="oper_name"/>
+        <result column="zczb" property="zczb"/>
+        <result column="start_date" property="start_date"/>
+        <result column="page_id" property="page_id"/>
+        <result column="page_size" property="page_size"/>
+    </resultMap>
+    <select id="getCompanyBriefInfoByQymc" resultMap="CompanyBriefInfoResult">
+        SELECT * from dwd.dwd_company_basic_info_d where qymc = #{qymc} limit 1
+    </select>
+    <select id="getCompanyBriefInfoByQyid" resultMap="CompanyBriefInfoResult">
+        SELECT * from dwd.dwd_company_basic_info_d where qyid = #{qyid} limit 1
+    </select>
+    <select id="getCompanyBriefByMultiCondition" resultMap="CompanyBriefInfoResult"
+            parameterType="com.yzf.raphael.model.DwsFintechOftenIndexM">
+        select
+        c.qyid,
+        c.qymc,
+        c.gsid,
+        c.gsmc,
+        c.dz,
+        c.province_name,
+        c.city_name,
+        c.county_name,
+        c.zt,
+        c.industry,
+        c.oper_name,
+        c.zczb,
+        c.start_date,
+        #{page_id} as page_id,
+        #{page_size} as page_size
+        from (
+        select qyid from dws.dws_fintech_often_index_m
+        <where>
+                1 = 1
+            <if test="industry != null">and industry = #{industry}</if>
+            <if test="qy_dqbm != null">and qy_dqbm like concat(#{qy_dqbm},'%')</if>
+
+            <if test="recent_oneyear_operating_income_l &gt; 0"> and	recent_oneyear_operating_income &gt;= #{recent_oneyear_operating_income_l}</if>
+            <if test="recent_oneyear_net_profit_l &gt; 0">and	recent_oneyear_net_profit &gt;= #{recent_oneyear_net_profit_l}</if>
+            <if test="recent_oneyear_alm_rate_l &gt; 0">and	recent_oneyear_alm_rate &gt;= #{recent_oneyear_alm_rate_l}</if>
+            <if test="recent_oneyear_all_tax_amt_l &gt; 0">and	recent_oneyear_all_tax_amt &gt;= #{recent_oneyear_all_tax_amt_l}</if>
+            <if test="recent_oneyear_vat_amt_l &gt; 0">and	recent_oneyear_vat_amt &gt;= #{recent_oneyear_vat_amt_l}</if>
+            <if test="recent_oneyear_valid_invoice_amt_l &gt; 0">and	recent_oneyear_valid_invoice_amt &gt;= #{recent_oneyear_valid_invoice_amt_l}</if>
+            <if test="recent_oneyear_down_qy_cnt_l &gt; 0">and	recent_oneyear_down_qy_cnt &gt;= #{recent_oneyear_down_qy_cnt_l}</if>
+            <if test="recent_sixmonth_invoice_compare_l &gt; 0">and	recent_sixmonth_invoice_compare &gt;= #{recent_sixmonth_invoice_compare_l}</if>
+            <if test="recent_oneyear_valid_invoice_month_cnt_l &gt; 0">and	recent_oneyear_valid_invoice_month_cnt &gt;= #{recent_oneyear_valid_invoice_month_cnt_l}</if>
+            <if test="recent_oneyear_red_rate_l &gt; 0">and	recent_oneyear_red_rate &gt;= #{recent_oneyear_red_rate_l}</if>
+            <if test="recent_oneyear_valid_invoice_cnt_l &gt; 0">and	recent_oneyear_valid_invoice_cnt &gt;= #{recent_oneyear_valid_invoice_cnt_l}</if>
+            <if test="recent_oneyear_void_invoice_rate_l &gt; 0">and	recent_oneyear_void_invoice_rate &gt;= #{recent_oneyear_void_invoice_rate_l}</if>
+            <if test="qy_zcrq_l != null">and	qy_zcrq &gt;= #{qy_zcrq_l}</if>
+
+            <if test="recent_oneyear_operating_income_r &gt; 0">and	recent_oneyear_operating_income &lt;= #{recent_oneyear_operating_income_r}</if>
+            <if test="recent_oneyear_net_profit_r &gt; 0">and	recent_oneyear_net_profit &lt;= #{recent_oneyear_net_profit_r}</if>
+            <if test="recent_oneyear_alm_rate_r &gt; 0">and	recent_oneyear_alm_rate &lt;= #{recent_oneyear_alm_rate_r}</if>
+            <if test="recent_oneyear_all_tax_amt_r &gt; 0">and	recent_oneyear_all_tax_amt &lt;= #{recent_oneyear_all_tax_amt_r}</if>
+            <if test="recent_oneyear_vat_amt_r &gt; 0">and	recent_oneyear_vat_amt &lt;= #{recent_oneyear_vat_amt_r}</if>
+            <if test="recent_oneyear_valid_invoice_amt_r &gt; 0">and	recent_oneyear_valid_invoice_amt &lt;= #{recent_oneyear_valid_invoice_amt_r}</if>
+            <if test="recent_oneyear_down_qy_cnt_r &gt; 0">and	recent_oneyear_down_qy_cnt &lt;= #{recent_oneyear_down_qy_cnt_r}</if>
+            <if test="recent_sixmonth_invoice_compare_r &gt; 0">and	recent_sixmonth_invoice_compare &lt;= #{recent_sixmonth_invoice_compare_r}</if>
+            <if test="recent_oneyear_valid_invoice_month_cnt_r &gt; 0">and	recent_oneyear_valid_invoice_month_cnt &lt;= #{recent_oneyear_valid_invoice_month_cnt_r}</if>
+            <if test="recent_oneyear_red_rate_r &gt; 0">and	recent_oneyear_red_rate &lt;= #{recent_oneyear_red_rate_r}</if>
+            <if test="recent_oneyear_valid_invoice_cnt_r &gt; 0">and	recent_oneyear_valid_invoice_cnt &lt;= #{recent_oneyear_valid_invoice_cnt_r}</if>
+            <if test="recent_oneyear_void_invoice_rate_r &gt; 0">and	recent_oneyear_void_invoice_rate &lt;= #{recent_oneyear_void_invoice_rate_r}</if>
+            <if test="qy_zcrq_r != null">and	qy_zcrq &lt;= #{qy_zcrq_r}</if>
+
+
+        </where>
+        order by set_cd
+        limit #{page_size} offset #{page_size} * (#{page_id} - 1)
+
+        ) a inner join dwd.dwd_company_basic_info_d c on a.qyid = c.qyid
+    </select>
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.DwsReportProfitMMapper">
+    <resultMap id="getResult" type="com.yzf.raphael.model.DwsReportProfitM">
+        <!-- 用id属性来映射主键字段 -->
+<!--        <id property="id" column="uid"/>-->
+        <result column="set_cd" property="set_cd"/>
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="report_type" property="report_type"/>
+        <result column="index_type" property="index_type"/>
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+        <result column="area_code" property="area_code"/>
+        <result column="area_name" property="area_name"/>
+        <result column="operating_income" property="operating_income"/>
+        <result column="less_operating_costs" property="less_operating_costs"/>
+        <result column="business_tax_and_surcharges" property="business_tax_and_surcharges"/>
+        <result column="sale_costs" property="sale_costs"/>
+        <result column="manage_costs" property="manage_costs"/>
+        <result column="finance_costs" property="finance_costs"/>
+        <result column="assets_impairment_loss" property="assets_impairment_loss"/>
+        <result column="plus_income_changes_in_fair_value" property="plus_income_changes_in_fair_value"/>
+        <result column="investment_income" property="investment_income"/>
+        <result column="includ_investment_income_joint_ventures" property="includ_investment_income_joint_ventures"/>
+        <result column="operating_profit" property="operating_profit"/>
+        <result column="plus_non_operating_income" property="plus_non_operating_income"/>
+        <result column="includ_gains_disposal" property="includ_gains_disposal"/>
+        <result column="less_non_operating_expenses" property="less_non_operating_expenses"/>
+        <result column="includ_loss_on_disposal" property="includ_loss_on_disposal"/>
+        <result column="profit_total" property="profit_total"/>
+        <result column="less_tax_costs" property="less_tax_costs"/>
+        <result column="net_profit" property="net_profit"/>
+        <result column="other_comprehensive_profit" property="other_comprehensive_profit"/>
+        <result column="other_comprehensive_profit_1" property="other_comprehensive_profit_1"/>
+        <result column="other_comprehensive_profit_11" property="other_comprehensive_profit_11"/>
+        <result column="other_comprehensive_profit_12" property="other_comprehensive_profit_12"/>
+        <result column="other_comprehensive_profit_2" property="other_comprehensive_profit_2"/>
+        <result column="other_comprehensive_profit_21" property="other_comprehensive_profit_21"/>
+        <result column="other_comprehensive_profit_22" property="other_comprehensive_profit_22"/>
+        <result column="other_comprehensive_profit_23" property="other_comprehensive_profit_23"/>
+        <result column="other_comprehensive_profit_24" property="other_comprehensive_profit_24"/>
+        <result column="other_comprehensive_profit_25" property="other_comprehensive_profit_25"/>
+        <result column="comprehensive_profit_total" property="comprehensive_profit_total"/>
+        <result column="per_share_profit" property="per_share_profit"/>
+        <result column="basic_per_share_profit" property="basic_per_share_profit"/>
+        <result column="dilution_per_share_profit" property="dilution_per_share_profit"/>
+
+    </resultMap>
+    <select id="selectByQyidKjndKjqj" resultMap="getResult">
+        select * from dws.dws_report_profit_m where qyid = #{qyid} and k_kjnd = #{k_kjnd} and k_kjqj = #{k_kjqj}
+    </select>
+</mapper>

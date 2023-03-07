@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ECharts 企业上下游供应图谱</title>
+    <script src="jquery-1.10.2.min.js"></script>
+    <script src="echarts.min.js"></script>
+    <style type="text/css">
+        html, body, #main { height: 100%; width: 100%; margin: 0; padding: 0 }
+    </style>
+</head>
+<body>
+    <div id="main" style=""></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        option = {
+            title: { text: '企业上下游供应图谱' },
+            // tooltip: {
+            //     formatter: function (x) {
+            //         return x.data.des;
+            //     }
+            // },
+            series: [
+                {
+                    type: 'graph',
+                    layout: 'force',
+                    symbolSize: 80,
+                    roam: true,
+                    edgeSymbol: ['circle', 'arrow'],
+                    edgeSymbolSize: [4, 10],
+                    edgeLabel: {
+                        normal: {
+                            textStyle: {
+                                fontSize: 20
+                            }
+                        }
+                    },
+                    force: {
+                        // initLayout: 'circular'
+                        gravity: 0.1,
+                        repulsion: 1500,
+                        edgeLength: [0, 80],
+                        layoutAnimation : true
+                    },
+                    draggable: true,
+                    itemStyle: {
+                        normal: {
+                            color: '#4b565b'
+                        }
+                    },
+                    lineStyle: {
+                        normal: {
+                            width: 2,
+                            color: '#4b565b'
+
+                        }
+                    },
+                    edgeLabel: {
+                        normal: {
+                            show: true,
+                            formatter: function (x) {
+                                return x.data.name;
+                            }
+                        }
+                    },
+                    label: {
+                        normal: {
+                            show: true,
+                            textStyle: {
+                            }
+                        }
+                    },
+                    data: [
+                        {name:'上海圆迈贸易有限公司'},
+                        {name:'安徽仁智信纸塑材料有限公司'},
+                        {name:'安徽安庆长江公路大桥有限责任公司'},
+                        {name:'安徽皖通高速公路股份有限公司'},
+                        {name:'安徽省交通控股集团有限公司'},
+                        {name:'昆山京东尚信贸易有限公司'},
+                        {name:'杭州京东惠景贸易有限公司'},
+                        {name:'江苏宁常镇溧高速公路有限公司'},
+                        {name:'江苏宁杭高速公路有限公司'},
+                        {name:'江苏宁沪高速公路股份有限公司'},
+                        {name:'江苏广靖锡澄高速公路有限责任公司'},
+                        {name:'江苏沿江高速公路有限公司'},
+                        {name:'江苏溧马高速公路有限责任公司'},
+                        {name:'江苏皇冠新材料科技有限公司'},
+                        {name:'湖北富和冠电子材料有限公司'},
+                        {name:'烟台众瀚新材料科技有限公司'},
+                        {name:'苏州工业园区自助发票代开八'},
+                        {name:'苏州市华测检测技术有限公司'},
+                        {name:'苏州市高速公路管理有限公司常昆分公司'},
+                        {name:'苏州晶鸿泰电子有限公司'},
+                        {name:'苏州曼德维拉电子材料有限公司'},
+                        {name:'苏州绕城高速公路有限公司'},
+                        {name:'苏州通捷祥电子材料有限公司'},
+
+                        {name:'苏州科伟达电子材料有限公司',itemStyle: {normal: {color: 'red'}}},
+
+                        {name:'昆山优诺迪电子材料有限公司'},
+                        {name:'昆山昊奕嘉电子材料有限公司'},
+                        {name:'苏州钛旺电子有限公司'},
+
+                    ],
+                    links: [
+                        {source:'上海圆迈贸易有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:46.02,开票张数:1'},
+                        {source:'安徽仁智信纸塑材料有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:23708.85,开票张数:1'},
+                        {source:'安徽安庆长江公路大桥有限责任公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:18.45,开票张数:1'},
+                        {source:'安徽皖通高速公路股份有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:12.28,开票张数:1'},
+                        {source:'安徽省交通控股集团有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:202.04,开票张数:2'},
+                        {source:'昆山京东尚信贸易有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:4.87,开票张数:1'},
+                        {source:'杭州京东惠景贸易有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:44.16,开票张数:1'},
+                        {source:'江苏宁常镇溧高速公路有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:37.19,开票张数:2'},
+                        {source:'江苏宁杭高速公路有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:34.5,开票张数:1'},
+                        {source:'江苏宁沪高速公路股份有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:60.8,开票张数:2'},
+                        {source:'江苏广靖锡澄高速公路有限责任公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:23.72,开票张数:1'},
+                        {source:'江苏沿江高速公路有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:7.92,开票张数:1'},
+                        {source:'江苏溧马高速公路有限责任公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:34.53,开票张数:2'},
+                        {source:'江苏皇冠新材料科技有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:13168.14,开票张数:1'},
+                        {source:'湖北富和冠电子材料有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:31637.17,开票张数:1'},
+                        {source:'烟台众瀚新材料科技有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:54701.32,开票张数:6'},
+                        {source:'苏州工业园区自助发票代开八',target:'苏州科伟达电子材料有限公司',name:'开票金额:91589.12,开票张数:3'},
+                        {source:'苏州市华测检测技术有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:1226.42,开票张数:1'},
+                        {source:'苏州市高速公路管理有限公司常昆分公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:6.35,开票张数:1'},
+                        {source:'苏州晶鸿泰电子有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:3094.5,开票张数:1'},
+                        {source:'苏州曼德维拉电子材料有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:1828.8,开票张数:1'},
+                        {source:'苏州绕城高速公路有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:19.87,开票张数:1'},
+                        {source:'苏州通捷祥电子材料有限公司',target:'苏州科伟达电子材料有限公司',name:'开票金额:5688.94,开票张数:1'},
+
+
+                        {source:'苏州科伟达电子材料有限公司',target:'昆山优诺迪电子材料有限公司',name:'开票金额:193584.07,开票数量:2'},
+                        {source:'苏州科伟达电子材料有限公司',target:'昆山昊奕嘉电子材料有限公司',name:'开票金额:247019.46,开票数量:3'},
+                        {source:'苏州科伟达电子材料有限公司',target:'苏州钛旺电子有限公司',name:'开票金额:47350.44,开票数量:1'},
+
+                    ]
+                }
+            ]
+        };
+        myChart.setOption(option);
+    </script>
+</body>
+</html>

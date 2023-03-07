@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.DwsReportCashFlowMMapper">
+    <resultMap id="getResult" type="com.yzf.raphael.model.DwsReportCashFlowM">
+        <!-- 用id属性来映射主键字段 -->
+<!--        <id property="id" column="uid"/>-->
+        <result column="set_cd" property="set_cd"/>
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="report_type" property="report_type"/>
+        <result column="index_type" property="index_type"/>
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+        <result column="area_code" property="area_code"/>
+        <result column="area_name" property="area_name"/>
+        <result column="received_sale_or_service" property="received_sale_or_service"/>
+        <result column="received_refund_taxes" property="received_refund_taxes"/>
+        <result column="received_other_operation_act" property="received_other_operation_act"/>
+        <result column="received_subtotal_operation_act" property="received_subtotal_operation_act"/>
+        <result column="paid_buy_service_cash" property="paid_buy_service_cash"/>
+        <result column="paid_staff_cash" property="paid_staff_cash"/>
+        <result column="paid_taxes" property="paid_taxes"/>
+        <result column="paid_other_operation_act" property="paid_other_operation_act"/>
+        <result column="paid_subtotal_operation_act" property="paid_subtotal_operation_act"/>
+        <result column="net_operation_act_cash_flow" property="net_operation_act_cash_flow"/>
+        <result column="received_investments_cash" property="received_investments_cash"/>
+        <result column="received_investments_income_cash" property="received_investments_income_cash"/>
+        <result column="received_disposal_assets_cash" property="received_disposal_assets_cash"/>
+        <result column="received_disposal_sub_units" property="received_disposal_sub_units"/>
+        <result column="received_other_investments_cash" property="received_other_investments_cash"/>
+        <result column="received_subtotal_investments_cash" property="received_subtotal_investments_cash"/>
+        <result column="paid_buy_assets_cash" property="paid_buy_assets_cash"/>
+        <result column="paid_investments_cash" property="paid_investments_cash"/>
+        <result column="paid_sub_units" property="paid_sub_units"/>
+        <result column="paid_other_investments_cash" property="paid_other_investments_cash"/>
+        <result column="paid_subtotal_investments_cash" property="paid_subtotal_investments_cash"/>
+        <result column="net_investment_act_cash_flow" property="net_investment_act_cash_flow"/>
+        <result column="received_absorb_investment_cash" property="received_absorb_investment_cash"/>
+        <result column="received_borrow_cash" property="received_borrow_cash"/>
+        <result column="received_like_financial_cash" property="received_like_financial_cash"/>
+        <result column="received_subtotal_financial_cash" property="received_subtotal_financial_cash"/>
+        <result column="paid_borrow_cash" property="paid_borrow_cash"/>
+        <result column="paid_intr_cash" property="paid_intr_cash"/>
+        <result column="paid_like_financial_cash" property="paid_like_financial_cash"/>
+        <result column="paid_subtotal_financial_cash" property="paid_subtotal_financial_cash"/>
+        <result column="net_financial_act_cash_flow" property="net_financial_act_cash_flow"/>
+        <result column="exchange_rate_movement_cash_flow" property="exchange_rate_movement_cash_flow"/>
+        <result column="net_increase_cash_flow" property="net_increase_cash_flow"/>
+        <result column="start_bal_cash_flow" property="start_bal_cash_flow"/>
+        <result column="end_bal_cash_flow" property="end_bal_cash_flow"/>
+
+
+    </resultMap>
+    <select id="selectByQyidKjndKjqj" resultMap="getResult">
+        select * from dws.dws_report_cash_flow_m where qyid = #{qyid} and k_kjnd = #{k_kjnd} and k_kjqj = #{k_kjqj}
+    </select>
+</mapper>

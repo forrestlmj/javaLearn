@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.ShareholderMapper">
+    <!--    企业股东信息-->
+    <resultMap id="ShareholderResult" type="com.yzf.raphael.model.Shareholder">
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="holder_name" property="holder_name"/>
+        <result column="holder_type" property="holder_type"/>
+        <result column="holder_radio" property="holder_radio"/>
+        <result column="should_capi" property="should_capi"/>
+        <result column="subscribed_type" property="subscribed_type"/>
+        <result column="subscribed_time" property="subscribed_time"/>
+    </resultMap>
+    <select id="getShareholderByQyid" resultMap="ShareholderResult">
+        select qyid,qymc,holder_name,holder_type,holder_radio,
+        should_capi,subscribed_type,subscribed_time from test.ent_basic_shareholder where qyid = #{qyid}
+    </select>
+</mapper>

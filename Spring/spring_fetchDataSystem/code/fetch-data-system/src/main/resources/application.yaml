@@ -1,0 +1,45 @@
+spring:
+#  config:
+#    activate:
+#      on-profile:
+#        - dev
+  datasource:
+    url: jdbc:mysql://172.37.4.57:3306/fetch_data_system?useSSL=false&characterEncoding=UTF-8
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    #   数据源其他配置
+#
+#    initialSize: 5
+#    minIdle: 5
+#    maxActive: 20
+#    maxWait: 60000
+#    timeBetweenEvictionRunsMillis: 60000
+#    minEvictableIdleTimeMillis: 300000
+#    validationQuery: SELECT 1 FROM DUAL
+#    testWhileIdle: true
+#    testOnBorrow: false
+#    testOnReturn: false
+#    poolPreparedStatements: true
+#    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+#    filters: stat,wall,log4j2
+#    maxPoolPreparedStatementPerConnectionSize: 20
+#    useGlobalDataSourceStat: true
+#    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#    type: com.alibaba.druid.pool.DruidDataSource
+#---
+#spring:
+#  profiles: dev
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: 'create'
+    show-sql: true
+server:
+  port: 8081
+#debug: true
+##---
+##  spring:
+##    profiles: prod
+##  server:
+##    port: 8081

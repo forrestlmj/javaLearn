@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.DwsQyhxUpQyFpDetailMMapper">
+    <resultMap id="getResult" type="com.yzf.raphael.model.DwsQyhxUpQyFpDetailM">
+        <!-- 用id属性来映射主键字段 -->
+<!--        <id property="id" column="uid"/>-->
+        <!-- 用result属性来映射非主键字段 -->
+        <result column="qyid" property="qyid"/>
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="k_xfdwmc" property="k_xfdwmc"/>
+        <result column="up_fp_cnt" property="up_fp_cnt"/>
+        <result column="up_amt" property="up_amt"/>
+        <result column="up_fp_sum_cnt" property="up_fp_sum_cnt"/>
+        <result column="up_sum_amt" property="up_sum_amt"/>
+        <result column="up_fp_cnt_rate" property="up_fp_cnt_rate"/>
+        <result column="up_fp_amt_rate" property="up_fp_amt_rate"/>
+    </resultMap>
+    <select id="getDwsQyhxUpQyFpDetailMTop10" resultMap="getResult">
+    select * from dws.dws_qyhx_up_qy_fp_detail_m where qyid = #{qyid} and k_kjnd = #{k_kjnd} and k_kjqj = #{k_kjqj} order by up_fp_amt_rate desc limit 10
+    </select>
+</mapper>

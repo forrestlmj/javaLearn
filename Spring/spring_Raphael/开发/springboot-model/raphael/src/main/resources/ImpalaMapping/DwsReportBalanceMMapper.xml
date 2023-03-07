@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yzf.raphael.mapper.ImpalaMapping.DwsReportBalanceMMapper">
+    <resultMap id="getResult" type="com.yzf.raphael.model.DwsReportBalanceM">
+        <!-- 用id属性来映射主键字段 -->
+<!--        <id property="id" column="uid"/>-->
+        <!-- 用result属性来映射非主键字段 -->
+        <result column="set_cd" property="set_cd"/>
+        <result column="k_kjnd" property="k_kjnd"/>
+        <result column="k_kjqj" property="k_kjqj"/>
+        <result column="report_type" property="report_type"/>
+        <result column="index_type" property="index_type"/>
+        <result column="qyid" property="qyid"/>
+        <result column="qymc" property="qymc"/>
+        <result column="gsid" property="gsid"/>
+        <result column="gsmc" property="gsmc"/>
+        <result column="area_code" property="area_code"/>
+        <result column="area_name" property="area_name"/>
+        <result column="currency_fund" property="currency_fund"/>
+        <result column="financial_assets" property="financial_assets"/>
+        <result column="receivable_bill" property="receivable_bill"/>
+        <result column="receivable_accounts" property="receivable_accounts"/>
+        <result column="advance_payment" property="advance_payment"/>
+        <result column="receivable_interest" property="receivable_interest"/>
+        <result column="receivable_dividend" property="receivable_dividend"/>
+        <result column="other_receivable_payment" property="other_receivable_payment"/>
+        <result column="stock" property="stock"/>
+        <result column="one_year_expire_un_flow_assets" property="one_year_expire_un_flow_assets"/>
+        <result column="other_flow_assets" property="other_flow_assets"/>
+        <result column="flow_assets_total" property="flow_assets_total"/>
+        <result column="available_for_sale_financial_assets" property="available_for_sale_financial_assets"/>
+        <result column="held_to_maturity_investment" property="held_to_maturity_investment"/>
+        <result column="long_term_receivables" property="long_term_receivables"/>
+        <result column="long_term_equity_investment" property="long_term_equity_investment"/>
+        <result column="investment_real_estate" property="investment_real_estate"/>
+        <result column="fixed_assets" property="fixed_assets"/>
+        <result column="construction_in_progress" property="construction_in_progress"/>
+        <result column="engineering_materials" property="engineering_materials"/>
+        <result column="liquidation_of_fixed_assets" property="liquidation_of_fixed_assets"/>
+        <result column="productive_biological_assets" property="productive_biological_assets"/>
+        <result column="oil_gas_assets" property="oil_gas_assets"/>
+        <result column="intangible_assets" property="intangible_assets"/>
+        <result column="development_expenditure" property="development_expenditure"/>
+        <result column="goodwill" property="goodwill"/>
+        <result column="long_term_deferred_expenses" property="long_term_deferred_expenses"/>
+        <result column="deferred_tax_assets" property="deferred_tax_assets"/>
+        <result column="other_un_flow_assets" property="other_un_flow_assets"/>
+        <result column="un_flow_assets_total" property="un_flow_assets_total"/>
+        <result column="assets_total" property="assets_total"/>
+        <result column="short_term_loan" property="short_term_loan"/>
+        <result column="trading_financial_liabilities" property="trading_financial_liabilities"/>
+        <result column="payable_bill" property="payable_bill"/>
+        <result column="payable_accounts" property="payable_accounts"/>
+        <result column="collect_payment" property="collect_payment"/>
+        <result column="payable_employee_compensation" property="payable_employee_compensation"/>
+        <result column="due_tax" property="due_tax"/>
+        <result column="payable_interest" property="payable_interest"/>
+        <result column="payable_dividend" property="payable_dividend"/>
+        <result column="other_payable_payment" property="other_payable_payment"/>
+        <result column="one_year_expire_un_flow_debts" property="one_year_expire_un_flow_debts"/>
+        <result column="other_flow_debts" property="other_flow_debts"/>
+        <result column="flow_debts_total" property="flow_debts_total"/>
+        <result column="long_term_loan" property="long_term_loan"/>
+        <result column="payable_bond" property="payable_bond"/>
+        <result column="long_term_payable" property="long_term_payable"/>
+        <result column="special_payable" property="special_payable"/>
+        <result column="estimate_debts" property="estimate_debts"/>
+        <result column="deferred_income" property="deferred_income"/>
+        <result column="deferred_tax_debts" property="deferred_tax_debts"/>
+        <result column="other_un_flow_debts" property="other_un_flow_debts"/>
+        <result column="un_flow_debts_total" property="un_flow_debts_total"/>
+        <result column="debts_total" property="debts_total"/>
+        <result column="paid_in_capital" property="paid_in_capital"/>
+        <result column="capital_reserve" property="capital_reserve"/>
+        <result column="less_treasury_stock" property="less_treasury_stock"/>
+        <result column="special_reserve" property="special_reserve"/>
+        <result column="surplus_reserve" property="surplus_reserve"/>
+        <result column="undistributed_profit" property="undistributed_profit"/>
+        <result column="owner_rights_total" property="owner_rights_total"/>
+        <result column="debts_owner_rights_total" property="debts_owner_rights_total"/>
+
+    </resultMap>
+    <select id="selectByQyidKjndKjqj" resultMap="getResult">
+        select * from dws.dws_report_balance_m where qyid = #{qyid} and k_kjnd = #{k_kjnd} and k_kjqj = #{k_kjqj}
+    </select>
+</mapper>

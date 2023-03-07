@@ -1,0 +1,40 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as C
+    <b> 中介模式 </b>
+    <i> 先闹钟 </i>
+    <i> 闹钟-》调用咖啡 </i>
+    <i> 咖啡-》同时调用电视与收音机 </i>
+    <i> 电视-》 </i>
+
+end note
+interface mediator{
+    getMessage()
+    register(String name,Thing thing)
+}
+interface Thing{
+    Mediator getMediator();
+    void sendMessage();
+    void execute();
+}
+class HomeMediator{
+    Map<String,Thing> m
+    register(String name,Thing thing)
+    getMessage()
+}
+Thing ..o HomeMediator
+mediator <|.. HomeMediator
+
+
+Thing <|.. Clock
+Thing <|.. Coffee
+Thing <|.. TV
+Thing <|.. Radio
+
+Clock    <.. HomeMediator
+Coffee   <.. HomeMediator
+TV       <.. HomeMediator
+Radio    <.. HomeMediator
+
+Clock <.. Client
+@enduml

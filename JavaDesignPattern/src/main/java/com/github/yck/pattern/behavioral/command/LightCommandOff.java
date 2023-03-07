@@ -1,4 +1,4 @@
-package com.github.yck.pattern.behavioral.command.electricity;
+package com.github.yck.pattern.behavioral.command;
 
 public class LightCommandOff implements Command {
     private LightReceiver lightReceiver;

@@ -1,4 +1,4 @@
-package com.github.yck.pattern.behavioral.command.electricity;
+package com.github.yck.pattern.behavioral.command;
 
 public class TVCommandOff implements Command {
     private TvReceiver tvReceiver;

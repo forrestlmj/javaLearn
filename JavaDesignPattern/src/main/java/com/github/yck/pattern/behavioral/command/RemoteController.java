@@ -1,7 +1,4 @@
-package com.github.yck.pattern.behavioral.command.electricity;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.github.yck.pattern.behavioral.command;
 
 public class RemoteController {
 

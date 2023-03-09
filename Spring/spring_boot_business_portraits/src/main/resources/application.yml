@@ -1,0 +1,24 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:mysql://192.168.1.8:3306/business_portraits?useSSL=false&characterEncoding=UTF-8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+server:
+  port: 8080
+
+---
+spring:
+  profiles: test
+server:
+  port: 8081

@@ -3,5 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="emp" class="com.atguigu.spring5.autowirex.Emp" autowire="byType"></bean>
-    <bean id="dept" class="com.atguigu.spring5.autowirex.Dept"></bean>
+    <bean id="dept" class="com.atguigu.spring5.autowirex.Dept">
+        <property name="ename" value="xiaopi"></property>
+    </bean>
 </beans>

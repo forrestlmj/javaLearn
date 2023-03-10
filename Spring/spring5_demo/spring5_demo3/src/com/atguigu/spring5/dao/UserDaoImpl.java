@@ -7,7 +7,7 @@ package com.atguigu.spring5.dao;
  */
 import org.springframework.stereotype.Repository;
 
-@Repository(value = "userDaoImpl1")
+@Repository(value = "UserDaoImpl")
 public class UserDaoImpl implements UserDao{
     @Override
     public void add() {

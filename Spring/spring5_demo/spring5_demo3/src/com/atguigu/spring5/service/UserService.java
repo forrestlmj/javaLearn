@@ -2,6 +2,7 @@ package com.atguigu.spring5.service;
 
 import com.atguigu.spring5.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +19,9 @@ public class UserService {
     @Value(value = "ss")
     private String name;
     // name UserDaoImpl1 扫描Repository
-    @Resource(name = "userDaoImpl2")
-//    @Autowired
+//    @Resource(name = "userDaoImpl2")
+    @Autowired
+    @Qualifier(value = "UserDaoImpl2")
     private UserDao userDao;
 
     public void add(){

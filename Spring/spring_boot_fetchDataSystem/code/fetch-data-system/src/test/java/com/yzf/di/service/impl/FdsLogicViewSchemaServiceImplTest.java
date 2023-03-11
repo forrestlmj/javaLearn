@@ -1,11 +1,11 @@
 package com.yzf.di.service.impl;
 
-import com.yzf.di.entity.FdsLogicViewMapping;
-import com.yzf.di.entity.FdsLogicViewSchema;
-import com.yzf.di.entity.FdsMysqlDataDict;
-import com.yzf.di.repository.LogicViewMappingRepository;
-import com.yzf.di.repository.LogicViewSchemaRepository;
-import com.yzf.di.repository.MysqlDataDictRepository;
+import com.yzf.di.entity.po.FdsLogicViewMapping;
+import com.yzf.di.entity.po.FdsLogicViewSchema;
+import com.yzf.di.entity.po.FdsMysqlDataDict;
+import com.yzf.di.dao.repository.LogicViewMappingRepository;
+import com.yzf.di.dao.repository.LogicViewSchemaRepository;
+import com.yzf.di.dao.repository.MysqlDataDictRepository;
 import com.yzf.di.service.LogicViewMappingService;
 import com.yzf.di.service.LogicViewSchemaService;
 import com.yzf.di.util.TestTool;

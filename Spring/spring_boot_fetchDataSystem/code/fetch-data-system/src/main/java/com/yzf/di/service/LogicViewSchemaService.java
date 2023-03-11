@@ -1,6 +1,6 @@
 package com.yzf.di.service;
 
-import com.yzf.di.entity.FdsLogicViewSchema;
+import com.yzf.di.entity.po.FdsLogicViewSchema;
 import org.springframework.data.domain.Page;
 
 import java.util.List;

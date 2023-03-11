@@ -1,6 +1,5 @@
-package com.yzf.di.entity;
+package com.yzf.di.entity.po;
 
-import com.opencsv.bean.CsvBindByName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 

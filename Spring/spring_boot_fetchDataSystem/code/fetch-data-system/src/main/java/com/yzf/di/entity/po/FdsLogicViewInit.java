@@ -1,4 +1,4 @@
-package com.yzf.di.entity;
+package com.yzf.di.entity.po;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

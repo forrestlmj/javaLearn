@@ -1,9 +1,9 @@
 package com.yzf.di.util;
 
 import com.yzf.di.constants.MappingMethodEnum;
-import com.yzf.di.entity.FdsLogicViewMapping;
-import com.yzf.di.entity.FdsMysqlDataDict;
-import com.yzf.di.entity.FdsMysqlSource;
+import com.yzf.di.entity.po.FdsLogicViewMapping;
+import com.yzf.di.entity.po.FdsMysqlDataDict;
+import com.yzf.di.entity.po.FdsMysqlSource;
 import org.junit.Assert;
 import org.junit.Test;
 

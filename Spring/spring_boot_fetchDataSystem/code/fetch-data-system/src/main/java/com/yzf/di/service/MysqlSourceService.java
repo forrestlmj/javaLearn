@@ -1,6 +1,6 @@
 package com.yzf.di.service;
 
-import com.yzf.di.entity.FdsMysqlSource;
+import com.yzf.di.entity.po.FdsMysqlSource;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 

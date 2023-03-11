@@ -1,6 +1,7 @@
 package com.yzf.di.repository;
 
-import com.yzf.di.entity.FdsMysqlDataDict;
+import com.yzf.di.dao.repository.MysqlDataDictRepository;
+import com.yzf.di.entity.po.FdsMysqlDataDict;
 import com.yzf.di.util.TestTool;
 import org.junit.Before;
 import org.junit.Test;

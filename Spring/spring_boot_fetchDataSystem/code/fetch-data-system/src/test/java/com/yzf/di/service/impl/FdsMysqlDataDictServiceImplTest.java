@@ -1,7 +1,7 @@
 package com.yzf.di.service.impl;
 
-import com.yzf.di.entity.FdsMysqlDataDict;
-import com.yzf.di.entity.FdsMysqlSource;
+import com.yzf.di.entity.po.FdsMysqlDataDict;
+import com.yzf.di.entity.po.FdsMysqlSource;
 import com.yzf.di.service.MysqlDataDictService;
 import com.yzf.di.util.TestTool;
 import org.junit.Before;

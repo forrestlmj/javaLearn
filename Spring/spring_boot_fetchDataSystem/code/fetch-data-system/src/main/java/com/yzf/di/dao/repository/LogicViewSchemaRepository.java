@@ -1,6 +1,6 @@
-package com.yzf.di.repository;
+package com.yzf.di.dao.repository;
 
-import com.yzf.di.entity.FdsLogicViewSchema;
+import com.yzf.di.entity.po.FdsLogicViewSchema;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

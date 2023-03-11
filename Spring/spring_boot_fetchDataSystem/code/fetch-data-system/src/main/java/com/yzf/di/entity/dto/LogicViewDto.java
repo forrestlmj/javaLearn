@@ -1,4 +1,4 @@
-package com.yzf.di.dto;
+package com.yzf.di.entity.dto;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

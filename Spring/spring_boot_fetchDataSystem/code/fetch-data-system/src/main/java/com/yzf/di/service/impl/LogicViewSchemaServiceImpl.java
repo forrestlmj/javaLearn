@@ -1,9 +1,9 @@
 package com.yzf.di.service.impl;
 
-import com.yzf.di.entity.FdsLogicViewSchema;
-import com.yzf.di.repository.LogicViewMappingRepository;
-import com.yzf.di.repository.LogicViewSchemaRepository;
-import com.yzf.di.repository.MysqlDataDictRepository;
+import com.yzf.di.entity.po.FdsLogicViewSchema;
+import com.yzf.di.dao.repository.LogicViewMappingRepository;
+import com.yzf.di.dao.repository.LogicViewSchemaRepository;
+import com.yzf.di.dao.repository.MysqlDataDictRepository;
 import com.yzf.di.service.LogicViewSchemaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

@@ -1,7 +1,7 @@
 package com.yzf.di.service.impl;
 
-import com.yzf.di.entity.FdsMysqlSource;
-import com.yzf.di.repository.MysqlSourceRepository;
+import com.yzf.di.entity.po.FdsMysqlSource;
+import com.yzf.di.dao.repository.MysqlSourceRepository;
 import com.yzf.di.service.MysqlSourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -9,8 +9,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class MysqlSourceServiceImpl implements MysqlSourceService {

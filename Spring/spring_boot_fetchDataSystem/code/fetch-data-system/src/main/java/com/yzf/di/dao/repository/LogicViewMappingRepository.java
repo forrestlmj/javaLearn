@@ -1,7 +1,6 @@
-package com.yzf.di.repository;
+package com.yzf.di.dao.repository;
 
-import com.yzf.di.dto.LogicViewMappingCSVDto;
-import com.yzf.di.entity.FdsLogicViewMapping;
+import com.yzf.di.entity.po.FdsLogicViewMapping;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +16,7 @@ public interface LogicViewMappingRepository extends JpaRepository<FdsLogicViewMa
     @Query("delete from FdsLogicViewMapping a where a.mappingMethod = :mappingMethod")
     void deleteMappingMethod(String mappingMethod);
 
-    @Query("select distinct new com.yzf.di.entity.FdsLogicViewMapping(logicDatabase,logicTable) from FdsLogicViewMapping a where a.mappingMethod not in ( :mappingMethod )")
+    @Query("select distinct new com.yzf.di.entity.po.FdsLogicViewMapping(logicDatabase,logicTable) from FdsLogicViewMapping a where a.mappingMethod not in ( :mappingMethod )")
     Set<FdsLogicViewMapping> selectNotInMappingMethod(@Param("mappingMethod") String mappingMethod);
     @Transactional
     @Modifying

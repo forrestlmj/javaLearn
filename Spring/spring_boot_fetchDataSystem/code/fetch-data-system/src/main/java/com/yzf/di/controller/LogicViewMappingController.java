@@ -1,7 +1,7 @@
 package com.yzf.di.controller;
 
-import com.yzf.di.entity.FdsLogicViewMapping;
-import com.yzf.di.dto.LogicViewDto;
+import com.yzf.di.entity.po.FdsLogicViewMapping;
+import com.yzf.di.entity.dto.LogicViewDto;
 import com.yzf.di.service.LogicViewMappingService;
 import com.yzf.di.util.Result;
 import com.yzf.di.util.ResultGenerator;

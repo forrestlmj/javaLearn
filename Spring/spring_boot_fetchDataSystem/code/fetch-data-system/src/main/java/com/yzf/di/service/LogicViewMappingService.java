@@ -1,8 +1,8 @@
 package com.yzf.di.service;
 
-import com.yzf.di.entity.FdsLogicViewMapping;
-import com.yzf.di.entity.FdsMysqlDataDict;
-import com.yzf.di.dto.LogicViewDto;
+import com.yzf.di.entity.po.FdsLogicViewMapping;
+import com.yzf.di.entity.po.FdsMysqlDataDict;
+import com.yzf.di.entity.dto.LogicViewDto;
 import org.springframework.data.domain.Page;
 import org.springframework.web.multipart.MultipartFile;
 

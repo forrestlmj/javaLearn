@@ -1,22 +1,15 @@
 package com.yzf.di.util;
 
 
-import com.yzf.di.dto.LogicViewMappingCSVDto;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
+import com.yzf.di.entity.dto.LogicViewMappingCSVDto;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.io.*;
-import java.nio.file.Files;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class CsvUtilTest {
     private MockMultipartFile multipartFile = null;

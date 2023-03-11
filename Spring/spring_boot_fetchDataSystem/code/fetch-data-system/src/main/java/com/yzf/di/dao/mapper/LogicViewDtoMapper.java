@@ -1,6 +1,6 @@
-package com.yzf.di.mapper;
+package com.yzf.di.dao.mapper;
 
-import com.yzf.di.dto.LogicViewDto;
+import com.yzf.di.entity.dto.LogicViewDto;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;

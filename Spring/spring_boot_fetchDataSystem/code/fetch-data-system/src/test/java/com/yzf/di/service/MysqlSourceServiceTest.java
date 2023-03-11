@@ -1,7 +1,7 @@
 package com.yzf.di.service;
 
-import com.yzf.di.entity.FdsMysqlSource;
-import com.yzf.di.repository.MysqlSourceRepository;
+import com.yzf.di.entity.po.FdsMysqlSource;
+import com.yzf.di.dao.repository.MysqlSourceRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

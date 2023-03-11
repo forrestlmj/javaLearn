@@ -1,7 +1,7 @@
 package com.yzf.di.service.impl;
 
-import com.yzf.di.entity.FdsLogicViewInitJob;
-import com.yzf.di.repository.LogicViewInitJobRepository;
+import com.yzf.di.entity.po.FdsLogicViewInitJob;
+import com.yzf.di.dao.repository.LogicViewInitJobRepository;
 import com.yzf.di.service.LogicViewInitJobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

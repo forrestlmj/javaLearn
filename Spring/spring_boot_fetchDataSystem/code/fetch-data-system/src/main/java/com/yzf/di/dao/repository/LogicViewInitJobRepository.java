@@ -1,12 +1,10 @@
-package com.yzf.di.repository;
+package com.yzf.di.dao.repository;
 
-import com.yzf.di.entity.FdsLogicViewInitJob;
+import com.yzf.di.entity.po.FdsLogicViewInitJob;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 
 public interface LogicViewInitJobRepository extends PagingAndSortingRepository<FdsLogicViewInitJob,Integer> {
 

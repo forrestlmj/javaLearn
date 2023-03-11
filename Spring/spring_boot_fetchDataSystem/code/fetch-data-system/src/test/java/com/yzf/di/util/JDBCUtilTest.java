@@ -1,6 +1,6 @@
 package com.yzf.di.util;
 
-import com.yzf.di.entity.FdsMysqlDataDict;
+import com.yzf.di.entity.po.FdsMysqlDataDict;
 import org.junit.Test;
 
 import java.util.List;

@@ -426,7 +426,7 @@ public @interface Service{
 
 2、@EnableAutoConfiguration作用：
 
-* 利用EnableAutoConfigurationImportSelector给容器导入了一些组件。
+* 利用 EnableAutoConfigurationImportSelector 给容器导入了一些组件。
 * 可以查看selectImports()方法
 * List configurations = getCandidateConfigurations(annotationMetadata, attributes)
 

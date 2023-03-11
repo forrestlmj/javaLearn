@@ -1,7 +1,7 @@
 package com.yzf.di.service;
 
-import com.yzf.di.entity.FdsMysqlDataDict;
-import com.yzf.di.entity.FdsMysqlSource;
+import com.yzf.di.entity.po.FdsMysqlDataDict;
+import com.yzf.di.entity.po.FdsMysqlSource;
 import org.springframework.data.domain.Page;
 
 public interface MysqlDataDictService {

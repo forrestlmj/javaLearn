@@ -1,7 +1,7 @@
 package com.yzf.di.util;
 
-import com.yzf.di.entity.FdsMysqlDataDict;
-import com.yzf.di.entity.FdsMysqlSource;
+import com.yzf.di.entity.po.FdsMysqlDataDict;
+import com.yzf.di.entity.po.FdsMysqlSource;
 
 import java.sql.*;
 import java.util.ArrayList;

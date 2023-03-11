@@ -1,6 +1,6 @@
 package com.yzf.di.service;
 
-import com.yzf.di.entity.FdsLogicViewInitJob;
+import com.yzf.di.entity.po.FdsLogicViewInitJob;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

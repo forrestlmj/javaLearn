@@ -1,6 +1,6 @@
 package com.yzf.di.controller;
 
-import com.yzf.di.entity.FdsMysqlSource;
+import com.yzf.di.entity.po.FdsMysqlSource;
 import com.yzf.di.service.MysqlDataDictService;
 import com.yzf.di.service.MysqlSourceService;
 import com.yzf.di.util.Result;

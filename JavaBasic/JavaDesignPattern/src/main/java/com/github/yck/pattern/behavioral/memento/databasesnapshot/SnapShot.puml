@@ -1,0 +1,57 @@
+@startuml
+'https://plantuml.com/class-diagram
+interface Subject{
+    void register(Observer)
+    void remove(Observer)
+    void notifyAll()
+}
+
+interface Observer{
+    void fetch()
+}
+
+interface Originator{
+    Memento saveMemento(String state)
+    Memento recoverFromMemento(integer idx)
+}
+
+interface Memento{
+    String state
+}
+Memento <|.. SnapShot
+
+interface MementoManager{
+    List<Memento> list
+    saveToList(Memento m)
+    recover(integer idx)
+}
+
+Observer <|.. SnapShotManger
+MementoManager <|.. SnapShotManger
+Memento <.. MementoManager
+Memento <.. DBFile
+class DBFile{
+    String state
+    List<Observer>
+    MementoManager m
+
+    void register(Observer)
+    void remove(Observer)
+    void notifyAll()
+
+    Memento saveMemento(String state)
+    Memento recoverFromMemento(integer idx)
+}
+
+Subject <|.. DBFile
+Originator <|.. DBFile
+Observer ..o DBFile
+MementoManager ..o DBFile
+
+
+
+
+
+
+
+@enduml

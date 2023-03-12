@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+note as N
+
+    <b> 备忘录模式 </b>
+    <i> Originator 需要报错的原生的对象 </i>
+    <i> Memento 备忘录对象 </i>
+    <i> CareTaker 守护者对象，用来保存备忘录 </i>
+
+end note
+class Memento{
+    // 只保存内部对象
+    String state
+}
+class Originator{
+    // 这里就是需要保存的内部对象
+    String state
+    // 从备忘录
+    getStateFromMemento()
+    Memento saveStateMemento()
+}
+
+class CareTaker{
+    List<Memento>
+    add(Memento)
+    Memento get(Integer index)
+}
+
+Memento ..o CareTaker
+
+Originator ..> Memento
+
+Client ..> Memento
+Client ..> Originator
+
+@enduml

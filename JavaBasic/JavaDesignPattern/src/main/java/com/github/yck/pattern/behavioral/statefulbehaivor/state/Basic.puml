@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface State{
+    void operation1()
+    void operation2()
+}
+
+State <|.. ConcreteStateA
+State <|.. ConcreteStateB
+
+class Context{
+    State state
+    getState()
+}
+@enduml

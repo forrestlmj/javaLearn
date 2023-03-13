@@ -1,4 +1,4 @@
-package com.github.yck.pattern.behavioral.observer;
+package com.github.yck.pattern.behavioral.statefulbehaivor.observer;
 
 public class Baidu implements Observer {
     private Float temperature;

@@ -1,4 +1,4 @@
-package com.github.yck.pattern.behavioral.mediator.home;
+package com.github.yck.pattern.behavioral.statefulbehaivor.mediator.home;
 
 import java.util.HashMap;
 import java.util.Map;

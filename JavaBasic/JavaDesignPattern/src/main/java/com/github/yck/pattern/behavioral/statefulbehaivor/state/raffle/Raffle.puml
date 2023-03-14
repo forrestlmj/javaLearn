@@ -1,5 +1,23 @@
 @startuml
 'https://plantuml.com/class-diagram
+interface State{
+    void deduceMoney()
+    void raffle()
+    void dispensePrize()
+}
 
+State <|.. NoRaffleState
+State <|.. CanRaffleState
+State <|.. DispenseState
+State <|.. DispenseOutState
+
+
+Activity -- NoRaffleState
+Activity -- CanRaffleState
+Activity -- DispenseState
+Activity -- DispenseOutState
+
+Activity <.. Client
+State <.. Client
 
 @enduml

@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/class-diagram
+interface State{
+    Boolean deductMoney()
+    Boolean acceptOrder()
+    Boolean callDeliverMan()
+}
+
+State <|.. DefaultState
+
+DefaultState <|-- StartState
+DefaultState <|-- BillState
+DefaultState <|-- MerchantState
+DefaultState <|-- DeliverManState
+DefaultState <|-- FailState
+DefaultState <|-- SuccessState
+
+StartState       --  Context
+BillState        --  Context
+MerchantState    --  Context
+DeliverManState  --  Context
+FailState        --  Context
+SuccessState     --  Context
+
+
+class Context{
+    Integer money
+    State s
+    StartState s
+    BillState b
+    MerchantState m
+    DeliverManState d
+    FailState f
+    SuccessState s
+    run()
+}
+
+Context o-- Client
+@enduml

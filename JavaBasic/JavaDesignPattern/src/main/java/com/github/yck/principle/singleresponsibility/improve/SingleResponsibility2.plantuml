@@ -1,0 +1,22 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class AirplaneVehicle {
+  + run(String): void
+  + AirplaneVehicle(): 
+}
+class SingleResponsibility2 {
+  + main(String[]): void
+  + SingleResponsibility2(): 
+}
+class WaterVehicle {
+  + run(String): void
+  + WaterVehicle(): 
+}
+
+SingleResponsibility2  -[#595959,dashed]->  AirplaneVehicle       : "«create»"
+SingleResponsibility2  -[#595959,dashed]->  WaterVehicle          : "«create»"
+@enduml

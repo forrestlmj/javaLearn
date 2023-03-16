@@ -15,7 +15,7 @@ public class OrderPizza {
     }
 
     /**
-     * 这里不同于方法工厂，制作pizza的过程 放在了 OrderPizza
+     * 这里不同于方法工厂，制作pizza的过程 放在了 Client
      *
      * @param type
      */

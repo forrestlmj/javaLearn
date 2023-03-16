@@ -5,10 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * 懒汉模式线程不安全版本，
- * 单线程可以。但是正式环境不要用。
- */
+
 public class Singleton4 {
     public static void main(String[] args) {
 //        System.out.println(SingletonLazy3.getInstance().hashCode());

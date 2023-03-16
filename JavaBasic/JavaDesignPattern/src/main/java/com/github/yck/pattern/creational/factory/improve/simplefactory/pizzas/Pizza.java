@@ -14,6 +14,6 @@ public abstract class Pizza {
     private String name;
     public void prepare(){ System.out.println("Pizza is prepared. "); }
     public void cut(){ System.out.println("Pizza is cut. "); }
-    public void bake(){ System.out.println("Pizza is baked. "); }
-    public void box(){ System.out.println("Pizza is boxed. "); }
+//    public void bake(){ System.out.println("Pizza is baked. "); }
+//    public void box(){ System.out.println("Pizza is boxed. "); }
 }

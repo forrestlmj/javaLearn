@@ -1,17 +1,17 @@
 package com.github.yck.pattern.creational.builder.improve;
 
 public class Director {
-    private AbstractHouse h;
+    private Build build;
 
-    public Director(AbstractHouse h) {
-        this.h = h;
+    public Director(Build build) {
+        this.build = build;
     }
 
-    public void setH(AbstractHouse h) {
-        this.h = h;
+    public void setBuild(Build build) {
+        this.build = build;
     }
 
     public House construct(){
-        return h.getResult();
+        return build.getResult();
     }
 }

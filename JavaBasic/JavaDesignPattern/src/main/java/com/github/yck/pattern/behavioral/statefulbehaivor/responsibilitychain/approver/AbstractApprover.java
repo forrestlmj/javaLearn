@@ -25,8 +25,9 @@ abstract public class AbstractApprover implements Approver {
     Approver nextApprover;
 
     @Override
-    public void setNextApprover(Approver approver) {
+    public Approver setNextApprover(Approver approver) {
         nextApprover = approver;
+        return approver;
     }
 
     @Override

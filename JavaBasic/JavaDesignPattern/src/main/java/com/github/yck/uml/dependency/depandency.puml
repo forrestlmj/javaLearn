@@ -2,7 +2,7 @@
 'https://plantuml.com/class-diagram
 
 note as N
-    <b> 泛化，也就是继承</b>
+    <b> 依赖</b>
 end note
 
 class IDCard

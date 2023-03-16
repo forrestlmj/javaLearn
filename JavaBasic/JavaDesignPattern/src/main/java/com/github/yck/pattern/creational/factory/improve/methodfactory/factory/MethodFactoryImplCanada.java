@@ -2,7 +2,6 @@ package com.github.yck.pattern.creational.factory.improve.methodfactory.factory;
 
 import com.github.yck.pattern.creational.factory.improve.methodfactory.pizzas.CheesePizza;
 import com.github.yck.pattern.creational.factory.improve.methodfactory.pizzas.MaplePizza;
-import com.github.yck.pattern.creational.factory.improve.methodfactory.pizzas.PepperPizza;
 import com.github.yck.pattern.creational.factory.improve.methodfactory.pizzas.Pizza;
 
 public class MethodFactoryImplCanada extends MethodFactory {
@@ -19,9 +18,6 @@ public class MethodFactoryImplCanada extends MethodFactory {
         switch (type.trim().toLowerCase()) {
             case "maple":
                 p = new MaplePizza();
-                break;
-            case "pepper":
-                p = new PepperPizza();
                 break;
             case "cheese":
                 p = new CheesePizza();

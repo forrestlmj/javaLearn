@@ -7,16 +7,9 @@ import java.util.Optional;
 
 abstract public class MethodFactory {
 
-    public void orderPizzaFromCmd(){
-      String type =  cmdUtil.getCmdInput("请输入口味");
-      Optional.ofNullable(type)
-              .ifPresent(
-                      o -> {
-                          orderPizza(o.trim().toLowerCase());
-                      }
-              );
-
-    }
+//    public void orderPizzaFromCmd(String o){
+//      orderPizza(o.trim().toLowerCase());
+//    }
     /**
      * 注意是抽象方法，用于子类实现。
      * @return
@@ -28,8 +21,8 @@ abstract public class MethodFactory {
                 o -> {
                     p.prepare();
                     p.bake();
-                    p.cut();
-                    p.box();
+//                    p.cut();
+//                    p.box();
                 }
         );
     }

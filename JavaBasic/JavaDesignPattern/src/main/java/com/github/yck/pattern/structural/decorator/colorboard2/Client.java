@@ -4,11 +4,10 @@ public class Client {
     public static void main(String[] args) {
 
         System.out.println("  ============ ");
-        new BlueLine(new BlackLine(new RedLine(new Rectangle()))).draw();
+        new BlackLine(new BlueLine(new Rectangle())).draw();
         System.out.println("  ============ ");
-        new RedLine(new BlackDot(new BlackLine(new Triangle()))).draw();
+        new BlueLine(new BlackLine(new Circle())).draw();
         System.out.println("  ============ ");
-        new BlackDot(new BlueLine(new BlackLine(new Circle()))).draw();
 
     }
 }

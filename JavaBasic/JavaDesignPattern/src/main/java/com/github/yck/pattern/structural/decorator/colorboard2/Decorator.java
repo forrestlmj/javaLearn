@@ -1,15 +1,15 @@
 package com.github.yck.pattern.structural.decorator.colorboard2;
 
 public abstract class Decorator implements Shape {
-    Shape s;
+    Shape shape;
 
     public Decorator(Shape s) {
-        this.s = s;
+        this.shape = s;
     }
 
     /**
      * 这里递归被装饰的对象
      */
-    public void draw(){s.draw();};
+    public void draw(){shape.draw();};
 
 }

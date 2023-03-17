@@ -4,12 +4,7 @@ public class UpRightPhone extends Phone {
     public UpRightPhone(Brand brand) {
         super(brand);
     }
-    @Override
-    public void open() {
-        super.open();
-        System.out.println(" 直立样式手机 ");
 
-    }
 
     @Override
     public void call() {
@@ -18,10 +13,5 @@ public class UpRightPhone extends Phone {
 
     }
 
-    @Override
-    public void close() {
-        super.close();
-        System.out.println(" 直立样式手机 ");
 
-    }
 }

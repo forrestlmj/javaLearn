@@ -1,10 +1,6 @@
 package com.github.yck.pattern.structural.proxyAB.bridge;
 
 public class HuaWei implements Brand {
-    @Override
-    public void open() {
-        System.out.println("HuaWei is Open");
-    }
 
     @Override
     public void call() {
@@ -12,9 +8,5 @@ public class HuaWei implements Brand {
 
     }
 
-    @Override
-    public void close() {
-        System.out.println("HuaWei is close");
 
-    }
 }

@@ -6,12 +6,7 @@ public class FoldedPhone extends Phone {
         super(brand);
     }
 
-    @Override
-    public void open() {
-        super.open();
-        System.out.println(" 折叠样式手机 ");
 
-    }
 
     @Override
     public void call() {
@@ -20,10 +15,4 @@ public class FoldedPhone extends Phone {
 
     }
 
-    @Override
-    public void close() {
-        super.close();
-        System.out.println(" 折叠样式手机 ");
-
-    }
 }

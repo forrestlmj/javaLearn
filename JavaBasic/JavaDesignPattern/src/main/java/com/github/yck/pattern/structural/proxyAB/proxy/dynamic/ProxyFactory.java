@@ -5,19 +5,19 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 public class ProxyFactory {
-    Object o;
+    Object proxyInstance;
 
-    public ProxyFactory(Object o) {
-        this.o = o;
+    public ProxyFactory(Object proxyInstance) {
+        this.proxyInstance = proxyInstance;
     }
 
     public Object getProxyInstance(){
         return Proxy.newProxyInstance(
-                o.getClass().getClassLoader(), o.getClass().getInterfaces(), new InvocationHandler() {
+                proxyInstance.getClass().getClassLoader(), proxyInstance.getClass().getInterfaces(), new InvocationHandler() {
                     @Override
                     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                         System.out.println("Start Proxy");
-                        Object returnVal = method.invoke(o, args);
+                        Object returnVal = method.invoke(proxyInstance, args);
                         System.out.println("End Proxy");
                         return returnVal;
                     }

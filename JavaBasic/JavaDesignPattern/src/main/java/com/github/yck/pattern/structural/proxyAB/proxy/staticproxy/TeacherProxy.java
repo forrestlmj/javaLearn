@@ -1,16 +1,16 @@
 package com.github.yck.pattern.structural.proxyAB.proxy.staticproxy;
 
 public class TeacherProxy implements ITeacher {
-    private Teacher t;
+    private Teacher teacher;
 
-    public TeacherProxy(Teacher t) {
-        this.t = t;
+    public TeacherProxy(Teacher teacher) {
+        this.teacher = teacher;
     }
 
     @Override
     public void teach() {
         System.out.println("Start Proxy");
-        t.teach();
+        teacher.teach();
         System.out.println("End Proxy");
     }
 }

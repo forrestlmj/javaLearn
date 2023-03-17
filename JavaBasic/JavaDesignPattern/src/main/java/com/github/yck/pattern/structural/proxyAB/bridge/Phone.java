@@ -7,13 +7,7 @@ public abstract class Phone {
         this.brand = brand;
     }
 
-    public void open(){
-        this.brand.open();
-    }
     public void call(){
         this.brand.call();
-    }
-    public void close(){
-        this.brand.close();
     }
 }

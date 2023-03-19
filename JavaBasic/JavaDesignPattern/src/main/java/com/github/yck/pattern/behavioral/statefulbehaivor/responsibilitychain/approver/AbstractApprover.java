@@ -47,7 +47,6 @@ abstract public class AbstractApprover implements Approver {
     public void submitToNextApprover(SchoolRequest schoolRequest) {
         Optional.ofNullable(nextApprover).ifPresent(
                 o ->  {
-
                     o.processRequest(schoolRequest);
                 }
         );

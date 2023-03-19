@@ -4,7 +4,7 @@ public class Client {
     public static void main(String[] args) {
         DepartmentApprover FirstNode = new DepartmentApprover("杨班长", 10);
         FirstNode.setNextApprover(new DepartmentApprover("王班长", 20))
-                .setNextApprover(new CollegeApprover("王主任", 50))
+//                .setNextApprover(new CollegeApprover("王主任", 50))
                 .setNextApprover(new SchoolMasterApprover("王校长", 100));
 
 

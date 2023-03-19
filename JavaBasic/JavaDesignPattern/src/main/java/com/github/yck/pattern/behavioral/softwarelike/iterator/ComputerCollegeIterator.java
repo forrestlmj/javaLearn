@@ -4,22 +4,22 @@ import java.util.Iterator;
 import java.util.List;
 
 public class ComputerCollegeIterator implements Iterator<Department> {
-    public ComputerCollegeIterator(List<Department> l) {
-        this.l = l;
+    public ComputerCollegeIterator(List<Department> innerDataList) {
+        this.innerDataList = innerDataList;
     }
 
-    private List<Department> l;
-    private Integer index = 0;
+    private List<Department> innerDataList;
+    private Integer pointer = 0;
 
     @Override
     public boolean hasNext() {
-        return index < l.size();
+        return pointer < innerDataList.size();
     }
 
     @Override
     public Department next() {
-        Department d = l.get(index);
-        index ++;
+        Department d = innerDataList.get(pointer);
+        pointer ++;
         return d;
     }
 }

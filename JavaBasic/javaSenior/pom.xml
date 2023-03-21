@@ -22,6 +22,7 @@
         <module>day11</module>
         <module>day12</module>
         <module>practice</module>
+        <module>SourceCodeAnalysis</module>
     </modules>
 
     <properties>

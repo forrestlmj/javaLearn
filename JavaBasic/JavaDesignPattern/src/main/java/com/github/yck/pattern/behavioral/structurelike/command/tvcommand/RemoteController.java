@@ -1,4 +1,7 @@
-package com.github.yck.pattern.behavioral.structurelike.command;
+package com.github.yck.pattern.behavioral.structurelike.command.tvcommand;
+
+import com.github.yck.pattern.behavioral.structurelike.command.tvcommand.Command;
+import com.github.yck.pattern.behavioral.structurelike.command.tvcommand.EmptyCommand;
 
 public class RemoteController {
 

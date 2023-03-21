@@ -1,4 +1,4 @@
-package com.github.yck.pattern.behavioral.statefulbehaivor.mediator;
+package com.github.yck.pattern.behavioral.statefulbehaivor.mediator.home;
 
 import com.github.yck.pattern.behavioral.statefulbehaivor.mediator.home.HomeCenter;
 import com.github.yck.pattern.behavioral.statefulbehaivor.mediator.home.STATES;

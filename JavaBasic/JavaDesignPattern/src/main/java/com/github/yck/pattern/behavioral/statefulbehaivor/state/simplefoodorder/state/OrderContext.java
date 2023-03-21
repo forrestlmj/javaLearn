@@ -30,7 +30,7 @@ public class OrderContext {
 
     public void handle() throws InterruptedException {
         while (true){
-            Thread.sleep(1000);
+//            Thread.sleep(1000);
             state.process();
         }
     }

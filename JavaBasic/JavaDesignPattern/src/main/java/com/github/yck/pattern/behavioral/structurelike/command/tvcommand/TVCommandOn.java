@@ -1,4 +1,4 @@
-package com.github.yck.pattern.behavioral.structurelike.command;
+package com.github.yck.pattern.behavioral.structurelike.command.tvcommand;
 
 public class TVCommandOn implements Command {
     private TvReceiver tvReceiver;

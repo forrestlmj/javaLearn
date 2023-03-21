@@ -1,4 +1,4 @@
-package com.github.yck.pattern.behavioral.structurelike.command;
+package com.github.yck.pattern.behavioral.structurelike.command.tvcommand;
 
 public class EmptyCommand implements Command {
     @Override

@@ -1,7 +1,8 @@
 package com.github.yck.chapter_02_lock.sync;
 
 import com.github.yck.chapter_02_lock.sync.resource.*;
-import com.github.yck.chapter_02_lock.sync.resource.lock.LockTicketsImpl;
+import com.github.yck.chapter_02_lock.sync.resource.lock.ConditionAwaitSignal;
+import com.github.yck.chapter_02_lock.sync.resource.lock.ConditionAwaitSignal2;
 import com.github.yck.chapter_02_lock.sync.resource.sync.*;
 
 /**
@@ -18,7 +19,35 @@ public class Client {
 //        testMyThread(new UnsafeTicketsImpl());
 //        testMyThread(new VolatileTicketsImpl());
 //        testMyThread(new WaitNotifyTicketsImpl());
-        testMyThread(new LockTicketsImpl());
+//        testMyThread(new LockTicketsImpl());
+//        testLockTicketsAwaitSignal(new ConditionAwaitSignal());
+        testLockTicketsAwaitSignal(new ConditionAwaitSignal2());
+    }
+
+
+
+    private static void testLockTicketsAwaitSignal(Tickets l) {
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true){
+                            if (!l.saleEven())break;
+                        }
+                    }
+                },"Even"
+        ).start();
+
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true){
+                            if (!l.saleOdd())break;
+                        }
+                    }
+                },"ODD"
+        ).start();
     }
 
     /**

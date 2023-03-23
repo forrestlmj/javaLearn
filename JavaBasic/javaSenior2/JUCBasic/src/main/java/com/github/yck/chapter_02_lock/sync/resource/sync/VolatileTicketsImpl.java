@@ -1,4 +1,6 @@
-package com.github.yck.chapter_02_lock.sync.resource;
+package com.github.yck.chapter_02_lock.sync.resource.sync;
+
+import com.github.yck.chapter_02_lock.sync.resource.Tickets;
 
 /**
  * volatile 修饰，这里设计 JMM TODO。

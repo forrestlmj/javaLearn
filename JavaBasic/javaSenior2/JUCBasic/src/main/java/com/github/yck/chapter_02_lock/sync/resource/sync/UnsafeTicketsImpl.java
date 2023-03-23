@@ -1,4 +1,6 @@
-package com.github.yck.chapter_02_lock.sync.resource;
+package com.github.yck.chapter_02_lock.sync.resource.sync;
+
+import com.github.yck.chapter_02_lock.sync.resource.Tickets;
 
 /**
  * 平平无奇的一个变量。

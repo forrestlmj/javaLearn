@@ -1,4 +1,6 @@
-package com.github.yck.chapter_02_lock.sync.resource;
+package com.github.yck.chapter_02_lock.sync.resource.sync;
+
+import com.github.yck.chapter_02_lock.sync.resource.Tickets;
 
 /**
  * 使用Sync修饰方法，绝对保险

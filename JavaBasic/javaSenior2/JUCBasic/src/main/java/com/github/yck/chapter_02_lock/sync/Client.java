@@ -1,7 +1,8 @@
 package com.github.yck.chapter_02_lock.sync;
 
 import com.github.yck.chapter_02_lock.sync.resource.*;
-import org.junit.jupiter.api.Test;
+import com.github.yck.chapter_02_lock.sync.resource.lock.LockTicketsImpl;
+import com.github.yck.chapter_02_lock.sync.resource.sync.*;
 
 /**
  * @see SyncCodeTicketsImpl
@@ -14,8 +15,10 @@ public class Client {
     public static void main(String[] args) {
 //        testMyThread(new SyncCodeTicketsImpl());
 //        testMyThread(new SyncTicketsImpl());
-        testMyThread(new UnsafeTicketsImpl());
+//        testMyThread(new UnsafeTicketsImpl());
 //        testMyThread(new VolatileTicketsImpl());
+//        testMyThread(new WaitNotifyTicketsImpl());
+        testMyThread(new LockTicketsImpl());
     }
 
     /**

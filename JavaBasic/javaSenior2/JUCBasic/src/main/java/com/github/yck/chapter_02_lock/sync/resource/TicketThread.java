@@ -1,10 +1,10 @@
-package com.github.yck.chapter_02_lock.sync;
+package com.github.yck.chapter_02_lock.sync.resource;
 
 import com.github.yck.chapter_02_lock.sync.resource.Tickets;
 
-public class MyThread implements Runnable {
+public class TicketThread implements Runnable {
 
-    public MyThread(Tickets tickets) {
+    public TicketThread(Tickets tickets) {
         this.tickets = tickets;
 
     }

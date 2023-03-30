@@ -2,8 +2,8 @@ package com.github.yck.mapcount.map.lsm;
 
 import java.util.Objects;
 
-public class FlushTableName {
-    public FlushTableName(String uuid) {
+public class TableID {
+    public TableID(String uuid) {
         this.uuid = uuid;
     }
 
@@ -14,7 +14,7 @@ public class FlushTableName {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        FlushTableName that = (FlushTableName) o;
+        TableID that = (TableID) o;
 
         return Objects.equals(uuid, that.uuid);
     }

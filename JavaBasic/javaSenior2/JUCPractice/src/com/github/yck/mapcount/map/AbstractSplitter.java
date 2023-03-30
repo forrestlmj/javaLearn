@@ -2,29 +2,31 @@ package com.github.yck.mapcount.map;
 
 
 import com.github.yck.mapcount.map.ck.CheckPoint;
-import com.github.yck.mapcount.map.lsm.FlushTableName;
+import com.github.yck.mapcount.map.lsm.DiskTable;
+import com.github.yck.mapcount.map.lsm.TableID;
 import com.github.yck.mapcount.map.lsm.MemoryTable;
 import com.github.yck.mapcount.map.lsm.SimpleMemoryTable;
-import com.github.yck.mapcount.map.strategy.Strategy;
+import com.github.yck.mapcount.map.strategy.ModStrategy;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class AbstractSplitter implements Splitter {
-    private Map<FlushTableName, MemoryTable> memoryTableMap = new HashMap<>();
+    private Map<TableID, MemoryTable> memoryTableMap = new HashMap<>();
+    private Map<TableID, DiskTable> diskTableHashMap = new HashMap<>();
 
     @Override
     public Splitter setTempWorkSpace(String path) {
         return null;
     }
 
-    public AbstractSplitter(Strategy strategy, CheckPoint checkPoint) {
-        this.strategy = strategy;
+    public AbstractSplitter(ModStrategy modStrategy, CheckPoint checkPoint) {
+        this.modStrategy = modStrategy;
         this.checkPoint = checkPoint;
     }
 
-    private Strategy strategy;
+    private ModStrategy modStrategy;
     private CheckPoint checkPoint;
     @Override
     @Deprecated
@@ -51,14 +53,14 @@ public class AbstractSplitter implements Splitter {
 
 //    @Override
     public void writeToMemory(String s) {
-        FlushTableName flushTableName = strategy.mod(s);
+        TableID tableID = modStrategy.mod(s);
         // TODO 写入文件
 
 //        memoryTableMap.getOrDefault(flushTableName,new SimpleMemoryTable(flushTableName)).add(s);
-        if (memoryTableMap.containsKey(flushTableName)){
-            memoryTableMap.get(flushTableName).add(s);
+        if (memoryTableMap.containsKey(tableID)){
+            memoryTableMap.get(tableID).add(s);
         }else {
-            memoryTableMap.put(flushTableName,new SimpleMemoryTable(flushTableName,s));
+            memoryTableMap.put(tableID,new SimpleMemoryTable(tableID,s));
 
         }
     }
@@ -70,9 +72,11 @@ public class AbstractSplitter implements Splitter {
     @Override
     public void checkpoint() {
         System.out.println("开始CK");
-        for (MemoryTable m : memoryTableMap.values()) {
-            checkPoint.flushMemoryTable(m);
+        for (TableID tableID : memoryTableMap.keySet()) {
+            checkPoint.flushMemoryTable(memoryTableMap.get(tableID),
+                    diskTableHashMap.get(tableID));
         }
+
         checkPoint.resetCheckPoint();
         System.out.println("结束CK");
 

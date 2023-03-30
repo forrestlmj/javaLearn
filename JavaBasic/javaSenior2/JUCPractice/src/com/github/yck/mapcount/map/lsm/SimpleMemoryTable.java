@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SimpleMemoryTable implements MemoryTable {
-    private FlushTableName f;
+    private TableID f;
     private List<String> content = new ArrayList<>();
 
-    public SimpleMemoryTable(FlushTableName f,String data) {
+    public SimpleMemoryTable(TableID f, String data) {
         this.f = f;
         add(data);
     }

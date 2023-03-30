@@ -1,6 +1,7 @@
 package com.github.yck.mapcount.map.ck;
 
 
+import com.github.yck.mapcount.map.lsm.DiskTable;
 import com.github.yck.mapcount.map.lsm.MemoryTable;
 
 public interface CheckPoint {
@@ -9,5 +10,5 @@ public interface CheckPoint {
     boolean needToCheckPoint();
     void updateCheckPoint();
     void resetCheckPoint();
-    boolean flushMemoryTable(MemoryTable memoryTable);
+    boolean flushMemoryTable(MemoryTable memoryTable, DiskTable diskTable);
 }

@@ -1,6 +1,7 @@
 package com.github.yck.mapcount.map.ck;
 
 
+import com.github.yck.mapcount.map.lsm.DiskTable;
 import com.github.yck.mapcount.map.lsm.MemoryTable;
 
 
@@ -40,8 +41,14 @@ public class SimpleCheckPoint implements CheckPoint {
         checkPointPointer = 0;
     }
 
+    /**
+     * TODO 涉及数据的传递 flush 过程，这里还要用到 享元模式
+     * @param memoryTable
+     * @param diskTable
+     * @return
+     */
     @Override
-    public boolean flushMemoryTable(MemoryTable memoryTable) {
+    public boolean flushMemoryTable(MemoryTable memoryTable, DiskTable diskTable) {
         if(memoryTable.flush()){
             memoryTable.clean();return true;
         }else return false;

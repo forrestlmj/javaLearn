@@ -2,7 +2,8 @@ package com.github.yck.mapcount.map;
 
 
 import com.github.yck.mapcount.map.ck.CheckPoint;
-import com.github.yck.mapcount.map.lsm.DiskTable;
+import com.github.yck.mapcount.map.disktable.DiskTable;
+import com.github.yck.mapcount.map.disktable.FlyWeightDiskTable;
 import com.github.yck.mapcount.map.lsm.TableID;
 import com.github.yck.mapcount.map.lsm.MemoryTable;
 import com.github.yck.mapcount.map.lsm.SimpleMemoryTable;
@@ -11,10 +12,11 @@ import com.github.yck.mapcount.map.strategy.ModStrategy;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 public class AbstractSplitter implements Splitter {
     private Map<TableID, MemoryTable> memoryTableMap = new HashMap<>();
-    private Map<TableID, DiskTable> diskTableHashMap = new HashMap<>();
+    private Map<TableID, DiskTable> diskTableHashMap = new WeakHashMap<>();
 
     @Override
     public Splitter setTempWorkSpace(String path) {
@@ -74,7 +76,8 @@ public class AbstractSplitter implements Splitter {
         System.out.println("开始CK");
         for (TableID tableID : memoryTableMap.keySet()) {
             checkPoint.flushMemoryTable(memoryTableMap.get(tableID),
-                    diskTableHashMap.get(tableID));
+                    diskTableHashMap.getOrDefault(
+                            tableID,new FlyWeightDiskTable(tableID)));
         }
 
         checkPoint.resetCheckPoint();

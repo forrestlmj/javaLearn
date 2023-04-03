@@ -1,7 +1,7 @@
 package com.github.yck.mapcount.map.ck;
 
 
-import com.github.yck.mapcount.map.lsm.DiskTable;
+import com.github.yck.mapcount.map.disktable.DiskTable;
 import com.github.yck.mapcount.map.lsm.MemoryTable;
 
 public interface CheckPoint {

@@ -12,6 +12,10 @@ public class Client {
 
     public static void main(String[] args) throws IOException {
 
-        new BigFileReader(new AbstractSplitter(new SimpleModStrategy(2),new SimpleCheckPoint(300)),"E:\\JUCPractice\\MyBigfile.txt").run();
+        new BigFileReader(
+                new AbstractSplitter(
+                        new SimpleModStrategy(2),
+                        new SimpleCheckPoint(300)),
+                "E:\\JUCPractice\\MyBigfile.txt").run();
     }
 }

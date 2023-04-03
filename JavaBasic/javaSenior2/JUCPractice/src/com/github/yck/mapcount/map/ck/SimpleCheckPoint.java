@@ -1,7 +1,7 @@
 package com.github.yck.mapcount.map.ck;
 
 
-import com.github.yck.mapcount.map.lsm.DiskTable;
+import com.github.yck.mapcount.map.disktable.DiskTable;
 import com.github.yck.mapcount.map.lsm.MemoryTable;
 
 
@@ -36,6 +36,9 @@ public class SimpleCheckPoint implements CheckPoint {
         checkPointPointer++;
     }
 
+    /**
+     * TODO checkpoint {@link MemoryTable} 与 {@link DiskTable}
+     */
     @Override
     public void resetCheckPoint() {
         checkPointPointer = 0;
@@ -49,7 +52,7 @@ public class SimpleCheckPoint implements CheckPoint {
      */
     @Override
     public boolean flushMemoryTable(MemoryTable memoryTable, DiskTable diskTable) {
-        if(memoryTable.flush()){
+        if(memoryTable.flush(memoryTable.getTableID(),diskTable)){
             memoryTable.clean();return true;
         }else return false;
     }

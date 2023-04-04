@@ -3,21 +3,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.yck</groupId>
-    <artifactId>JVMDemo</artifactId>
+    <parent>
+        <groupId>com.yck</groupId>
+        <artifactId>JVMDemo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>JVMPart3</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
     <modules>
-
-        <module>test</module>
-
-        <module>JVMPart1</module>
-        <module>JVMPart3</module>
+        <module>part3_chapter03</module>
+        <module>part3_chapter04</module>
+        <module>part3__chapter02</module>
     </modules>
+
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
 </project>

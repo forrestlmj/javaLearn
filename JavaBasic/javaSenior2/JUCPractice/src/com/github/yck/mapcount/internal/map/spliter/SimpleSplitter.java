@@ -1,31 +1,25 @@
-package com.github.yck.mapcount.map;
+package com.github.yck.mapcount.internal.map.spliter;
 
 
-import com.github.yck.mapcount.map.ck.CheckPoint;
-import com.github.yck.mapcount.map.disktable.DiskTable;
-import com.github.yck.mapcount.map.disktable.FlyWeightDiskTable;
-import com.github.yck.mapcount.map.lsm.TableID;
-import com.github.yck.mapcount.map.lsm.MemoryTable;
-import com.github.yck.mapcount.map.lsm.SimpleMemoryTable;
-import com.github.yck.mapcount.map.strategy.ModStrategy;
+import com.github.yck.mapcount.internal.map.ck.CheckPoint;
+import com.github.yck.mapcount.internal.map.disktable.DiskTable;
+import com.github.yck.mapcount.internal.map.strategy.ModStrategy;
+import com.github.yck.mapcount.internal.map.memorytable.TableID;
+import com.github.yck.mapcount.internal.map.memorytable.MemoryTable;
+import com.github.yck.mapcount.internal.map.memorytable.SimpleMemoryTable;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.WeakHashMap;
 
-public class AbstractSplitter implements Splitter {
+public class SimpleSplitter implements Splitter {
     private Map<TableID, MemoryTable> memoryTableMap = new HashMap<>();
-    private Map<TableID, DiskTable> diskTableHashMap = new WeakHashMap<>();
+    private DiskTable diskTable;
 
-    @Override
-    public Splitter setTempWorkSpace(String path) {
-        return null;
-    }
-
-    public AbstractSplitter(ModStrategy modStrategy, CheckPoint checkPoint) {
+    public SimpleSplitter(ModStrategy modStrategy, CheckPoint checkPoint, DiskTable d) {
         this.modStrategy = modStrategy;
         this.checkPoint = checkPoint;
+        this.diskTable = d;
     }
 
     private ModStrategy modStrategy;
@@ -76,8 +70,7 @@ public class AbstractSplitter implements Splitter {
         System.out.println("开始CK");
         for (TableID tableID : memoryTableMap.keySet()) {
             checkPoint.flushMemoryTable(memoryTableMap.get(tableID),
-                    diskTableHashMap.getOrDefault(
-                            tableID,new FlyWeightDiskTable(tableID)));
+                    diskTable);
         }
 
         checkPoint.resetCheckPoint();

@@ -1,6 +1,6 @@
-package com.github.yck.mapcount.map.lsm;
+package com.github.yck.mapcount.internal.map.memorytable;
 
-import com.github.yck.mapcount.map.disktable.DiskTable;
+import com.github.yck.mapcount.internal.map.disktable.DiskTable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class SimpleMemoryTable implements MemoryTable {
     }
 
     @Override
-    public boolean flush(TableID id,DiskTable d) {
+    public boolean flush(TableID id, DiskTable d) {
         d.write(getTableID(),content);
         System.out.println("文件："+f.getUuid()+"已写入："+content.size()+"行");
 //        content.forEach(o->{

@@ -1,6 +1,6 @@
-package com.github.yck.mapcount.map.disktable;
+package com.github.yck.mapcount.internal.map.disktable;
 
-import com.github.yck.mapcount.map.lsm.TableID;
+import com.github.yck.mapcount.internal.map.memorytable.TableID;
 
 import java.util.List;
 
@@ -11,4 +11,5 @@ import java.util.List;
 public interface DiskTable {
     void write(TableID tableId, List<String> content);
     void clean();
+    void initTempWorkSpace(String path);
 }

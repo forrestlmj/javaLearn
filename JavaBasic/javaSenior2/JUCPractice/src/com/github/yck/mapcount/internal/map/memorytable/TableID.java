@@ -1,4 +1,4 @@
-package com.github.yck.mapcount.map.lsm;
+package com.github.yck.mapcount.internal.map.memorytable;
 
 import java.util.Objects;
 

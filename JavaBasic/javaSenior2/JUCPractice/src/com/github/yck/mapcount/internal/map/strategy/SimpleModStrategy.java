@@ -1,7 +1,7 @@
-package com.github.yck.mapcount.map.strategy;
+package com.github.yck.mapcount.internal.map.strategy;
 
 
-import com.github.yck.mapcount.map.lsm.TableID;
+import com.github.yck.mapcount.internal.map.memorytable.TableID;
 
 public class SimpleModStrategy implements ModStrategy {
     private Integer MOD;

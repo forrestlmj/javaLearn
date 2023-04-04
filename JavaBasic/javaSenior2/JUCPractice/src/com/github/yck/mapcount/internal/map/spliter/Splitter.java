@@ -1,4 +1,4 @@
-package com.github.yck.mapcount.map;
+package com.github.yck.mapcount.internal.map.spliter;
 
 import java.util.List;
 
@@ -7,6 +7,5 @@ public interface Splitter {
     void split(String content);
 //    void writeToMemory(String s);
     void checkpoint();
-    Splitter setTempWorkSpace(String path);
 
 }

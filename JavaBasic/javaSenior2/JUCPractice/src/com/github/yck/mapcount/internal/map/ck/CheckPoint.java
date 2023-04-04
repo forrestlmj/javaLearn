@@ -1,8 +1,8 @@
-package com.github.yck.mapcount.map.ck;
+package com.github.yck.mapcount.internal.map.ck;
 
 
-import com.github.yck.mapcount.map.disktable.DiskTable;
-import com.github.yck.mapcount.map.lsm.MemoryTable;
+import com.github.yck.mapcount.internal.map.disktable.DiskTable;
+import com.github.yck.mapcount.internal.map.memorytable.MemoryTable;
 
 public interface CheckPoint {
     void setMaxLineSize(Integer maxCheckPointLine);

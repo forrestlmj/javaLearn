@@ -1,8 +1,8 @@
-package com.github.yck.mapcount.map;
+package com.github.yck.mapcount.internal;
 
 
 
-import com.github.yck.mapcount.map.ck.CheckPoint;
+import com.github.yck.mapcount.internal.map.spliter.Splitter;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.LineIterator;
 

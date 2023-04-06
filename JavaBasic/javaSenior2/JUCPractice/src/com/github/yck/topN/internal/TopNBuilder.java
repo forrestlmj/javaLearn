@@ -17,7 +17,10 @@ public class TopNBuilder {
      * 一次写入的每个文件应该在 34kb - 40kb 之间（1000行*37列/1024=36K））
      * 一次写入的这100个文件最大内存用量在 3.4mb - 4.0mb 之间
      * 所以：-Xmx10m -Xms10m
-     * 开始时间：2023-04-05T18:17:34.158 结束时间：2023-04-05T18:31:35.426
+     *
+     * 运行结果
+     * 开始时间：2023-04-05T22:09:05.304完成第1次 CheckPoint，共处理100000 条数据
+     * 结束时间：2023-04-05T22:42:08.786完成第2147次 CheckPoint，共处理214700000 条数据
      * @throws IOException
      */
     public void buildByteSplitter() throws IOException {

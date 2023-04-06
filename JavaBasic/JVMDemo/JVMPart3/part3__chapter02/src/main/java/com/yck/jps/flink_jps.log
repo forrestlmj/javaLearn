@@ -1,0 +1,24 @@
+设置如下参数时，
+Flink JPS的参数配置：
+
+文档参考：https://nightlies.apache.org/flink/flink-docs-release-1.13/zh/docs/deployment/memory/mem_setup/
+
+30980 org.apache.flink.runtime.entrypoint.StandaloneSessionClusterEntrypoint
+-Xmx469762048 = 448MB
+-Xms469762048 = 448MB
+-XX:MaxMetaspaceSize=268435456 = 256MB
+-Dlog.file=/opt/software/flink-1.14.4/log/flink-yck-standalonesession-1-yck.log
+-Dlog4j.configuration=file:/opt/software/flink-1.14.4/conf/log4j.properties
+-Dlog4j.configurationFile=file:/opt/software/flink-1.14.4/conf/log4j.properties
+-Dlogback.configurationFile=file:/opt/software/flink-1.14.4/conf/logback.xml
+
+31255 org.apache.flink.runtime.taskexecutor.TaskManagerRunner
+-XX:+UseG1GC
+-Xmx161061270 = 153MB = (JVMHeap = Framework Heap 128MB+ Task Heap 25.6MB 图中)
+-Xms161061270 = 153MB= (JVMHeap = Framework Heap 128MB+ Task Heap 25.6MB 图中)
+-XX:MaxDirectMemorySize=201326592 = 192MB = (Framework Off-Heap 128MB + Task Off-Heap 0MB + Network 64MB)
+-XX:MaxMetaspaceSize=268435456 = 256MB = (JVM Metaspace)
+-Dlog.file=/opt/software/flink-1.14.4/log/flink-yck-taskexecutor-1-yck.log
+-Dlog4j.configuration=file:/opt/software/flink-1.14.4/conf/log4j.properties
+-Dlog4j.configurationFile=file:/opt/software/flink-1.14.4/conf/log4j.properties
+-Dlogback.configurationFile=file:/opt/software/flink-1.14.4/conf/logback.xml

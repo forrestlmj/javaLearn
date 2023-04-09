@@ -1,10 +1,13 @@
-package com.yck.jstat;
+package com.yck.test;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 不断的向 JVM 中添加 byte[] 数组，查看 jstat 的状态
+ *
+ * 本程序功能为不断的向 JVM 中添加 byte[] 数组，便于使用命令行
+ * 来观测堆信息
+ *
  * 设置 SurvivorRatio 时候注意关闭 -UseAdaptiveSizePolicy
  * 这样保证 8Mb = 8Mb老年区（2MB伊甸园 2MB幸运者(1MB+1MB)）
  * -Xmx8m -Xms8m -XX:SurvivorRatio=1 -XX:NewRatio=1 -XX:-UseAdaptiveSizePolicy

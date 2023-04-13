@@ -6,7 +6,7 @@ jmap -help
 
 # 1. -dump 导出内存映像文件
 ## 手动导出
-jmap -dump:format=b,file=AddStringData_jmap_dump.hprof 81264
+jmap -dump:format=b,file=E://JVM//com.yck.AddStringData_jmap_dump.hprof 11220
 ## 自动导出,当OOM时候导出hprof文件 两个很重要的参数: -XX:HeapDumpPath -XX:+HeapDumpOnOutOfMemoryError
 java -jar xxx.jar  -XX:HeapDumpPath=E://JVM//com.yck.AddByteData.hprof -XX:+HeapDumpOnOutOfMemoryError
 ##----------------------------------------------------------------------------------------

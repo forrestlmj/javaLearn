@@ -1,6 +1,9 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * 纪念在南京的美好日子。
+ */
 public class WhatToEat {
     public static void main(String[] args) throws InterruptedException {
         ArrayList<String> foodList = new ArrayList<>();

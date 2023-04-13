@@ -5,24 +5,16 @@ import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-//enum RUN_MODE{
-//    /**
-//     * 运行模式：一直运行
-//     */
-//    WHILE_TRUE,
-//    /**
-//     * 运行模式：运行10秒结束
-//     */
-//    UNTIL,
-//}
+//-Xmx8m -Xms8m -XX:SurvivorRatio=1 -XX:NewRatio=1 -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=E://JVM//com.yck.test.AddByteData.hprof
+
 /**
  *
+ * -Xmx8m -Xms8m -XX:SurvivorRatio=1 -XX:NewRatio=1 -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=E://JVM//com.yck.test.AddByteData.hprof
  * 本程序功能为不断的向 JVM 中添加 字符串，便于使用命令行
  * 来观测堆信息
  *
  * 设置 SurvivorRatio 时候注意关闭 -UseAdaptiveSizePolicy
  * 这样保证 8Mb = 8Mb老年区（2MB伊甸园 2MB幸运者(1MB+1MB)）
- * -Xmx8m -Xms8m -XX:SurvivorRatio=1 -XX:NewRatio=1 -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=E://JVM//com.yck.test.AddByteData.hprof
  */
 public class AddStringData {
 

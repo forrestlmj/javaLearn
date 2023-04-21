@@ -7,17 +7,17 @@ https://arthas.aliyun.com/
 # 重点命令
 ## jvm 相关
     - dashboard
-    - thread
-    - jvm
+    - thread 当前线程状态
+    - jvm 
 ## classloader 相关
-    - sc
-    - sm
-    - jad
+    - sc 搜索类的详细信息，包括类加载器，研究双亲委派机制时候非常管用。找jvm中的类
+    - sm 搜索类的相关方法 常用
+    - jad - 反编译，非常常用
     - mc, redefine
-    - classloader
+    - classloader - 统计类的加载情况
 ## monitor/watch/trace 相关
-    - monitor
-    - watch
+    - monitor - 可以监控任一类的方法执行频率、失败成功等。
+    - watch - 非常好用，类似idea中的变脸观察
     - trace
     - stack
     - tt

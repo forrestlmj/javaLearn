@@ -17,8 +17,8 @@ https://arthas.aliyun.com/
     - classloader - 统计类的加载情况
 ## monitor/watch/trace 相关
     - monitor - 可以监控任一类的方法执行频率、失败成功等。
-    - watch - 非常好用，类似idea中的变脸观察
-    - trace
+    - watch - 非常好用，类似idea中的变量观察
+    - trace - 
     - stack
     - tt
 ## 其他

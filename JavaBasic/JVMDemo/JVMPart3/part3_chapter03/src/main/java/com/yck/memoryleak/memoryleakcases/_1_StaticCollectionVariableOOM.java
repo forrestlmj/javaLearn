@@ -1,4 +1,4 @@
-package com.yck.test.memoryleakcases;
+package com.yck.memoryleak.memoryleakcases;
 
 import java.util.ArrayList;
 import java.util.List;

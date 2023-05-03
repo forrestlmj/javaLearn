@@ -1,4 +1,4 @@
-package com.yck.test.memoryleakcases;
+package com.yck.memoryleak.memoryleakcases;
 
 import java.util.HashMap;
 import java.util.Map;

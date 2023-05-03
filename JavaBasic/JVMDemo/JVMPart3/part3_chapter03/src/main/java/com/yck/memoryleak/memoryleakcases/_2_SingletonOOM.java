@@ -1,4 +1,4 @@
-package com.yck.test.memoryleakcases;
+package com.yck.memoryleak.memoryleakcases;
 
 //-Xmx8m -Xms8m -XX:SurvivorRatio=1 -XX:NewRatio=1 -XX:-UseAdaptiveSizePolicy -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=E://JVM//MAT//com.yck.test.memoryleakcases._2_SingletonOOM.hprof
 

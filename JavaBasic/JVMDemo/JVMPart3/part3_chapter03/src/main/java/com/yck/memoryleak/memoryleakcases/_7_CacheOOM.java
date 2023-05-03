@@ -1,4 +1,4 @@
-package com.yck.test.memoryleakcases;
+package com.yck.memoryleak.memoryleakcases;
 
 import javax.swing.*;
 import java.util.*;

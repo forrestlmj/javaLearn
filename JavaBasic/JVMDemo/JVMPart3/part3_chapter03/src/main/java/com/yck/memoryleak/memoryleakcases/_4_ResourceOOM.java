@@ -1,4 +1,4 @@
-package com.yck.test.memoryleakcases;
+package com.yck.memoryleak.memoryleakcases;
 
 /**
  * 其实就是finally中没有回收

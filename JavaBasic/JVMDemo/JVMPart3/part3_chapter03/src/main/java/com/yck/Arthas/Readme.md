@@ -6,7 +6,7 @@ https://arthas.aliyun.com/
 这个
 # 重点命令
 ## jvm 相关
-    - dashboard
+    - dashboardd
     - thread 当前线程状态
     - jvm 
 ## classloader 相关

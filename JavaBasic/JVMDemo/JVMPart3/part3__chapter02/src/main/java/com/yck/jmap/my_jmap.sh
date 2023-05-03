@@ -2,7 +2,7 @@
 # 获取 dump 文件、观测堆内存信息、堆中对象、类加载信息。
 
 jmap -help
-# option 有 -dump  -heap -clstats -histo
+# option 有 -dump  -heap -clstats -hist
 
 # 1. -dump 导出内存映像文件
 ## 手动导出

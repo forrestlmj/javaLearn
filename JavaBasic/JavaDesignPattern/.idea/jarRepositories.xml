@@ -2,9 +2,34 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="spring" />
+      <option name="name" value="spring" />
+      <option name="url" value="http://122.9.46.169:9002/nexus/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="aliyun" />
+      <option name="name" value="aliyun" />
+      <option name="url" value="http://122.9.46.169:9002/nexus/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="snapshots" />
+      <option name="name" value="Snapshot Repositories" />
+      <option name="url" value="http://122.9.46.169:9002/nexus/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="3rd_party" />
+      <option name="name" value="3rd_party Repositories" />
+      <option name="url" value="http://122.9.46.169:9002/nexus/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Maven Central repository" />
       <option name="url" value="https://repo1.maven.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="release" />
+      <option name="name" value="Release Repositories" />
+      <option name="url" value="http://122.9.46.169:9002/nexus/repository/maven-public/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="jboss.community" />
@@ -15,6 +40,16 @@
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://maven.aliyun.com/repository/central" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="nexus" />
+      <option name="name" value="Public Repositories" />
+      <option name="url" value="http://122.9.46.169:9002/nexus/repository/maven-public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="central" />
+      <option name="name" value="Central Repositories" />
+      <option name="url" value="http://122.9.46.169:9002/nexus/repository/maven-public/" />
     </remote-repository>
   </component>
 </project>

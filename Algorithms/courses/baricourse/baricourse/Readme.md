@@ -39,6 +39,59 @@ DAC(P){
 
 ### Lesson 2.1.1: Recurrence Relation
 The link of this lesson on youtube on be found [here](https://www.youtube.com/watch?v=4V30R3I1vLI&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=19)
+The topic of the lesson is about how to trace the recurrence algorithm by using recurrence tree and formula, and how to calculate the time complexity of a recurrence relation.
+#### A Recurrence Relation represented by code
+
+```plaintext
+// Print the value of N recursively.
+void Test(int n){
+    if(n > 0){
+        print(n)
+        Test(n-1)
+    }
+}
+```
+1. Using tree to trace and represent the recurrence relation
+![tree](pictures/Abdul_2_Divide_And_Conquer_2.png)
+From the draw, we can learn that the time complexity of this recurrence relation is O(N), since the function is called by N + 1 times.
+2. Using recurrence formula to present the algorithm
+```plaintext
+void Test(int n){                      -- T(N)
+    if(n > 0){                         -- 
+        print(n)                       -- 1
+        Test(n-1)                      -- T(N-1)
+    }
+}
+------------------------------------------------------
+------------------------------------   -- T(N) = 1 + T(N-1)
+```
+But how about the condition if(n > 0)? It is not listed in the formula?
+How to prove the recurrence formula? 
+
+![A formula with condition](pictures/Abdul_2_Divide_And_Conquer_3.png)
+```plaintext
+T(N) = T(N-1) + 1
+
+Substitute T(N-1) = T(N-2) + 1
+so:
+T(N) = [T(N-2) + 1] + 1
+T(N) = T(N-2) + 2
+T(N) = [T(N - 3) + 1] + 2 
+T(N) = T(N - 3) + 3
+....
+T(N) = T(N - K) + K
+
+Asssume : N - K = 0 , so N = K
+then:
+T(N) = T(0) + K
+Because T(0) = 1
+then:
+T(N) = 1 + K
+Because N = K
+T(N) = 1 + N
+```
+
+
 #### The idea of recurrence relation
 ### Lesson 2.1.2:
 ### Lesson 2.1.3:

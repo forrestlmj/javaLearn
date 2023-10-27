@@ -54,7 +54,10 @@ void Test(int n){
     }
 }
 ```
-1. Using tree to trace and represent the recurrence relation
+1. Using recursion tree to trace and represent the recurrence relation
+
+**IMPORTANT: Recursion tree is crucial important during this course,since it is a good way to visualize and analysis the recursion algorithm.**
+
 ![tree](pictures/Abdul_2_Divide_And_Conquer_2.png)
 From the draw, we can learn that the time complexity of this recurrence relation is O(N), since the function is called by N + 1 times.
 2. Using recurrence formula to present the algorithm
@@ -116,14 +119,14 @@ Test(n){                                      -- T(N)
 
 How to get the time complexity of the formula T(N) = N + T(N-1)?
 There are 2 ways of getting the complexity of the formula:
-1. Drawing a tracing tree to present the whole recurrence relation.
+1. Drawing a recursion tree to present the whole recurrence relation.
 2. Using formula to prove it.
 The first step is to of prove the formula is to find the condition that a question is a sub question can be solved or not.
 So we get the formula like this:
 
 ![](pictures/Abdul_2_Divide_And_Conquer_4.png)
 
-Solution 1 : Using tree to trace the recurrence relation.
+Solution 1 : Using recursion tree to visualize the recurrence relation.
 ![](pictures/Abdul_2_Divide_And_Conquer_5.png)
 
 So we can calculate time complexity of the whole recurrence relation :
@@ -156,7 +159,9 @@ T(N) = O(N^2)
 ### Lesson 2.1.4:
 ### Lesson 2.1.5:
 ### Lesson 2.1.6:
-
+### Lesson 2.2 Masters Theorem Decreasing Function
+**The masters theorem is crucial important, Abdul said that you should write this down at least one time to understand this.
+Otherwise, you can't understant it just by watching.**
 ## Chapter 3 Greedy method
 ## Chapter 4 Dynamic programming
 ## Chapter 5 Graph Traversals

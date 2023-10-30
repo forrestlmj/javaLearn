@@ -38,7 +38,7 @@ DAC(P){
 
 
 ### Lesson 2.1.1: Recurrence Relation T(N) = T(N-1) + 1
-The link of this lesson on youtube on be found [here](https://www.youtube.com/watch?v=4V30R3I1vLI&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=19)
+The link of this lesson on YouTube on be found [here](https://www.youtube.com/watch?v=4V30R3I1vLI&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=19)
 The topic of the lesson is about how to trace the recurrence algorithm by using recurrence tree and formula, and how to calculate the time complexity of a recurrence relation.
 The formula of the lesson is T(N) = T(N-1) + 1, meaning that the time complexity of the recurrence relation is O(N).
 
@@ -98,7 +98,7 @@ T(N) = 1 + N
 ```
 
 
-### Lesson 2.1.2 T(N) = T(N-1) + N: 
+### Lesson 2.1.2 Recurrence Relation T(N) = T(N-1) + N: 
 The link of the lesson is [here](https://www.youtube.com/watch?v=IawM82BQ4II&list=PLDN4rrl48XKpZkf03iYFl-O29szjTrs_O&index=20)
 The formula that needed to be proved in this lesson is T(N) = T(N-1) + N
 ```plaintext
@@ -155,7 +155,7 @@ T(N) = 1 + n(n-1)/2
 T(N) = O(N^2)
 
 ```
-### Lesson 2.1.3 T(N) = T(N-1) + log(N):
+### Lesson 2.1.3 Recurrence Relation T(N) = T(N-1) + log(N):
 #### Find out the time complexity of formula T(N) = T(N-1) + log(N)
 ```plaintext
 void test(N){                        -- T(N)
@@ -327,6 +327,16 @@ T(N) = T(N-b) + f(n)
 ```plaintext
 T(N) = O(N^K * a^N/b)
 ```
+### Lesson 2.3.1 Recurrence relation dividing function T(n) = T(n/2) + 1
+IMPORTANT The previous courses focus on using master theorem solving **decreasing function**, while the following courses
+focus on solving **dividing function** using master theorem.
+
+The previous courses solving the decreasing function is just warm-up, **the divide and conquer is more about dividing function with master theorem.**
+
+### Lesson 2.3.2 Recurrence relation dividing function T(n) = T(n/2) + n
+### Lesson 2.3.3 Recurrence relation dividing function T(n) = 2T(n/2) + n
+### Lesson 2.4.1 Masters Theorem of dividing function
+### Lesson 2.4.2 Examples for Masters Theorem 
 
 
 ## Chapter 3 Greedy method

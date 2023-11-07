@@ -332,9 +332,114 @@ IMPORTANT The previous courses focus on using master theorem solving **decreasin
 focus on solving **dividing function** using master theorem.
 
 The previous courses solving the decreasing function is just warm-up, **the divide and conquer is more about dividing function with master theorem.**
+```plaintext
+void T(N){
+    if(N > 1){
+        print(N)
+        T(N/2)     
+    }
+}
+
+
+T(N) = T(N/2) + 1 when N > 1
+T(N) = 0 when N = 1
+
+```
+1. Solution 1: recursion tree
+![](./pictures/Abdul_2_Divide_And_Conquer_8.png)
+The depth of the recursion tree is Log(N), and the time complexity is Log(N)
+2. Solution 2: substitution method
+
+```plaintext
+
+T(N) =  T(N/2) + 1
+substitute T(N/2) = T(N/2^2) + 1
+T(N) = T(N/2^2) + 2
+substitute T(N/2^2) = T(N/2^3) + 1
+T(N) = T(N/2^3) + 3
+
+....
+
+T(N) = T(N/2^K) + K
+assume N = 2^K
+T(N) = T(1) + Log(N)
+T(N) = Log(N)
+```
+The time complexity is Log(N)
+
 
 ### Lesson 2.3.2 Recurrence relation dividing function T(n) = T(n/2) + n
+```plaintext
+
+void T(N){
+    if(N > 1){
+        for(i=0;i<N/2;i++){
+            print(i)
+        }
+        T(N/2)
+    }
+}
+
+T(N) = T(N/2) + N/2 when N > 1
+T(N) = 0 when N = 1
+```
+
+Solution 1:
+![](pictures/Abdul_2_Divide_And_Conquer_9.png)
+Solution 2: substitution 
+```plaintext
+T(N) = T(N/2) + N/2
+substitute T(N/2) = T(N/4) + N/4
+T(N) = T(N/4) + N/4 + N/2
+substitute T(N/4) = T(N/8) + N/8
+T(N) = T(N/8) + N/8 + N/4 + N/2
+...
+T(N) = T(N/2^K) + N/2^K + ... + N/2
+assume N = 2^K
+T(N) = T(1) + 1 + N/2^(K-1) + N/^2(K-2) + ... + N/2
+T(N) = T(1) + 1 + N*(1/2^(K-1) + 1/2^(K-2) + ... + 1/2)
+T(N) = 1 + N
+
+```
+
+Time complexity is O(N)
 ### Lesson 2.3.3 Recurrence relation dividing function T(n) = 2T(n/2) + n
+
+```plaintext
+void T(N){
+    if(N>1){
+        for(i = 0;i<N;i++){
+            print(i)
+        }
+        T(N/2)
+        T(N/2)
+    }
+}
+
+T(N) = 2(T/2) + N when N > 1
+T(N) = 0 when N = 1
+```
+
+Solution 1: 
+![](pictures/Abdul_2_Divide_And_Conquer_10.png)
+
+Solution 2:
+```plaintext
+T(N) =  2 * T(N/2) + N
+substitute T(N/2) = 2 * T(N/2^2) + N/2
+T(N) = 2 * [2 * T(N/2^2) + N/2] + N
+T(N) = 2^2 * T(N/2^2) + 2N
+substitute T(N/2^2) = 2 * T(N/2^3) + N/2^2
+T(N) = 2^2 * [2 * T(N/2^3) + N/2^2] + 2N
+T(N) = 2^3 * T(N/2^3) + 3N
+...
+T(N) = 2^K * T(N/2^K) + K*N
+assume N = 2^K
+T(N) = N * T(1) + LogN * N
+T(N) = N * Log(N)
+
+```
+
 ### Lesson 2.4.1 Masters Theorem of dividing function
 ### Lesson 2.4.2 Examples for Masters Theorem 
 

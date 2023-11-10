@@ -441,8 +441,62 @@ T(N) = N * Log(N)
 ```
 
 ### Lesson 2.4.1 Masters Theorem of dividing function
-### Lesson 2.4.2 Examples for Masters Theorem 
+### Lesson 2.4.2 Examples for Masters Theorem
+### Lesson 2.5 Root Function
+### Lesson 2.6.1 Binary Search Iterative
 
+![](pictures/Abdul_2_Divide_And_Conquer_11.png)
+a[15] is a sorted Array, there two ways to find the position of the key.
+```plaintext
+a[15] = [12,3,...,13,14]
+low = 1, high = 15
+int BinarySearch(low,high,key){
+    while(low<=high){
+        mid = (low + high) / 2
+        if(a[mid] == key)
+            return mid
+        if(key<a[mid])
+            high = mid - 1
+        else
+            low = mid + 1
+    }
+    return -1
+}
+
+```
+### Lesson 2.6.1 Binary Search Recurrence
+```plaintext
+int BinarySearch(low,high,key){
+    // Is problem is small enough?                        -- T(N)
+    if(low == high){                                      -- 3 when N = 1
+        // solving the problem                            -- 
+        if(key == a[low])                                 -- 
+            return low                                    -- 
+         else return -1                                   -- 
+    }                                                     -- 
+    else{                                                 -- when N > 1
+        // divide the problem into sub problems           -- 
+        mid = (low + high)/2                              -- 1
+        // apply sub problems                             -- 
+        if(key == a[mid]) return mid                      -- 
+        if(key > a[mid]){                                 -- 
+            low = mid + 1                                 -- 1
+            // combine                                    -- 
+            return BinarySearch(low,high,keu)             -- T(N/2)
+        } else{                                           -- 
+            high = mid - 1                                -- or
+            // combine                                    -- 
+            return BinarySearch(low,high,keu)             -- T(N/2)
+        }                                                 -- 
+    }                                                     -- 
+}                                                         -- 
+------------------------------------------------------------ -------------
+
+The recurrence relation of above algorithm is :
+T(1) = 1 when N = 1
+T(N) = T(N/2) + 1 when N > 1
+Log(N)
+```
 
 ## Chapter 3 Greedy method
 ## Chapter 4 Dynamic programming

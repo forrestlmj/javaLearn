@@ -13,8 +13,8 @@ public class SpecialArrayWithXElementsGreaterThanorEqualX {
     public static void main(String[] args) {
          new ArrayList<Solution1608>(){{
              add(new Solution1608BinarySearch());
-//            add(new Solution1608Recurse());
-//            add(new Solution1608BruteMethod());
+            add(new Solution1608Recurse());
+            add(new Solution1608BruteMethod());
         }}.forEach(
                  solution1608 -> {
                      Assert.equals(solution1608.specialArray(new int[]{3,9,7,8,3,8,6,6}),6);//2
@@ -84,43 +84,64 @@ class Solution1608BruteMethod implements Solution1608{
 }
 
 /**
- * TODO Wrong answer. we should binary search X to find the number.
+ * <a href="https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/submissions/1101448472/">Accepted</a>
+ * Using Recurse solution
  */
 class Solution1608Recurse implements Solution1608{
-    private int[] binary(int[] nums, int low,int high){
-        if(high ==  low + 1){
-            if(
-                    (nums[low] == 0 && nums[high] >= 1) ||
-                    nums[high] == 0 && nums[low] >= 1){
-                return new int[] {1,Math.max(nums[high],nums[low])};
-            }
-            // 2
-            if(nums[low] >= 2 && nums[low] >= 2){
-                return new int[] {2, Math.min(nums[high],nums[low])};
-            }
-            return new int[]{0,-1};
-        } else if (high == low) {
-            int re= nums[low] > 0?1:0;
-            return new int[]{1,nums[low]};
-        } else {
-            int mid = low + (high - low)/2;
-            int[] p1 = binary(nums, 0, mid);
-            int[] p2 = binary(nums,mid+1,high);
-            // TODO return the min value of the array and the number of X, calculate the value of
-            // min value and X when combining the two answer.
-            if (p1[1] >=p1[0] +p2[0] && p2[1] >= p1[0] + p2[0] ){
-                return new int[]{p1[0] + p2[0],Math.min(p1[1],p2[1])} ;
-            }else {
-                return new int[]{0,-1};
-            }
+    /**
+     * Find the number of array that greater or equal than mid.
+     * @param mid the value needed to be compared.
+     * @param nums the original array
+     * @return
+     */
+    private int findElementsGreaterthanMid(int mid, int[] nums) {
+        int cnt = 0;
 
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] >= mid){
+                cnt ++;
+            }
         }
+
+        return cnt;
+    }
+    private int binary(int[] nums, int low,int high){
+        // Is the problem can be solved.
+        if(low == high){
+            if(findElementsGreaterthanMid(low,nums) == low){
+                return low;
+            }else {
+                return -1;
+            }
+        } else if (low > high) {
+            return -1;
+        } else{
+            int mid = low + (high - low) / 2;
+            int cnt = findElementsGreaterthanMid(mid, nums);
+            if(mid == cnt){
+                return mid;
+            }else if (mid > cnt ){
+                // means we should move the high index to the left of the middle index.
+                high = mid - 1;
+                return binary(nums,low,high);
+            }else {
+                low = mid + 1;
+                return binary(nums,low,high);
+            }
+        }
+        // else: divide the problem into sub problems. Apply binary search to sub problems. Combine the answers of each sub problems;
     }
 
     @Override
     public int specialArray(int[] nums) {
-        int[] re = binary(nums, 0, nums.length - 1);
-        return re[0]>0?re[0]:-1;
+        int low = 1;
+        int high = Integer.MIN_VALUE;
+        for (int x:nums){
+            high = Math.max(x,high);
+
+        }
+        return binary(nums, 1, high);
+
     }
 }
 

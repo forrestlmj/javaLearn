@@ -473,8 +473,9 @@ int BinarySearch(low,high,key){
         if(key == a[low])                                 -- 
             return low                                    -- 
          else return -1                                   -- 
-    }                                                     -- 
-    else{                                                 -- when N > 1
+    }else if(low > high){
+         return -1                                                     -- 
+    } else{                                                 -- when N > 1
         // divide the problem into sub problems           -- 
         mid = (low + high)/2                              -- 1
         // apply sub problems                             -- 
@@ -497,6 +498,26 @@ T(1) = 1 when N = 1
 T(N) = T(N/2) + 1 when N > 1
 Log(N)
 ```
+
+## Practices
+Leetcode Problems:
+1. com.github.yck.SpecialArrayWithXElementsGreaterThanorEqualX
+
+**Note**
+
+- Always make sure what to search.
+  * Define the relationship between the array you defined and the problem. Why you solve the problem by searching the array you define.
+  * Make sure that you figure out the meaning of start and end of the array.
+  * What is the sub-problem that can be solved? Also notice that for the sub problems,it is still possible that takes O(1)、O(N)、O(LogN) times to solve the problem.
+- Binary Search iterative
+  * mid = low + (high - low)
+  * Using while(low<=high),do not call itself when search iterative.
+- Binary Search Recursive
+  * low == high meaning sub problem, can be solved.
+  * low > high meaning, no answer.
+  * low < high meaning needed to be divided into more sub problems;
+
+
 
 ## Chapter 3 Greedy method
 ## Chapter 4 Dynamic programming

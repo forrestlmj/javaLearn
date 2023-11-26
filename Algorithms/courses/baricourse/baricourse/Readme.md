@@ -510,7 +510,7 @@ Leetcode Problems:
   * Make sure that you figure out the meaning of start and end of the array.
   * What is the sub-problem that can be solved? Also notice that for the sub problems,it is still possible that takes O(1)、O(N)、O(LogN) times to solve the problem.
 - Binary Search iterative
-  * mid = low + (high - low)
+  * mid = low + (high - low)/2
   * Using while(low<=high),do not call itself when search iterative.
 - Binary Search Recursive
   * low == high meaning sub problem, can be solved.

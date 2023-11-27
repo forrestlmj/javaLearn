@@ -4,6 +4,7 @@ import cn.hutool.core.lang.Assert;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,7 +39,8 @@ The index where nums[i] == 5 is 4.
 public class FindTargetIndicesAfterSortingArray {
     public static void main(String[] args) {
         List<Solution2089> a = new ArrayList<Solution2089>(){{
-            add(new SolutionNTimeComplexity());
+            add(new Solution2089Traversal());
+            add(new Solution2089SortAndBinarySearch());
         }};
         a.forEach(
                 solution2089 ->{
@@ -52,70 +54,100 @@ public class FindTargetIndicesAfterSortingArray {
 interface Solution2089{
     List<Integer> targetIndices(int[] nums, int target);
 }
-class SolutionNTimeComplexity implements Solution2089{
+
+/**
+ * Time Complexity: O(N)
+ * Space Complexity: O(N)
+ */
+class Solution2089Traversal implements Solution2089{
     @Override
     public List<Integer> targetIndices(int[] nums, int target) {
         int startIndex = -1;
+        int cnt = 0;
         List<Integer> result = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
             if(nums[i] == target){
-                startIndex = startIndex + 1;
-                result.add(startIndex);
+                if(cnt == 0){
+                    startIndex ++;
+                }
+                cnt ++;
+
             } else if (nums[i] < target) {
                 startIndex = startIndex + 1;
-                for (int j = 0; j < result.size(); j++) {
-                    int newValue = (Integer) result.get(j) + 1;
-                    result.set(j,newValue);
-                }
+
             }else {
 
             }
+        }
+        for (int i = startIndex; i < startIndex+cnt; i++) {
+            result.add(i);
         }
         return result;
     }
 }
-class Solution2089N implements Solution2089{
-    private List<Integer> makeResult(int target,int[] nums){
-        List<Integer> result = new ArrayList<>();
-        int cnt = -1;
-        for (int num : nums) {
-            if (num == target){
-                cnt++;
-                result.add(target+cnt);
-            }
-        }
-        return result;
 
-    }
-
+/**
+ * Time Complexity: O(NlogN) + O(LogN)
+ */
+class Solution2089SortAndBinarySearch implements Solution2089{
     @Override
     public List<Integer> targetIndices(int[] nums, int target) {
-        List<Integer> result = new ArrayList<>();
+        Arrays.sort(nums);
+//        System.out.println(nums);
         int low = 0;
-        int high = nums.length-1;
-        while (low <= high) {
+        int high = nums.length - 1;
+        List<Integer> re = new ArrayList<>();
+        int leftIndex = Integer.MAX_VALUE;
+        int rightIndex = Integer.MIN_VALUE;
+        // Binary Search for the leftIndex
+        while (low <= high){
             int mid = low + (high - low) / 2;
-            int lessThanMid = NumberOfElememntLessThanMid(nums, mid);
-            if(lessThanMid == mid){
-                return makeResult(target,nums);
-            } else if (lessThanMid < mid) {
+            if(target == nums[mid]){
+                if(mid > 0){
+                    if( target > nums[mid-1]) {
+                        leftIndex = mid;
+                        break;
+                    }else {
+                        high = mid -1;
+                    }
+                }else {
+                    leftIndex = 0;
+                    break;
+                }
+
+            } else if (target < nums[mid]) {
                 high = mid - 1;
-
-            }else {
+            }else{
                 low = mid + 1;
-
             }
         }
-        return result;
-    }
+        // Binary Search for the rightIndex
+        low = 0;
+        high = nums.length - 1;
+        while (low <= high){
+            int mid = low + (high - low) / 2;
+            if(target == nums[mid]){
+                if(mid < nums.length-1){
+                    if( target < nums[mid+1]) {
+                        rightIndex = mid;
+                        break;
+                    }else {
+                        low = mid + 1;
+                    }
+                }else {
+                    rightIndex = nums.length - 1;
+                    break;
+                }
 
-    private int NumberOfElememntLessThanMid(int[] nums, int mid) {
-        int count = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] < mid){
-                count ++;
+            } else if (target < nums[mid]) {
+                high = mid - 1;
+            }else{
+                low = mid + 1;
             }
         }
-        return count;
+        for (int i = leftIndex; i <= rightIndex; i++) {
+            re.add(i);
+        }
+        return re;
     }
 }

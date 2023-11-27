@@ -12,8 +12,8 @@ import java.util.*;
 public class SpecialArrayWithXElementsGreaterThanorEqualX {
     public static void main(String[] args) {
          new ArrayList<Solution1608>(){{
-             add(new Solution1608BinarySearch());
-            add(new Solution1608Recurse());
+             add(new Solution1608BinarySearchRecursively());
+            add(new Solution1608BinarySearchIteratively());
             add(new Solution1608BruteMethod());
         }}.forEach(
                  solution1608 -> {
@@ -87,7 +87,7 @@ class Solution1608BruteMethod implements Solution1608{
  * <a href="https://leetcode.com/problems/special-array-with-x-elements-greater-than-or-equal-x/submissions/1101448472/">Accepted</a>
  * Using Recurse solution
  */
-class Solution1608Recurse implements Solution1608{
+class Solution1608BinarySearchRecursively implements Solution1608{
     /**
      * Find the number of array that greater or equal than mid.
      * @param mid the value needed to be compared.
@@ -154,7 +154,7 @@ class Solution1608Recurse implements Solution1608{
  * The space complexity is O(N*LogN)
  *
  */
-class Solution1608BinarySearch implements Solution1608{
+class Solution1608BinarySearchIteratively implements Solution1608{
 
 
     @Override

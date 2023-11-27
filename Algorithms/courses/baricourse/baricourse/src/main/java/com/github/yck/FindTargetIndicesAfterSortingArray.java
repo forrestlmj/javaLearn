@@ -39,8 +39,9 @@ The index where nums[i] == 5 is 4.
 public class FindTargetIndicesAfterSortingArray {
     public static void main(String[] args) {
         List<Solution2089> a = new ArrayList<Solution2089>(){{
+//            add(new Solution2089SortAndBinarySearchRecursively());
+            add(new Solution2089SortAndBinarySearchIteratively());
             add(new Solution2089Traversal());
-            add(new Solution2089SortAndBinarySearch());
         }};
         a.forEach(
                 solution2089 ->{
@@ -88,8 +89,9 @@ class Solution2089Traversal implements Solution2089{
 
 /**
  * Time Complexity: O(NlogN) + O(LogN)
+ * Binary Search: find the left index and the right index of the result slice.
  */
-class Solution2089SortAndBinarySearch implements Solution2089{
+class Solution2089SortAndBinarySearchIteratively implements Solution2089{
     @Override
     public List<Integer> targetIndices(int[] nums, int target) {
         Arrays.sort(nums);
@@ -149,5 +151,12 @@ class Solution2089SortAndBinarySearch implements Solution2089{
             re.add(i);
         }
         return re;
+    }
+}
+
+class Solution2089SortAndBinarySearchRecursively implements Solution2089{
+    @Override
+    public List<Integer> targetIndices(int[] nums, int target) {
+        return null;
     }
 }

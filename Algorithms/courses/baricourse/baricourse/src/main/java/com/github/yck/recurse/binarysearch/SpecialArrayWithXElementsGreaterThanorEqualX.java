@@ -1,4 +1,4 @@
-package com.github.yck;
+package com.github.yck.recurse.binarysearch;
 
 import cn.hutool.core.lang.Assert;
 

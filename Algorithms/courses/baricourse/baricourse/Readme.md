@@ -501,7 +501,7 @@ Log(N)
 
 ## Practices
 Leetcode Problems:
-1. com.github.yck.SpecialArrayWithXElementsGreaterThanorEqualX
+1. com.github.yck.recurse.binarysearch.SpecialArrayWithXElementsGreaterThanorEqualX
 
 **Note**
 

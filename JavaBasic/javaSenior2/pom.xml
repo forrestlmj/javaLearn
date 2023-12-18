@@ -12,6 +12,7 @@
         <module>JUCBasic</module>
         <module>JUCSenior</module>
         <module>JUCPractice</module>
+        <module>JavaLibrariesBasic</module>
     </modules>
 
     <properties>

@@ -464,7 +464,7 @@ int BinarySearch(low,high,key){
 }
 
 ```
-### Lesson 2.6.1 Binary Search Recurrence
+### Lesson 2.6.2 Binary Search Recurrence
 ```plaintext
 int BinarySearch(low,high,key){
     // Is problem is small enough?                        -- T(N)
@@ -517,8 +517,8 @@ Leetcode Problems:
   * low > high meaning, no answer.
   * low < high meaning needed to be divided into more sub problems;
 
-
-
+### Lesson 2.6.3 Heap, Heap Sort, Heapify
+这节课主要讲了什么是 Heap 
 ## Chapter 3 Greedy method
 ## Chapter 4 Dynamic programming
 ## Chapter 5 Graph Traversals

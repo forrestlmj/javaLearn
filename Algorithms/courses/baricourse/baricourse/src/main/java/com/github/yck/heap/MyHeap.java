@@ -102,14 +102,14 @@ public class MyHeap {
     public void setup(){
         data = new ArrayList<>();
         Random random = new Random();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 100; i++) {
             data.add(random.nextInt(100));
         }
         System.out.println(data);
     }
     @Test
-    public void test(){
-        Integer heapSize = 3;
+    public void testTopN(){
+        Integer heapSize = 5;
         Queue<Integer> pq = new PriorityQueue<>(heapSize);
 
         data.forEach(e ->
@@ -123,6 +123,13 @@ public class MyHeap {
         while (pq.size()>0){
             System.out.println(pq.poll());
         }
-        Assert.assertEquals("1","1");
+    }
+    @Test
+    public void testHashSort(){
+        Queue<Integer> pq = new PriorityQueue<>();
+        data.forEach(e -> pq.offer(e));
+        while (pq.size()>0){
+            System.out.println(pq.poll());
+        }
     }
 }

@@ -29,69 +29,87 @@ class BinaryTreeUtil{
 
 }
 
-//class MaxHeap extends AbstractQueue<Integer> {
-//    private Integer[] data;
-//    private Integer endOfArrayIndex = 0;
-//    private Integer capacity;
-//
-//    public MaxHeap(Integer capacity) {
-//        this.capacity = capacity;
-//        data = new Integer[capacity];
-//    }
-//
-//    @Override
-//    public Iterator<Integer> iterator() {
-//        return null;
-//    }
-//
-//    @Override
-//    public int size() {
-//        return endOfArrayIndex;
-//    }
-//
-//    @Override
-//    public boolean offer(Integer e) {
-//
-//        if(endOfArrayIndex == 0){
-//            data[endOfArrayIndex] = e;
-//            endOfArrayIndex ++;
-//            return true;
-//        }
-//        Assert.assertTrue( "堆满了，无法添加新元素",endOfArrayIndex<capacity);
-//        // 1. 从尾巴插入
-//        Integer tmp;
-//        data[endOfArrayIndex] = e;
-//        Integer index = endOfArrayIndex;
-//        while(index > 0){
-//            Integer parentIndex = BinaryTreeUtil.parentIndex(index);
-//            if(data[parentIndex] >= e){
-//                // 如果父节点比当前节点大，则退出
-//                break;
-//            }else {
-//                // 否则当前节点晋升到父节点。
-//                tmp = data[parentIndex];
-//                data[parentIndex] = e;
-//                data[index] = tmp;
-//                index = BinaryTreeUtil.parentIndex(parentIndex);
-//            }
-//        }
-//        endOfArrayIndex += 1;
-//        return false;
-//    }
-//
-//    @Override
-//    public Integer poll() {
-//        Assert.assertTrue( "heap为空",endOfArrayIndex > 0);
-//
-//        return null;
-//    }
-//
-//    @Override
-//    public Integer peek() {
-//        Assert.assertTrue( "heap为空",endOfArrayIndex > 0);
-//        return data[0];
-//    }
-//}
+class MaxHeap extends AbstractQueue<Integer> {
+    private Integer[] data;
+    private Integer endOfArrayIndex = 0;
+    private Integer capacity;
+
+    public MaxHeap(Integer capacity) {
+        this.capacity = capacity;
+        data = new Integer[capacity];
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return null;
+    }
+
+    @Override
+    public int size() {
+        return endOfArrayIndex;
+    }
+
+    @Override
+    public boolean offer(Integer e) {
+
+        if(endOfArrayIndex == 0){
+            data[endOfArrayIndex] = e;
+            endOfArrayIndex ++;
+            return true;
+        }
+        Assert.assertTrue( "堆满了，无法添加新元素",endOfArrayIndex<capacity);
+        // 1. 从尾巴插入
+        Integer tmp;
+        data[endOfArrayIndex] = e;
+        Integer index = endOfArrayIndex;
+        while(index > 0){
+            Integer parentIndex = BinaryTreeUtil.parentIndex(index);
+            if(data[parentIndex] >= e){
+                // 如果父节点比当前节点大，则退出
+                break;
+            }else {
+                // 否则当前节点晋升到父节点。
+                tmp = data[parentIndex];
+                data[parentIndex] = e;
+                data[index] = tmp;
+                index = BinaryTreeUtil.parentIndex(parentIndex);
+            }
+        }
+        endOfArrayIndex += 1;
+        return false;
+    }
+
+    @Override
+    public Integer poll() {
+        Assert.assertTrue( "heap为空",endOfArrayIndex > 0);
+        Integer polledElement = data[0];
+        data[0] = data[endOfArrayIndex];
+        endOfArrayIndex --;
+        Integer tmp;
+
+        Integer index = 0;
+        while (index < endOfArrayIndex){
+            Integer leftChildIndex = BinaryTreeUtil.leftChildIndex(index);
+            Integer rightChildIndex = BinaryTreeUtil.rightChildIndex(index);
+            //  取大的
+            index = data[leftChildIndex] > data[rightChildIndex]?leftChildIndex:rightChildIndex;
+            if(data[0] >= data[index]){
+                break;
+            }else {
+                tmp = data[0];
+                data[0] = data[index];
+                data[index] = tmp;
+            }
+        }
+        return polledElement;
+    }
+
+    @Override
+    public Integer peek() {
+        Assert.assertTrue( "heap为空",endOfArrayIndex > 0);
+        return data[0];
+    }
+}
 
 /**
  * 使用最大堆找到 TOP-N 个元素。小堆，求TopN大，大堆，求topN小
@@ -110,7 +128,7 @@ public class MyHeap {
     @Test
     public void testTopN(){
         Integer heapSize = 5;
-        Queue<Integer> pq = new PriorityQueue<>(heapSize);
+        Queue<Integer> pq = new MaxHeap(heapSize);
 
         data.forEach(e ->
         {

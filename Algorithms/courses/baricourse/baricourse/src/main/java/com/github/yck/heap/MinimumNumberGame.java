@@ -26,7 +26,7 @@ class UsingHeapSolvingSolution2974 implements Solution2974{
      * 这里的核心难点其实是：
      * 一般的优先队列只存储优先级，通过优先级来进行堆的插入和删除。
      * 但是如何存储插入和删除信息的其他信息呢？
-     * 1. 方案1，实现 class，包装类，实现 compare 接口，放到堆里面。
+     * 1. 方案1，实现 class，包装类，实现 compare 接口，放到堆里面。TODO 还是这种解法比较通用
      * 2. 方案2，将要包装的类所有信息作为索引，放入hash表中。每次 poll 出来的信息，从 hash 表里面找
      * @param nums
      * @return

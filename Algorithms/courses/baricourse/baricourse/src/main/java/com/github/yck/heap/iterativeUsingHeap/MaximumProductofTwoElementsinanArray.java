@@ -1,4 +1,4 @@
-package com.github.yck.heap;
+package com.github.yck.heap.iterativeUsingHeap;
 
 import org.junit.Test;
 

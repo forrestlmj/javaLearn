@@ -1,4 +1,4 @@
-package com.github.yck.heap;
+package com.github.yck.heap.iterativeUsingHeap;
 
 import cn.hutool.core.lang.Assert;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package com.github.yck.heap;
+package com.github.yck.heap.iterativeUsingHeap;
 
 import java.util.Comparator;
 import java.util.HashMap;

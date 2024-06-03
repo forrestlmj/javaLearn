@@ -3,8 +3,9 @@ package com.github.yck.greedy;
 import cn.hutool.core.lang.Assert;
 import org.junit.Test;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Chengkai Yang
@@ -18,26 +19,43 @@ import java.util.Set;
  */
 class Solution2375 {
     public String smallestNumber(String pattern) {
-        StringBuilder sb = new StringBuilder();
-        Set<Integer> s = new HashSet<>();
-        for (int i = 0; i < 10; i++) {
-            s.add(i);
+        List<Integer> result = new ArrayList<>();
+
+        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
+        for (int i = 2; i < 10; i++) {
+            minHeap.offer(i);
         }
-        sb.append(1);
-        s.remove(1);
+
+        result.add(1);
         for (char c : pattern.toCharArray()) {
             switch (c){
                 case 'I':{
-                    break;
+                    Integer number = minHeap.poll();
 
+                    result.add(number);
+                    break;
                 }
                 case 'D':{
+                    // 取左边的值
+                    Integer i = result.get(result.size() - 1);
+                    // 还回队列
+                    minHeap.offer(i);
+                    // 先给当前值拿一个
+                    // 再给前面的拿一个
+                    int lastIdx = result.size()-1;
+                    result.add(minHeap.poll());
+                    result.set(lastIdx,minHeap.poll());
+
                     break;
 
                 }
             }
         }
-        return null;
+        StringBuilder sb = new StringBuilder();
+        for (Integer i : result) {
+            sb.append(i);
+        }
+        return sb.toString();
     }
 }
 public class Greedy2375 {

@@ -3,6 +3,9 @@ package com.github.yck.greedy;
 import cn.hutool.core.lang.Assert;
 import org.junit.Test;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * @author Chengkai Yang
  * @version 1.0
@@ -15,6 +18,25 @@ import org.junit.Test;
  */
 class Solution2375 {
     public String smallestNumber(String pattern) {
+        StringBuilder sb = new StringBuilder();
+        Set<Integer> s = new HashSet<>();
+        for (int i = 0; i < 10; i++) {
+            s.add(i);
+        }
+        sb.append(1);
+        s.remove(1);
+        for (char c : pattern.toCharArray()) {
+            switch (c){
+                case 'I':{
+                    break;
+
+                }
+                case 'D':{
+                    break;
+
+                }
+            }
+        }
         return null;
     }
 }

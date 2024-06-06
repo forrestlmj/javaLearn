@@ -13,49 +13,32 @@ import java.util.stream.Stream;
  * @date 2024/6/3 20:10
  *
  * https://leetcode.com/problems/construct-smallest-number-from-di-string/description/
- * 这个比较符合贪心算法 TODO
+ * 字符串翻转
+ * https://leetcode.com/problems/construct-smallest-number-from-di-string/solutions/4787222/fast-simple-java-solution/
+ * * 这个比较符合贪心算法 TODO
  * 1. 贪心目的：能产生的最小数字。
  * 2. 限制 D 与 I，每一步都必须只能使用一个数字。那就是每一步要选择最小的，类似拿到工作调度的题目
  */
-class Solution2375 {
+class Solution2375  {
     public String smallestNumber(String pattern) {
-        List<Integer> result = new ArrayList<>();
+        StringBuilder s = new StringBuilder("123456789".substring(0, pattern.length() + 1));
+        int j = 0;
 
-        PriorityQueue<Integer> minHeap = new PriorityQueue<>();
-        for (int i = 2; i < 10; i++) {
-            minHeap.offer(i);
-        }
-
-        result.add(1);
-        for (char c : pattern.toCharArray()) {
-            switch (c){
-                case 'I':{
-                    Integer number = minHeap.poll();
-
-                    result.add(number);
-                    break;
-                }
-                case 'D':{
-                    // 取左边的值
-                    Integer i = result.get(result.size() - 1);
-                    // 还回队列
-                    minHeap.offer(i);
-                    // 先给当前值拿一个
-                    // 再给前面的拿一个
-                    int lastIdx = result.size()-1;
-                    result.add(minHeap.poll());
-                    result.set(lastIdx,minHeap.poll());
-
-                    break;
-
-                }
+        for (int i = 0; i <= pattern.length(); i++) {
+            if (i < pattern.length() && pattern.charAt(i) == 'D') {
+                j++;
+                continue;
             }
+
+            if (j > 0) {
+                StringBuilder ns = new StringBuilder(s.substring(i - j, i + 1));
+                s.replace(i - j, i + 1, ns.reverse().toString());
+            }
+
+            j = 0;
         }
-        StringBuilder sb = new StringBuilder();
-        for (Integer i : result) {
-            sb.append(i);
-        }
-        return sb.toString();
+
+        return s.toString();
     }
 }
 public class Greedy2375 {

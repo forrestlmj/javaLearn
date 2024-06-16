@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * https://leetcode.com/problems/construct-smallest-number-from-di-string/solutions/4787222/fast-simple-java-solution/
  * * 这个比较符合贪心算法 TODO
  * 1. 贪心目的：能产生的最小数字。
- * 2. 限制 D 与 I，每一步都必须只能使用一个数字。那就是每一步要选择最小的，类似拿到工作调度的题目
+ * 2. 限制 D 与 I，行每一步都必须只能使用一个数字。那就是每一步要选择最小的，类似拿到工作调度的题目
  */
 class Solution2375  {
     public String smallestNumber(String pattern) {
